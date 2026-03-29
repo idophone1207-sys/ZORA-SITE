@@ -1,0 +1,13 @@
+{
+  "name": "zora-site",
+  "version": "1.0.0",
+  "description": "WAT framework tooling for zora site",
+  "private": true,
+  "scripts": {
+    "crm": "node tools/crm_server.js"
+  },
+  "dependencies": {
+    "puppeteer": "^22.0.0",
+    "xlsx": "^0.18.5"
+  }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<title>ZORA – ייצוא לידים</title>
+<style>
+  body { font-family: 'Arial', sans-serif; background: #FAF6EE; color: #1C1A17; padding: 2rem; direction: rtl; }
+  h1 { color: #BFA46A; font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .subtitle { color: #7A756E; font-size: 0.9rem; margin-bottom: 2rem; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  th { background: #BFA46A; color: white; padding: 0.75rem 1rem; font-size: 0.85rem; text-align: right; }
+  td { padding: 0.7rem 1rem; border-bottom: 1px solid #F0EAD6; font-size: 0.875rem; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #FAF6EE; }
+  .status { display: inline-block; background: #E8D48A; color: #4A4540; border-radius: 4px; padding: 0.2rem 0.6rem; font-size: 0.75rem; font-weight: 600; }
+  .btn { display: inline-block; background: linear-gradient(135deg, #9A7A3A, #D4B97A); color: white; border: none; border-radius: 4px; padding: 0.75rem 2rem; font-size: 0.9rem; font-weight: 600; cursor: pointer; margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+  .btn:hover { opacity: 0.9; }
+  .empty { text-align: center; padding: 3rem; color: #7A756E; }
+  .count { font-size: 0.8rem; color: #7A756E; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+
+<h1>ZORA – לידים</h1>
+<p class="subtitle">כל הפניות שהתקבלו דרך טופס תיאום שיחת הייעוץ</p>
+
+<button class="btn" onclick="exportCSV()">⬇ הורד כ-Excel / CSV</button>
+<button class="btn" style="background: #6B7280; margin-right: 0.5rem;" onclick="clearLeads()">🗑 נקה רשימה</button>
+
+<p class="count" id="count"></p>
+
+<table id="leads-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>שם מלא</th>
+      <th>טלפון</th>
+      <th>אימייל</th>
+      <th>משך נשירה</th>
+      <th>תאריך פנייה</th>
+      <th>סטטוס ליד</th>
+    </tr>
+  </thead>
+  <tbody id="leads-body"></tbody>
+</table>
+
+<script>
+  const KEY = 'zora_leads';
+
+  function loadLeads() {
+    return JSON.parse(localStorage.getItem(KEY) || '[]');
+  }
+
+  function renderTable() {
+    const leads = loadLeads();
+    const tbody = document.getElementById('leads-body');
+    const count = document.getElementById('count');
+
+    count.textContent = `סה"כ ${leads.length} לידים`;
+
+    if (leads.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="7" class="empty">אין לידים עדיין</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = leads.map((l, i) => `
+      <tr>
+        <td>${i + 1}</td>
+        <td><strong>${l.name || ''}</strong></td>
+        <td style="direction:ltr; text-align:left;">${l.phone || ''}</td>
+        <td style="direction:ltr; text-align:left;">${l.email || ''}</td>
+        <td>${l.duration || ''}</td>
+        <td>${l.date || ''}</td>
+        <td><span class="status">${l.status || 'חדש'}</span></td>
+      </tr>
+    `).join('');
+  }
+
+  function exportCSV() {
+    const leads = loadLeads();
+    if (leads.length === 0) { alert('אין לידים לייצוא'); return; }
+
+    const BOM = '\uFEFF'; // UTF-8 BOM for Excel Hebrew support
+    const header = ['#', 'שם מלא', 'טלפון', 'אימייל', 'משך נשירה', 'תאריך פנייה', 'סטטוס ליד'];
+    const rows = leads.map((l, i) => [
+      i + 1,
+      `"${(l.name  || '').replace(/"/g, '""')}"`,
+      `"${(l.phone || '').replace(/"/g, '""')}"`,
+      `"${(l.email || '').replace(/"/g, '""')}"`,
+      `"${(l.duration || '').replace(/"/g, '""')}"`,
+      `"${(l.date  || '').replace(/"/g, '""')}"`,
+      `"${(l.status || 'חדש').replace(/"/g, '""')}"`
+    ]);
+
+    const csv = BOM + [header, ...rows].map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = `zora_leads_${new Date().toLocaleDateString('he-IL').replace(/\//g,'-')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function clearLeads() {
+    if (confirm('למחוק את כל הלידים? פעולה זו אינה הפיכה.')) {
+      localStorage.removeItem(KEY);
+      renderTable();
+    }
+  }
+
+  renderTable();
+</script>
+</body>
+</html>

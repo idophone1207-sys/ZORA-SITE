@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZORA - Zehavit Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: transparent !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  .scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: float 6s ease-in-out infinite, entry 1.4s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  @keyframes float {
+    0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}
+  }
+  @keyframes entry {
+    from{opacity:0;transform:scale(.93) translateY(16px)}
+    to{opacity:1;transform:scale(1) translateY(0)}
+  }
+  canvas { display: block; }
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 300;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg,#a6894d 0%,#f1da8e 50%,#a6894d 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-sub 6s linear infinite;
+    margin-top: 4px;
+  }
+  @keyframes shimmer-sub {
+    0%{background-position:200% 0}100%{background-position:-200% 0}
+  }
+</style>
+</head>
+<body>
+<div class="scene">
+  <canvas id="c"></canvas>
+  <div class="subtitle">Z E H A V I T &nbsp; P R O F E S S I O N A L</div>
+</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 860, H = 240;
+canvas.width = W; canvas.height = H;
+canvas.style.width = W+'px'; canvas.style.height = H+'px';
+
+let t = 0;
+const FONT = '195px "Cormorant Garamond", serif';
+const BASE = 200;
+
+function fullGold(tc) {
+  const c = tc || ctx;
+  const g = c.createLinearGradient(0,0,W,0);
+  g.addColorStop(0,    '#a6894d');
+  g.addColorStop(0.25, '#c9a84c');
+  g.addColorStop(0.5,  '#f1da8e');
+  g.addColorStop(0.75, '#c9a84c');
+  g.addColorStop(1,    '#a6894d');
+  return g;
+}
+
+document.fonts.ready.then(() => requestAnimationFrame(draw));
+
+function renderText(tc, paint) {
+  tc.font = FONT;
+  tc.textBaseline = 'alphabetic';
+  tc.textAlign = 'center';
+  tc.fillStyle = paint || fullGold(tc);
+  tc.fillText('ZORA', W / 2, BASE);
+}
+
+function draw() {
+  ctx.clearRect(0,0,W,H);
+
+  // 1. Base gold text
+  renderText(ctx);
+
+  // 2. Shimmer clipped to text
+  const off = new OffscreenCanvas(W, H);
+  const oc  = off.getContext('2d');
+  renderText(oc, '#ffffff');
+
+  const shimX = -300 + (W + 600) * (t % 1);
+  const sw = 320;
+  oc.globalCompositeOperation = 'source-in';
+  const sg = oc.createLinearGradient(shimX - sw/2, 0, shimX + sw/2, 0);
+  sg.addColorStop(0,    'rgba(255,248,210,0)');
+  sg.addColorStop(0.35, 'rgba(255,248,210,0.06)');
+  sg.addColorStop(0.5,  'rgba(255,252,225,0.48)');
+  sg.addColorStop(0.65, 'rgba(255,248,210,0.06)');
+  sg.addColorStop(1,    'rgba(255,248,210,0)');
+  oc.fillStyle = sg;
+  oc.fillRect(0,0,W,H);
+
+  ctx.save();
+  ctx.globalCompositeOperation = 'source-atop';
+  ctx.drawImage(off,0,0);
+  ctx.globalCompositeOperation = 'source-over';
+  ctx.restore();
+
+  // 3. Subtle glow
+  ctx.save();
+  ctx.globalAlpha = 0.15 + 0.06 * Math.sin(t * Math.PI * 2 * 0.2);
+  ctx.shadowColor = 'rgba(166,137,77,0.9)';
+  ctx.shadowBlur = 16;
+  renderText(ctx);
+  ctx.restore();
+
+  t += 1/(60*10);
+  requestAnimationFrame(draw);
+}
+</script>
+</body>
+</html>
