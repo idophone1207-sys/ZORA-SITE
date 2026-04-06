@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="qhzVXKaREWH_h6KSxlgqoVQW37z9qXqDplXLkJBfNnE" />
   <title>ZORA – טיפולי שיער מקצועיים | Zehavit Professional</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -330,27 +331,6 @@
       background-clip: text;
     }
 
-    .hero-sub {
-      font-size: 1.05rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.8;
-      max-width: 90ch;
-      width: 100%;
-      margin-top: 1.2rem;
-      margin-bottom: 2.5rem;
-      padding: 1rem 2.5rem;
-      border-radius: 8px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      background: linear-gradient(
-        135deg,
-        rgba(28,26,23,0.28) 0%,
-        rgba(40,36,30,0.22) 100%
-      );
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
-      text-shadow: 0 1px 8px rgba(0,0,0,0.4);
-    }
 
     .hero-actions {
       display: flex;
@@ -980,7 +960,8 @@
 
     /* ─── Testimonials ─────────────────────────────────── */
     #testimonials {
-      padding-block: var(--section-pad);
+      padding-block-start: clamp(2rem, 4vw, 3.5rem);
+      padding-block-end: var(--section-pad);
       background: var(--gold-pale);
     }
 
@@ -1620,37 +1601,6 @@
       z-index: 2;
     }
 
-    .zora-logo-inline {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      animation: zoraFloat 6s ease-in-out infinite, zoraEntry 1.4s cubic-bezier(0.16,1,0.3,1) both;
-    }
-    @keyframes zoraFloat {
-      0%,100%{ transform: translateY(0); }
-      50%    { transform: translateY(-7px); }
-    }
-    @keyframes zoraEntry {
-      from { opacity:0; transform: scale(.93) translateY(16px); }
-      to   { opacity:1; transform: scale(1) translateY(0); }
-    }
-    #zora-canvas { display: block; }
-    .zora-subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.7rem, 1.6vw, 1.1rem);
-      font-weight: 400;
-      letter-spacing: clamp(0.25em, 0.8vw, 0.55em);
-      white-space: nowrap;
-      text-transform: uppercase;
-      color: #e8cc85;
-      text-shadow: 0 0 18px rgba(212,185,122,0.5);
-      margin-top: 6px;
-    }
-    @keyframes shimmerSub {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
 
     /* ─── Desktop Left Sidebar ─────────────────────────── */
     #left-sidebar {
@@ -2242,7 +2192,7 @@
   <section id="hero">
     <div class="hero-video-bg">
       <video autoplay muted loop playsinline preload="auto">
-        <source src="vid/0311.mov" type="video/mp4">
+        <source src="vid/zora promo.mp4" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
       <div class="hero-watermark-cover"></div>
@@ -2250,14 +2200,6 @@
 
     <div class="container hero-content">
       <div class="hero-text">
-        <!-- ZORA logo animation (inline canvas) -->
-        <div class="zora-logo-inline" role="heading" aria-level="1" aria-label="ZORA – Zehavit Professional">
-          <canvas id="zora-canvas"></canvas>
-          <div class="zora-subtitle">Z E H A V I T &nbsp; P R O F E S S I O N A L</div>
-        </div>
-        <p class="hero-sub">
-          החייאה וצמיחה מחודשת לשורשי השיער.
-        </p>
         <div class="hero-actions">
           <a href="#treatments" class="btn btn-gold">גלי את הטיפולים</a>
           <a href="#about" class="btn btn-gold">הסיפור שלנו</a>
@@ -2818,86 +2760,6 @@
       navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // ZORA inline canvas animation
-    (function() {
-      const canvas = document.getElementById('zora-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const BASE_W = 860, BASE_H = 240, BASE_FONT = 195, BASE_BASE = 200;
-      let t = 0, W = BASE_W, H = BASE_H, S = 1;
-
-      function resize() {
-        const wrap = canvas.parentElement;
-        const cw = wrap.offsetWidth || BASE_W;
-        S = Math.min(1, cw / BASE_W);
-        W = Math.round(BASE_W * S);
-        H = Math.round(BASE_H * S);
-        canvas.width  = W;
-        canvas.height = H;
-        canvas.style.width  = W + 'px';
-        canvas.style.height = H + 'px';
-      }
-
-      function makeGold(tc, w) {
-        const g = tc.createLinearGradient(0, 0, w, 0);
-        g.addColorStop(0,    '#a6894d');
-        g.addColorStop(0.25, '#c9a84c');
-        g.addColorStop(0.5,  '#f1da8e');
-        g.addColorStop(0.75, '#c9a84c');
-        g.addColorStop(1,    '#a6894d');
-        return g;
-      }
-
-      function renderText(tc, paint) {
-        tc.font = `${Math.round(BASE_FONT * S)}px "Cormorant Garamond", serif`;
-        tc.textBaseline = 'alphabetic';
-        tc.textAlign = 'center';
-        tc.fillStyle = paint || makeGold(tc, W);
-        tc.fillText('ZORA', W / 2, Math.round(BASE_BASE * S));
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        renderText(ctx);
-
-        const off = new OffscreenCanvas(W, H);
-        const oc  = off.getContext('2d');
-        renderText(oc, '#ffffff');
-        const shimX = -300 * S + (W + 600 * S) * (t % 1);
-        const sw = 320 * S;
-        oc.globalCompositeOperation = 'source-in';
-        const sg = oc.createLinearGradient(shimX - sw/2, 0, shimX + sw/2, 0);
-        sg.addColorStop(0,    'rgba(255,248,210,0)');
-        sg.addColorStop(0.35, 'rgba(255,248,210,0.06)');
-        sg.addColorStop(0.5,  'rgba(255,252,225,0.48)');
-        sg.addColorStop(0.65, 'rgba(255,248,210,0.06)');
-        sg.addColorStop(1,    'rgba(255,248,210,0)');
-        oc.fillStyle = sg;
-        oc.fillRect(0, 0, W, H);
-        ctx.save();
-        ctx.globalCompositeOperation = 'source-atop';
-        ctx.drawImage(off, 0, 0);
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.restore();
-
-        ctx.save();
-        ctx.globalAlpha = 0.15 + 0.06 * Math.sin(t * Math.PI * 2 * 0.2);
-        ctx.shadowColor = 'rgba(166,137,77,0.9)';
-        ctx.shadowBlur = 16 * S;
-        renderText(ctx);
-        ctx.restore();
-
-        t += 1/(60*10);
-        requestAnimationFrame(draw);
-      }
-
-      window.addEventListener('resize', resize);
-      requestAnimationFrame(() => {
-        resize();
-        requestAnimationFrame(draw);
-      });
-      document.fonts.ready.then(() => { resize(); });
-    })();
 
     // Hamburger menu – top dropdown bar
     let menuOpen = false;
@@ -3173,6 +3035,33 @@
   <!-- ══════════════ ACCESSIBILITY WIDGET ══════════════ -->
   <style>
     /* ─── Accessibility ─── */
+    /* ─── Social FABs (bottom center) ──────────────────── */
+    #social-fabs {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9998;
+      display: flex;
+      gap: 0.75rem;
+    }
+    .social-fab {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: #1C1A17;
+      border: 1.5px solid rgba(191,164,106,0.5);
+      color: #D4B97A;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .social-fab:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(191,164,106,0.4);
+    }
+    .social-fab svg { width: 22px; height: 22px; }
+
     #a11y-toggle-btn {
       position: fixed;
       bottom: 1.25rem;
@@ -3515,6 +3404,16 @@
     }
   </style>
 
+  <!-- Social FABs -->
+  <div id="social-fabs">
+    <a href="https://www.instagram.com/zehavit_profesional/" target="_blank" rel="noopener" aria-label="Instagram" class="social-fab">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@zehavit_profesional?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener" aria-label="TikTok" class="social-fab">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.52V6.75a4.85 4.85 0 0 1-1.02-.06z"/></svg>
+    </a>
+  </div>
+
   <!-- Accessibility Widget HTML -->
   <button id="a11y-toggle-btn" aria-label="אפשרויות נגישות" onclick="toggleA11yPanel()">♿</button>
   <div id="a11y-panel" role="dialog" aria-label="תפריט נגישות">
@@ -3669,33 +3568,30 @@
         if (rec.causeTreatment) {
           msg += `\n${rec.causeTreatment}`;
         }
-        msg += `\n\nהטיפולים האלו מותאמים במיוחד למצב השיער ויחזירו לו את הבריאות, הנפח והחוזק.\n\nרוצה לקבוע תור?`;
+        msg += `\n\nהטיפולים האלו מותאמים במיוחד למצב השיער ויחזירו לו את הבריאות, הנפח והחוזק.\n\nרוצי לדבר איתי ישירות? לחצי על הכפתור 👇`;
         addBubble(msg, 'bot');
-        // Store diagnosis answers for the consultation form
-        window.chatDiagnosis = {
-          cause: answers.cause || '',
-          type: answers.type || '',
-          duration: answers.duration || '',
-          condition: answers.condition || ''
-        };
 
         const opts = document.getElementById('chat-options');
         opts.innerHTML = '';
         const bookBtn = document.createElement('button');
         bookBtn.className = 'chat-opt-btn';
-        bookBtn.innerHTML = 'קביעת שיחת ייעוץ חינמית';
+        bookBtn.innerHTML = '💬 שלחי לי הודעה בוואטסאפ';
         bookBtn.onclick = function() {
-          toggleChat();
-          // Pre-fill duration if it matches a form option
-          const dur = window.chatDiagnosis.duration;
-          const radios = document.querySelectorAll('#cf-duration-group input[type=radio]');
-          radios.forEach(r => {
-            if (dur && dur.includes(r.value.replace('פלוס',''))) {
-              r.checked = true;
-              r.closest('.consult-radio-opt').classList.add('selected');
-            }
-          });
-          openConsultModal();
+          const waParts = [
+            '👋 היי זהבית!',
+            'עברתי על האבחון בצ\'אט של ZORA וקיבלתי המלצה:',
+            '',
+            `🔍 *תוצאות האבחון:*`,
+          ];
+          if (answers.duration)  waParts.push(`• משך הנשירה: ${answers.duration}`);
+          if (answers.type)      waParts.push(`• ביטוי הנשירה: ${answers.type}`);
+          if (answers.cause)     waParts.push(`• גורם אפשרי: ${answers.cause}`);
+          if (answers.condition) waParts.push(`• מצב השיער: ${answers.condition}`);
+          if (rec.causeTreatment) {
+            waParts.push('', `💆 *ההמלצה שקיבלתי:*`, rec.causeTreatment);
+          }
+          waParts.push('', 'אשמח לשמוע פרטים נוספים ולתאם טיפול 🙏');
+          window.open(`https://wa.me/972528434322?text=${encodeURIComponent(waParts.join('\n'))}`, '_blank');
         };
         opts.appendChild(bookBtn);
         const restart = document.createElement('button');
@@ -3937,36 +3833,27 @@
       btn.disabled = true;
       btn.textContent = 'שולחת...';
 
-      try {
-        const diagnosis = window.chatDiagnosis || {};
-        const res = await fetch('https://script.google.com/macros/s/AKfycbznVO38j5McHP2XMkpj6-Lh0a-FhgFsGBEnizl2RAq7lPaA4qH-Iz9AbVgzEyHF4Y_VFg/exec', {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, phone, email, duration,
-            diagnosis_cause: diagnosis.cause || '',
-            diagnosis_type: diagnosis.type || '',
-            diagnosis_duration: diagnosis.duration || '',
-            diagnosis_condition: diagnosis.condition || ''
-          })
-        });
-        // Show success (no-cors mode returns opaque response, assume success)
-        document.getElementById('consult-form-wrap').style.display = 'none';
-        document.getElementById('consult-success').style.display = '';
-      } catch (err) {
-        // Fallback: save locally and show success anyway so UX isn't broken
-        const diagnosis = window.chatDiagnosis || {};
-        const leads = JSON.parse(localStorage.getItem('zora_leads') || '[]');
-        leads.push({ name, phone, email, duration,
-          diagnosis_cause: diagnosis.cause || '',
-          diagnosis_type: diagnosis.type || '',
-          diagnosis_duration: diagnosis.duration || '',
-          diagnosis_condition: diagnosis.condition || '',
-          date: new Date().toLocaleString('he-IL'), status: 'חדש' });
-        localStorage.setItem('zora_leads', JSON.stringify(leads));
-        document.getElementById('consult-form-wrap').style.display = 'none';
-        document.getElementById('consult-success').style.display = '';
+      const diagnosis = window.chatDiagnosis || {};
+      const parts = [
+        '📋 *ייעוץ חדש – ZORA*',
+        '',
+        `👤 *שם:* ${name}`,
+        `📞 *טלפון:* ${phone}`,
+        `✉️ *אימייל:* ${email}`,
+        `⏱️ *משך הנשירה:* ${duration}`,
+      ];
+      if (diagnosis.type || diagnosis.cause || diagnosis.condition || diagnosis.duration) {
+        parts.push('', '🔍 *סיכום אבחון הצ\'אט:*');
+        if (diagnosis.type)      parts.push(`• ביטוי הנשירה: ${diagnosis.type}`);
+        if (diagnosis.cause)     parts.push(`• גורם אפשרי: ${diagnosis.cause}`);
+        if (diagnosis.condition) parts.push(`• מצב השיער: ${diagnosis.condition}`);
+        if (diagnosis.duration)  parts.push(`• משך (צ\'אט): ${diagnosis.duration}`);
       }
+      const waText = encodeURIComponent(parts.join('\n'));
+      window.open(`https://wa.me/972528434322?text=${waText}`, '_blank');
+
+      document.getElementById('consult-form-wrap').style.display = 'none';
+      document.getElementById('consult-success').style.display = '';
     }
 
     // ── Close on Escape ────────────────────────────────────
