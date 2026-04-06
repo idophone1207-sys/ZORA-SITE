@@ -3950,6 +3950,16 @@
       const waText = encodeURIComponent(parts.join('\n'));
       window.open(`https://wa.me/972528434322?text=${waText}`, '_blank');
 
+      // ── שמירה לגוגל שיטס ──
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, email, duration, source: 'website' }),
+          mode: 'no-cors'
+        });
+      } catch(err) { console.warn('Sheets error', err); }
+
       document.getElementById('consult-form-wrap').style.display = 'none';
       document.getElementById('consult-success').style.display = '';
     }
