@@ -3961,5 +3961,23 @@
     });
   </script>
 
+  <script>
+    // Force hero video playback (handles browser autoplay restrictions)
+    (function() {
+      const v = document.querySelector('#hero video');
+      if (!v) return;
+      v.muted = true;
+      const tryPlay = () => v.play().catch(() => {});
+      if (document.readyState === 'complete') {
+        tryPlay();
+      } else {
+        window.addEventListener('load', tryPlay);
+      }
+      // Also try on first user interaction as fallback
+      document.addEventListener('click', tryPlay, { once: true });
+      document.addEventListener('touchstart', tryPlay, { once: true });
+    })();
+  </script>
+
 </body>
 </html>
