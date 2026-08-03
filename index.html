@@ -219,7 +219,6 @@
     .nav-logo img {
       height: 52px;
       width: auto;
-      mix-blend-mode: multiply;
       filter: drop-shadow(0 2px 8px rgba(191,164,106,0.3));
     }
 
@@ -252,6 +251,37 @@
 
     .nav-links a:hover { color: var(--gold-3); }
     .nav-links a:hover::after { width: 100%; }
+
+    .nav-dropdown { position: relative; display: flex; align-items: center; gap: 0.3rem; }
+    .nav-dropdown-toggle {
+      background: none; border: none; cursor: pointer;
+      color: var(--gold-1); font-size: 0.65rem; padding: 0; line-height: 1;
+    }
+    .nav-submenu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.9rem);
+      right: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      padding: 0.4rem;
+      min-width: 160px;
+      z-index: 999;
+    }
+    .nav-submenu li a {
+      display: block;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+      white-space: nowrap;
+      border-radius: 4px;
+    }
+    .nav-submenu li a::after { display: none; }
+    .nav-submenu li a:hover { color: var(--gold-1); background: var(--gold-pale); }
+    .nav-dropdown:hover .nav-submenu,
+    .nav-dropdown.open .nav-submenu { display: block; }
 
     .nav-cta { margin-inline-start: 0; }
 
@@ -1475,6 +1505,8 @@
       .nav-start { gap: 0.5rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .nav-dropdown { flex-wrap: wrap; justify-content: center; }
+      .nav-submenu { position: static; box-shadow: none; border: none; padding-top: 0.25rem; }
       .nav-cta {
         display: inline-flex;
         font-size: 0.7rem;
@@ -2218,12 +2250,18 @@
     <div class="container nav-inner">
       <div class="nav-start">
         <a href="#hero" class="nav-logo" aria-label="ZORA">
-          <img src="brand_assets/logo.jpg" alt="ZORA by Zehavit Professional" />
+          <img src="brand_assets/logo-gold.png" alt="ZORA by Zehavit Professional" />
         </a>
       </div>
       <ul class="nav-links">
         <li><a href="#about">אודות</a></li>
-        <li><a href="#treatments">טיפולים</a></li>
+        <li class="nav-dropdown">
+          <a href="#treatments">טיפולים</a>
+          <button class="nav-dropdown-toggle" aria-label="פתח תת-תפריט טיפולים" onclick="toggleSubmenu(this)">▾</button>
+          <ul class="nav-submenu">
+            <li><a href="pure.html">סדרת Pure</a></li>
+          </ul>
+        </li>
         <li><a href="#process">תהליך</a></li>
         <li><a href="#ingredients">מרכיבים</a></li>
         <li><a href="#testimonials">המלצות</a></li>
@@ -2922,6 +2960,16 @@
           const btn = document.querySelector('.hamburger');
           toggleMenu(btn);
         }
+      });
+    });
+
+    // Dropdown submenu toggle (tap on caret, e.g. mobile)
+    function toggleSubmenu(btn) {
+      btn.closest('.nav-dropdown').classList.toggle('open');
+    }
+    document.addEventListener('click', (e) => {
+      document.querySelectorAll('.nav-dropdown.open').forEach(el => {
+        if (!el.contains(e.target)) el.classList.remove('open');
       });
     });
 
