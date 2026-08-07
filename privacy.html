@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>מדיניות פרטיות | ZORA by Zehavit Professional</title>
+  <meta name="description" content="מדיניות הפרטיות של אתר zora.clinic" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold-1: #BFA46A;
+      --gold-2: #D4B97A;
+      --gold-3: #E8D48A;
+      --gold-light: #F5EDD3;
+      --gold-pale: #FAF6EE;
+      --dark: #1C1A17;
+      --mid: #4A4540;
+      --light: #7A756E;
+      --white: #FFFFFF;
+      --cream: #FDFBF7;
+      --border: rgba(191,164,106,0.25);
+
+      --font-serif: 'Alef', sans-serif;
+      --font-sans: 'Noto Sans Hebrew', sans-serif;
+      --max-w: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+
+    .container {
+      width: min(var(--max-w), 100% - 2 * clamp(1.25rem, 5vw, 3rem));
+      margin-inline: auto;
+    }
+
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold-1), var(--gold-3));
+      margin-block: 1.25rem;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(253,251,247,0.97);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo img { height: 36px; width: auto; mix-blend-mode: multiply; }
+    .back-link {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-1);
+      border: 1px solid var(--border);
+      padding: 0.55rem 1.25rem;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover { background: var(--gold-1); color: var(--white); }
+
+    /* ─── Content ────────────────────────────────────── */
+    .terms-hero {
+      padding: 3.5rem 0 1rem;
+      text-align: center;
+    }
+    .terms-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--dark);
+    }
+    .terms-hero .gold-line { margin-inline: auto; }
+
+    .terms-content {
+      padding: 1rem 0 5rem;
+    }
+    .terms-content .container {
+      max-width: 840px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: clamp(1.75rem, 4vw, 3.5rem);
+    }
+
+    .terms-content h2 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--gold-1);
+      margin: 2.25rem 0 0.9rem;
+    }
+    .terms-content h2:first-child { margin-top: 0; }
+
+    .terms-content p {
+      font-size: 0.92rem;
+      color: var(--mid);
+      margin-bottom: 0.75rem;
+    }
+
+    .terms-content ul { margin: 0 0 1rem; }
+    .terms-content ul li {
+      font-size: 0.92rem;
+      color: var(--mid);
+      margin-bottom: 0.55rem;
+      padding-inline-start: 1.1rem;
+      position: relative;
+    }
+    .terms-content ul li::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold-1);
+    }
+
+    .terms-content strong { color: var(--dark); }
+    .terms-content a.inline-link { color: var(--gold-1); }
+
+    .terms-updated {
+      font-size: 0.8rem;
+      color: var(--light);
+      margin-bottom: 2rem;
+    }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    footer {
+      background: var(--cream);
+      color: var(--light);
+      padding-block: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .footer-brand img { height: 40px; width: auto; mix-blend-mode: multiply; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.8rem; line-height: 1.7; max-width: 28ch; }
+    .footer-col h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { font-size: 0.8rem; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--gold-1); }
+    .footer-col ul li::before { content: none; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .social-links { display: flex; gap: 0.75rem; }
+    .social-links a {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      transition: all 0.3s;
+    }
+    .social-links a:hover { background: var(--gold-1); color: var(--white); border-color: var(--gold-1); }
+
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .terms-content .container { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ZORA">
+        <img src="brand_assets/logo-gold.png" alt="ZORA by Zehavit Professional" />
+      </a>
+      <a href="index.html" class="back-link">חזרה לאתר</a>
+    </div>
+  </header>
+
+  <section class="terms-hero">
+    <div class="container">
+      <h1>מדיניות פרטיות</h1>
+      <span class="gold-line"></span>
+    </div>
+  </section>
+
+  <section class="terms-content">
+    <div class="container">
+      <p class="terms-updated">מדיניות פרטיות - Zora Clinic</p>
+
+      <p>חברת <strong>"זהבית פרופשיונל"</strong> (להלן: "<strong>החברה</strong>"), מכבדת את הפרטיות של המשתמשים באתר האינטרנט אותו היא מנהלת ומפעילה בכתובת: <a class="inline-link" href="https://zora.clinic" target="_blank" rel="noopener">zora.clinic</a> (להלן: "<strong>האתר</strong>"), וכן את פרטיות לקוחותיה, לרבות אלה הרוכשים את מוצרי החברה, משתמשים בשירותיה או יוצרים עמה קשר בכל דרך אחרת (להלן: "<strong>המשתמשים</strong>" ו/או "<strong>הלקוחות</strong>").</p>
+      <p>מדיניות פרטיות זו מפרטת את האופן בו החברה עושה שימוש במידע שנמסר לה על ידי הלקוחות או המשתמשים, בין היתר במסגרת השארת פרטים באתר, רכישת מוצרים, או כל אינטראקציה אחרת עם החברה (להלן: "<strong>השירותים</strong>").</p>
+
+      <h2>1. מהו מידע?</h2>
+      <p>במדיניות זו, המונח "מידע" כולל כל מידע הנאסף על ידי החברה או נמסר לה על ידי הלקוח, המאפשר לזהות את הלקוח ומידע המוגן על פי חוק הגנת הפרטיות, התשמ"א-1981.</p>
+
+      <h2>2. מקורות איסוף המידע</h2>
+      <p>החברה אוספת מידע אודות הלקוח ממספר מקורות:</p>
+      <ul>
+        <li>מידע שהמשתמש מוסר בעת רכישה או הרשמה באתר ובחנויות.</li>
+        <li>מידע המתקבל בעת הרשמה לקבלת עדכונים או מילוי טופס "צור קשר".</li>
+        <li>מידע המתקבל באמצעות שימוש באתר (לרבות באמצעות טכנולוגיות כגון Cookies).</li>
+        <li>מידע המתקבל מצדדים שלישיים המעניקים שירותים לחברה.</li>
+      </ul>
+
+      <h2>3. איזה מידע נאסף?</h2>
+      <p>החברה עשויה לאסוף את המידע הבא:</p>
+      <ul>
+        <li><strong>פרטי התקשרות:</strong> שם מלא, טלפון, דוא"ל וכתובת.</li>
+        <li><strong>מידע על שירותים ורכישות:</strong> היסטוריית רכישות, תשלומים שבוצעו ופרטי התעניינות במוצרים.</li>
+        <li><strong>נתונים סטטיסטיים:</strong> נתונים הנגזרים מהגלישה באתר וניתוח הרגלי רכישה, תחומי עניין והעדפות.</li>
+      </ul>
+
+      <h2>4. המטרות לשמן נאסף המידע</h2>
+      <p>החברה משתמשת במידע למטרות הבאות:</p>
+      <ul>
+        <li>אספקת השירותים וניהול האתר.</li>
+        <li>שיפור איכות השירות וחוויית הלקוח.</li>
+        <li>יצירת קשר עם המשתמש/הלקוח.</li>
+        <li>דיוור ישיר, משלוח מבצעים, הטבות ומידע שיווקי (בכפוף להסכמת הלקוח כנדרש בחוק).</li>
+        <li>ניתוח, מחקר ועריכת סטטיסטיקות.</li>
+        <li>עמידה בהוראות הדין והתגוננות מפני תביעות.</li>
+      </ul>
+
+      <h2>5. העברת מידע לצדדים שלישיים</h2>
+      <p>החברה לא תעביר מידע לצדדים שלישיים, למעט במקרים הבאים:</p>
+      <ul>
+        <li>ספקי שירותים המעניקים תמיכה תפעולית (כגון: מערכות IT, חברות שילוח, שירותי סליקה, שירותי שיווק ופרסום כמו אינסטגרם, פייסבוק, ווטסאפ).</li>
+        <li>על פי צו שיפוטי או הוראת כל דין.</li>
+        <li>במקרה של מחלוקת משפטית או הליך משפטי בין הלקוח לחברה.</li>
+        <li>במקרה של מכירת פעילות החברה או מיזוג.</li>
+      </ul>
+
+      <h2>6. אבטחת מידע</h2>
+      <p>החברה נוקטת באמצעים טכניים ופיזיים לאבטחת המידע בהתאם לסטנדרטים מקובלים. עם זאת, אין חסינות מוחלטת מפני פריצות, ולכן החברה אינה מתחייבת שהאתר יהיה חסין באופן מוחלט מגישה בלתי מורשית.</p>
+
+      <h2>7. תקופת החזקת המידע</h2>
+      <p>החברה תשמור את המידע אודות הלקוח לפרק הזמן הדרוש להשגת המטרות המפורטות במדיניות זו, אלא אם נדרש אחרת על פי דין.</p>
+
+      <h2>8. זכות עיון ותיקון מידע</h2>
+      <p>למשתמש/ללקוח נתונה הזכות לעיין במידע שנאסף אודותיו ולבקש את תיקונו, בהתאם להוראות חוק הגנת הפרטיות, על ידי פנייה לחברה.</p>
+
+      <h2>9. שינויים ועדכונים</h2>
+      <p>החברה רשאית לשנות את מדיניות הפרטיות מעת לעת. המדיניות העדכנית תפורסם באתר ותחייב את המשתמשים.</p>
+
+      <h2>10. יצירת קשר</h2>
+      <p>בכל שאלה או הערה בנוגע למדיניות פרטיות זו, ניתן לפנות לחברה בדואר אלקטרוני: <a class="inline-link" href="mailto:zehavithaski@gmail.com">zehavithaski@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <img src="brand_assets/logo.jpg" alt="ZORA" />
+          <p>ZORA by Zehavit Professional – מותג טיפוח שיער ייחודי המאמין ביופי אמיתי, בריאות ומקצוענות ללא פשרות.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>ניווט</h4>
+          <ul>
+            <li><a href="index.html#about">אודות</a></li>
+            <li><a href="index.html#treatments">טיפולים</a></li>
+            <li><a href="index.html#process">תהליך</a></li>
+            <li><a href="index.html#ingredients">מרכיבים</a></li>
+            <li><a href="index.html#testimonials">המלצות</a></li>
+            <li><a href="index.html#shop">חנות</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>טיפולים</h4>
+          <ul>
+            <li><a href="index.html#treatments">ZORA Silk</a></li>
+            <li><a href="index.html#treatments">ZORA Hydra</a></li>
+            <li><a href="index.html#treatments">ZORA Repair</a></li>
+            <li><a href="index.html#cta">ייעוץ חינמי</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>צרו קשר</h4>
+          <ul>
+            <li><a href="tel:+972528434322">052-843-4322</a></li>
+            <li><a href="mailto:zehavithaski@gmail.com">zehavithaski@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a></span>
+        <div class="social-links">
+          <a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="https://www.tiktok.com/@zora__clinic" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

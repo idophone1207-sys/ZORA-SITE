@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <title>תקנון האתר | ZORA by Zehavit Professional</title>
+  <meta name="description" content="תקנון ותנאי שימוש באתר zora.clinic" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold-1: #BFA46A;
+      --gold-2: #D4B97A;
+      --gold-3: #E8D48A;
+      --gold-light: #F5EDD3;
+      --gold-pale: #FAF6EE;
+      --dark: #1C1A17;
+      --mid: #4A4540;
+      --light: #7A756E;
+      --white: #FFFFFF;
+      --cream: #FDFBF7;
+      --border: rgba(191,164,106,0.25);
+
+      --font-serif: 'Alef', sans-serif;
+      --font-sans: 'Noto Sans Hebrew', sans-serif;
+      --max-w: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul, ol { list-style: none; }
+
+    .container {
+      width: min(var(--max-w), 100% - 2 * clamp(1.25rem, 5vw, 3rem));
+      margin-inline: auto;
+    }
+
+    .gold-line {
+      display: block;
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold-1), var(--gold-3));
+      margin-block: 1.25rem;
+    }
+
+    /* ─── Header ─────────────────────────────────────── */
+    header {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(253,251,247,0.97);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo img { height: 36px; width: auto; mix-blend-mode: multiply; }
+    .back-link {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-1);
+      border: 1px solid var(--border);
+      padding: 0.55rem 1.25rem;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover { background: var(--gold-1); color: var(--white); }
+
+    /* ─── Terms content ──────────────────────────────── */
+    .terms-hero {
+      padding: 3.5rem 0 1rem;
+      text-align: center;
+    }
+    .terms-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--dark);
+    }
+    .terms-hero .gold-line { margin-inline: auto; }
+
+    .terms-content {
+      padding: 1rem 0 5rem;
+    }
+    .terms-content .container {
+      max-width: 840px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: clamp(1.75rem, 4vw, 3.5rem);
+    }
+
+    .terms-content h2 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--gold-1);
+      margin: 2.25rem 0 0.9rem;
+    }
+    .terms-content h2:first-child { margin-top: 0; }
+
+    .terms-content p {
+      font-size: 0.92rem;
+      color: var(--mid);
+      margin-bottom: 0.75rem;
+    }
+
+    .terms-content strong { color: var(--dark); }
+
+    .terms-updated {
+      font-size: 0.8rem;
+      color: var(--light);
+      margin-bottom: 2rem;
+    }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    footer {
+      background: var(--cream);
+      color: var(--light);
+      padding-block: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+    .footer-brand img { height: 40px; width: auto; mix-blend-mode: multiply; margin-bottom: 1rem; }
+    .footer-brand p { font-size: 0.8rem; line-height: 1.7; max-width: 28ch; }
+    .footer-col h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { font-size: 0.8rem; transition: color 0.3s; }
+    .footer-col ul li a:hover { color: var(--gold-1); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .social-links { display: flex; gap: 0.75rem; }
+    .social-links a {
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      transition: all 0.3s;
+    }
+    .social-links a:hover { background: var(--gold-1); color: var(--white); border-color: var(--gold-1); }
+
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .terms-content .container { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="ZORA">
+        <img src="brand_assets/logo-gold.png" alt="ZORA by Zehavit Professional" />
+      </a>
+      <a href="index.html" class="back-link">חזרה לאתר</a>
+    </div>
+  </header>
+
+  <section class="terms-hero">
+    <div class="container">
+      <h1>תקנון האתר</h1>
+      <span class="gold-line"></span>
+    </div>
+  </section>
+
+  <section class="terms-content">
+    <div class="container">
+      <p class="terms-updated">תקנון תנאי שימוש באתר zora.clinic</p>
+
+      <h2>1. הגדרות</h2>
+      <p>בתקנון זה יהיו למונחים הבאים ההגדרות שבצדן:</p>
+      <p>1.1. <strong>"זורה" (Zora)</strong> – רשת המותג "זורה".</p>
+      <p>1.2. <strong>"החברה"</strong> - חברת "זהבית פרופשיונל", שהינה בעלת האתר ומפעילתו.</p>
+      <p>1.3. <strong>"האתר"</strong> – אתר האינטרנט שכתובתו היא www.zora.clinic, הנמצא בבעלות החברה והמופעל על ידה, המהווה חנות וירטואלית לרכישת מוצרים של זורה ושל מותגים נוספים, בהתאם לשיקול דעתה של החברה, כפי שיהיה מעת לעת, על ידי ציבור הגולשים ברשת האינטרנט.</p>
+      <p>1.4. <strong>"מוצר"</strong> - כל פריט המוצע למכירה באתר.</p>
+      <p>1.5. <strong>"משתמש"</strong> - כל אדם, לרבות תאגיד, אשר מבקרים באתר.</p>
+      <p>1.6. <strong>"פעולה"</strong> - כל פעולה המתבצעת באתר, לרבות רכישת מוצרים המוצעים באתר.</p>
+      <p>1.7. <strong>"ימי עסקים"</strong> – ימים ראשון עד חמישי, לא כולל שישי, שבת, ערבי חג וחג, ימי זיכרון וערבי ימי זיכרון.</p>
+
+      <h2>2. מבוא</h2>
+      <p>2.1. חלוקתו של תקנון זה לסעיפים וכן כותרות הסעיפים הינן לשם נוחיות הקריאה וההתמצאות בלבד, והן לא תשמשנה לצרכי פרשנותו של תקנון זה.</p>
+      <p>2.2. תקנון זה מהווה חוזה מחייב בין המשתמש ובין החברה, לכל דבר ועניין.</p>
+      <p>2.3. מובהר כי גלישה באתר ו/או ביצוע פעולות באתר, מהוות הסכמת המשתמש לכל האמור בתקנון זה, והתחייבות מצדו של המשתמש לקבל את הוראות התקנון במלואן, ולנהוג על פיהן.</p>
+      <p>2.4. במקרה שהמשתמש אינו מסכים לתנאי מתנאי תקנון זה, הוא מתבקש לא לעשות כל שימוש באתר.</p>
+      <p>2.5. במקרה של סתירה ו/או אי התאמה כלשהי בין הוראות תקנון זה להוראות כל מסמך או פרסום אחר שבוצעו על ידי החברה ו/או מי מטעמה, תגברנה הוראות תקנון זה, אלא אם נקבע אחרת במפורש.</p>
+
+      <p><strong>2.6. כשירות לביצוע פעולות באתר</strong></p>
+      <p>2.6.1. רשאי לבצע פעולות באתר רק משתמש העומד בכל התנאים המצטברים שלהלן:</p>
+      <p>2.6.1.1. המשתמש הוא אחד מהבאים:<br>
+      (א) בן 18 ומעלה ובעל תעודת זהות ישראלית;<br>
+      (ב) תאגיד המאוגד כדין לפי חוקי מדינת ישראל, הרשום כדין בישראל;<br>
+      (ג) קטין (מתחת לגיל 18), או מי שאינו כשיר לבצע פעולות משפטיות ללא אישור אפוטרופוס, ובכפוף לכך שהקטין או האדם שמונה לו אפוטרופוס קיבל את ההסכמה של האפוטרופוס החוקי שלו לביצוע כל פעולה, מכל סוג שהוא, במסגרת האתר.</p>
+      <p>2.6.1.2. הוא בעל תיבת דואר אלקטרוני פעילה ברשת האינטרנט.</p>
+      <p>2.6.1.3. הוא קרא את התקנון בעיון ומסכים לכל הוראותיו.</p>
+      <p>2.6.1.4. לגבי משתמש המעוניין בביצוע רכישה דרך האתר - בעת ביצוע הרכישה הוא בעל כרטיס אשראי ישראלי או בינלאומי תקף ו/או מחזיק בשובר מתנה תקף, ובעל כתובת פיזית למשלוח בישראל.</p>
+
+      <p>2.7. בתקנון זה, לשון יחיד משמע גם לשון רבים ולהיפך, ולשון זכר משמע גם לשון נקבה, ולהיפך, לפי המקרה.</p>
+      <p>2.8. תקנון זה ניתן לשינוי ו/או עדכון בכל עת על-ידי החברה. באחריות המשתמש לשוב ולבדוק את הוראות התקנון בכל ביקור באתר.</p>
+      <p>2.9. החברה רשאית להפסיק את פעילות האתר בכל עת וללא הודעה מראש, ולמנוע גישה ממשתמש אשר הפר את תנאי התקנון.</p>
+
+      <h2>3. שירותים המוצעים באתר</h2>
+      <p>3.1. האתר מציע רכישת מוצרים שונים, לרבות מוצרי טיפוח וטיפול. עבור כל מוצר יוצג "דף מוצר" בו מופיעים פרטי המוצר, התכונות העיקריות שלו ומחירו.</p>
+      <p>3.2. האתר עשוי להציע שירותים נוספים כגון גלישה בתכנים, רשימת "מועדפים", הרשמה לדיוור והצטרפות למועדון לקוחות (ככל שיופעל).</p>
+
+      <h2>4. מידע המופיע באתר</h2>
+      <p>4.1. האתר מוצע לציבור AS IS. המשתמש מאשר כי ידוע לו שעלולות להיות טעויות באתר.</p>
+      <p>4.2. המידע הכלול באתר אינו מהווה המלצה רפואית או חוות דעת מקצועית. הסתמכות על מידע באתר נעשית על אחריות המשתמש בלבד.</p>
+      <p>4.3. החברה רשאית להוסיף, לגרוע ולשנות מוצרים ומחירים בכל עת.</p>
+      <p>4.4. אין התחייבות כי כל המוצרים המוצגים באתר זמינים בכל עת.</p>
+      <p>4.5. התמונות באתר נועדו להמחשה בלבד.</p>
+
+      <h2>5. הרכישה באתר</h2>
+      <p>5.1. כדי לבצע הזמנה, יש לבחור את המוצר ופרטיו (כגון סוג/כמות).</p>
+      <p>5.2. התשלום יתבצע באמצעות כרטיס אשראי ו/או שובר מתנה.</p>
+      <p>5.3. השלמת הרכישה כפופה לאישור חברת האשראי ולווידוי שהמוצר במלאי.</p>
+      <p>5.4. הודעת אישור תישלח בדואר אלקטרוני, אך אין בה כדי להוות ראיה להשלמת רכישה אם המוצר חסר במלאי.</p>
+
+      <h2>6. אספקת המוצרים</h2>
+      <p>6.1. המוצרים יסופקו לכתובת כפי שהוקלדה בדף ההזמנה, בכפוף לתשלום מלא.</p>
+      <p>6.2. החברה תספק את המוצרים באמצעות חברת שילוח, בטווח של עד חמישה ימי עסקים ממועד אישור ההזמנה.</p>
+      <p>6.3. אספקת המוצרים כרוכה בתשלום דמי משלוח כמפורט באתר.</p>
+      <p>6.4. החברה אינה אחראית לעיכובים הנובעים מאירועים שאינם בשליטתה (כגון כוח עליון).</p>
+
+      <h2>7. אבטחה ופרטיות</h2>
+      <p>7.1. השימוש באתר מהווה הסכמה למדיניות הפרטיות של החברה, הזמינה באתר.</p>
+
+      <h2>8. הגבלת אחריות ושיפוי</h2>
+      <p>8.1. החברה אינה אחראית לנזקים לציוד המשתמש עקב שימוש באתר.</p>
+      <p>8.2. החברה אינה אחראית לנזק שייגרם למוצרים עקב שימוש בניגוד להוראות היצרן.</p>
+      <p>8.3. חבות החברה לא תעלה על ערך המוצר הנרכש.</p>
+      <p>8.4. המשתמש מתחייב לשפות את החברה בגין כל נזק שייגרם לה עקב הפרת תקנון זה.</p>
+
+      <h2>9. ביטול עסקה והחלפת מוצרים</h2>
+      <p>9.1. המשתמש רשאי לבטל עסקה בהתאם להוראות חוק הגנת הצרכן, התשמ"א–1981.</p>
+      <p>9.2. ביטול הזמנה לפני קבלת המוצר: יתבצע בהודעה לחברה בדרכי ההתקשרות המפורטות. יגבו דמי ביטול בשיעור של 5% או 100 ש"ח, לפי הנמוך מבניהם (אלא אם מדובר באי-התאמה).</p>
+      <p>9.3. ביטול לאחר קבלת המוצר: יתבצע תוך 14 ימים מיום קבלת המוצר או מסמך פרטי העסקה (המאוחר מביניהם), על חשבון המשתמש.</p>
+      <p>9.4. החלפת מוצר: תתאפשר בתוך 21 ימים מיום קבלתו, בתנאי שלא נעשה בו שימוש והתוויות לא הוסרו.</p>
+      <p>9.5. זכויות מיוחדות לאנשים עם מוגבלויות, אזרחים ותיקים ועולים חדשים יכובדו בהתאם לחוק.</p>
+
+      <h2>10. ביטול עסקה על-ידי החברה</h2>
+      <p>10.1. החברה רשאית לבטל עסקה במקרים של חוסר במלאי, טעות בפרטי המוצר, או חשש לשימוש לרעה באתר.</p>
+
+      <h2>11. שירות לקוחות</h2>
+      <p>לפניות ושאלות ניתן לפנות לשירות הלקוחות בכתובת המייל: <a href="mailto:zehavithaski@gmail.com" style="color:var(--gold-1);">zehavithaski@gmail.com</a>.</p>
+
+      <h2>12. קניין רוחני</h2>
+      <p>12.1. כל זכויות הקניין הרוחני באתר (עיצוב, קוד, תוכן, סימני מסחר) הם רכושה הבלעדי של החברה. אין לעשות שימוש בתכנים ללא אישור בכתב.</p>
+
+      <h2>13. דין ושיפוט</h2>
+      <p>13.1. הדין החל הוא הדין הישראלי בלבד. סמכות השיפוט הבלעדית נתונה לבתי המשפט בתל אביב-יפו.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <img src="brand_assets/logo.jpg" alt="ZORA" />
+          <p>ZORA by Zehavit Professional – מותג טיפוח שיער ייחודי המאמין ביופי אמיתי, בריאות ומקצוענות ללא פשרות.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>ניווט</h4>
+          <ul>
+            <li><a href="index.html#about">אודות</a></li>
+            <li><a href="index.html#treatments">טיפולים</a></li>
+            <li><a href="index.html#process">תהליך</a></li>
+            <li><a href="index.html#ingredients">מרכיבים</a></li>
+            <li><a href="index.html#testimonials">המלצות</a></li>
+            <li><a href="index.html#shop">חנות</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>טיפולים</h4>
+          <ul>
+            <li><a href="index.html#treatments">ZORA Silk</a></li>
+            <li><a href="index.html#treatments">ZORA Hydra</a></li>
+            <li><a href="index.html#treatments">ZORA Repair</a></li>
+            <li><a href="index.html#cta">ייעוץ חינמי</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>צרו קשר</h4>
+          <ul>
+            <li><a href="tel:+972528434322">052-843-4322</a></li>
+            <li><a href="mailto:zehavithaski@gmail.com">zehavithaski@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a></span>
+        <div class="social-links">
+          <a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="https://www.tiktok.com/@zora__clinic" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
