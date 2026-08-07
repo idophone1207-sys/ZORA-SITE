@@ -1091,6 +1091,58 @@
       color: var(--light);
     }
 
+    .result-card {
+      padding: 0.75rem;
+    }
+
+    .result-images {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .result-images-single {
+      display: block;
+    }
+
+    .result-img-box {
+      position: relative;
+      flex: 1;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .result-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .result-tag {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      background: rgba(20,20,20,0.75);
+      color: var(--white);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 3px;
+    }
+
+    .result-tag-after {
+      background: var(--gold-2);
+    }
+
+    .result-name {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0.85rem;
+    }
+
     /* ─── Videos ──────────────────────────────────────── */
     #videos {
       padding-block: var(--section-pad);
@@ -2226,7 +2278,7 @@
         <li><a href="pure.html">Zora Pure</a></li>
         <li><a href="#process">תהליך</a></li>
         <li><a href="#ingredients">מרכיבים</a></li>
-        <li><a href="#testimonials">המלצות</a></li>
+        <li><a href="#testimonials">תוצאות</a></li>
         <li class="nav-contact-mobile"><a href="#cta">צרו קשר</a></li>
       </ul>
       <div class="nav-end">
@@ -2668,7 +2720,7 @@
       <div class="section-header">
         <span class="section-label">מה אומרים לקוחותינו</span>
         <span class="gold-line"></span>
-        <h2 class="section-title">הם כבר חוו<br/>את ה<em class="gold-text">שינוי</em></h2>
+        <h2 class="section-title">התוצאות מדברות<br/>בעד <em class="gold-text">עצמן</em></h2>
       </div>
 
       <div class="mobile-slider-wrap">
@@ -2676,49 +2728,111 @@
         <button class="slider-btn slider-next" onclick="sliderNext('testimonials-grid')" aria-label="הבא">›</button>
       <div class="testimonials-grid" id="testimonials-grid">
 
-        <div class="testi-card fade-up">
-          <div class="testi-quote gold-text">"</div>
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">
-            אחרי הטיפול הראשון של ZORA Silk השיער שלי נראה כאילו יצאתי מסלון מקצועי. ההחלקה אחזה שלושה חודשים ועד היום השיער נראה מדהים!
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">מ</div>
-            <div class="testi-info">
-              <div class="name">מיכל כהן</div>
-              <div class="role">תל אביב</div>
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/lior-before.jpg" alt="ליאור - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/lior-after.jpg" alt="ליאור - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
             </div>
           </div>
+          <div class="result-name">ליאור</div>
         </div>
 
-        <div class="testi-card fade-up">
-          <div class="testi-quote gold-text">"</div>
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">
-            הייתי סקפטית בהתחלה, אבל ZORA Repair פשוט שינתה את חיי. השיער שלי שהיה שבור ויבש נראה עכשיו כל כך בריא וחיוני. תוצאות מדהימות!
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">נ</div>
-            <div class="testi-info">
-              <div class="name">נועה לוי</div>
-              <div class="role">ירושלים</div>
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/shir-before.jpg" alt="שיר - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/shir-after.jpg" alt="שיר - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
             </div>
           </div>
+          <div class="result-name">שיר</div>
         </div>
 
-        <div class="testi-card fade-up">
-          <div class="testi-quote gold-text">"</div>
-          <div class="testi-stars">★★★★★</div>
-          <p class="testi-text">
-            זהבית היא מקצוענית אמיתית! כל טיפול הוא חוויה מהנה והתוצאות מדברות בעד עצמן. לא מפסיקה להמליץ לכולן על ZORA.
-          </p>
-          <div class="testi-author">
-            <div class="testi-avatar">ש</div>
-            <div class="testi-info">
-              <div class="name">שירה אברהם</div>
-              <div class="role">חיפה</div>
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/sigalit-before.jpg" alt="סיגלית - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/sigalit-after.jpg" alt="סיגלית - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
             </div>
           </div>
+          <div class="result-name">סיגלית</div>
+        </div>
+
+        <div class="testi-card result-card result-card-single fade-up">
+          <div class="result-images result-images-single">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/natan.jpg" alt="נתן - לפני ואחרי" loading="lazy">
+            </div>
+          </div>
+          <div class="result-name">נתן</div>
+        </div>
+
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/roi-before.jpg" alt="רועי - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/roi-after.jpg" alt="רועי - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
+            </div>
+          </div>
+          <div class="result-name">רועי</div>
+        </div>
+
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/neta-before.jpg" alt="נטע - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/neta-after.jpg" alt="נטע - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
+            </div>
+          </div>
+          <div class="result-name">נטע</div>
+        </div>
+
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/gili-before.jpg" alt="גילי - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/gili-after.jpg" alt="גילי - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
+            </div>
+          </div>
+          <div class="result-name">גילי</div>
+        </div>
+
+        <div class="testi-card result-card fade-up">
+          <div class="result-images">
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/merav-before.jpg" alt="מירב - לפני" loading="lazy">
+              <span class="result-tag">לפני</span>
+            </div>
+            <div class="result-img-box">
+              <img src="תןצאות לקוחות/web/merav-after.jpg" alt="מירב - אחרי" loading="lazy">
+              <span class="result-tag result-tag-after">אחרי</span>
+            </div>
+          </div>
+          <div class="result-name">מירב</div>
         </div>
 
       </div><!-- /testimonials-grid -->
@@ -2819,7 +2933,7 @@
             <li><a href="#treatments">טיפולים</a></li>
             <li><a href="#process">תהליך</a></li>
             <li><a href="#ingredients">מרכיבים</a></li>
-            <li><a href="#testimonials">המלצות</a></li>
+            <li><a href="#testimonials">תוצאות</a></li>
             <li><a href="#shop">חנות</a></li>
           </ul>
         </div>
