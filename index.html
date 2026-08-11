@@ -3357,6 +3357,15 @@
       backdrop.classList.toggle('open');
     }
 
+    function goToCheckout() {
+      const hasPureDrops = cart.some(item => item.name === 'פיור Pure — טיפות נוזל');
+      if (hasPureDrops) {
+        window.location.href = 'https://pay.grow.link/MTA0Mzcz~9ce213970e48336fe4613941e40d6527-MzgyNTQ0OA';
+        return;
+      }
+      window.location.href = '#cta';
+    }
+
     // ── Product Detail Modal ────────────────────────────
     let currentModalItem = null;
 
@@ -4163,7 +4172,7 @@
       <p class="cart-empty">העגלה שלך ריקה</p>
     </div>
     <div class="cart-footer">
-      <button class="cart-checkout-btn" onclick="window.location.href='#cta'">לתיאום ורכישה</button>
+      <button class="cart-checkout-btn" onclick="goToCheckout()">לתיאום ורכישה</button>
     </div>
   </div>
 
