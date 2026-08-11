@@ -2,30 +2,68 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <!-- Meta Pixel Code -->
+  <!-- Cookie-gated tracking (Meta Pixel + Google tag) — loaded only after consent, see #cookie-consent-banner -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1998045067759495');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1998045067759495&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18068050623"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18068050623');
+  (function(){
+    var CONSENT_KEY = 'zora_cookie_consent';
+
+    function loadMetaPixel(){
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1680958122916088');
+      fbq('track', 'PageView');
+    }
+
+    function loadGoogleTag(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18068050623';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'AW-18068050623');
+    }
+
+    window.zoraLoadTrackers = function(){
+      loadMetaPixel();
+      loadGoogleTag();
+    };
+
+    window.zoraCookieAccept = function(){
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      window.zoraLoadTrackers();
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.remove('visible');
+    };
+
+    window.zoraCookieDecline = function(){
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.remove('visible');
+    };
+
+    window.zoraOpenCookiePrefs = function(){
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.add('visible');
+    };
+
+    var consent = localStorage.getItem(CONSENT_KEY);
+    if (consent === 'accepted') {
+      window.zoraLoadTrackers();
+    } else if (consent !== 'declined') {
+      document.addEventListener('DOMContentLoaded', function(){
+        var b = document.getElementById('cookie-consent-banner');
+        if (b) setTimeout(function(){ b.classList.add('visible'); }, 600);
+      });
+    }
+  })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>פיור Pure — טיפות פלא לציפורניים | ZORA</title>
@@ -713,7 +751,7 @@
         <li><a href="pure.html">Zora Pure</a></li>
         <li><a href="index.html#process">תהליך</a></li>
         <li><a href="index.html#ingredients">מרכיבים</a></li>
-        <li><a href="index.html#testimonials">המלצות</a></li>
+        <li><a href="index.html#testimonials">תוצאות</a></li>
         <li class="nav-contact-mobile"><a href="index.html#cta">צרו קשר</a></li>
       </ul>
       <div class="nav-end">
@@ -841,8 +879,8 @@
       <!-- Outro / Kit CTA -->
       <div class="pure-journey-outro">
         <div class="pure-shop-img">
-          <img src="רכישה/ערכה טיפולית.png" alt="ערכה טיפולית Pure — טיפות, סבון מוס וקרם רגליים" />
-          <button class="pure-add-chip" onclick="addPureToCart('ערכה טיפולית לכף הרגל', '250 ₪', 'רכישה/ערכה טיפולית.png', this)">🛒 הוסף לסל · 250 ₪</button>
+          <img src="רכישה/ערכה טיפולית.png" alt="ערכת GO PURE — טיפות, סבון מוס וקרם רגליים" />
+          <button class="pure-add-chip" onclick="addPureToCart('ערכת GO PURE', '249 ₪', 'רכישה/ערכה טיפולית.png', this)">🛒 הוסף לסל · 249 ₪</button>
         </div>
         <h3>סיימתם את המסע — קבלו את שלושת המוצרים ביחד</h3>
         <p>
@@ -871,7 +909,7 @@
             <li><a href="index.html#treatments">טיפולים</a></li>
             <li><a href="index.html#process">תהליך</a></li>
             <li><a href="index.html#ingredients">מרכיבים</a></li>
-            <li><a href="index.html#testimonials">המלצות</a></li>
+            <li><a href="index.html#testimonials">תוצאות</a></li>
             <li><a href="index.html#shop">חנות</a></li>
           </ul>
         </div>
@@ -899,7 +937,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a></span>
+        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a> · <a href="cookies.html">מדיניות עוגיות</a></span>
         <div class="social-links">
           <a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="#" aria-label="Facebook">FB</a>
@@ -1036,6 +1074,82 @@
       document.getElementById('cart-backdrop').classList.toggle('open');
     }
   </script>
+
+  <!-- ══════════════ COOKIE CONSENT BANNER ══════════════ -->
+  <style>
+    .cookie-consent {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 99999;
+      background: #1C1A17;
+      border-top: 1px solid rgba(191,164,106,0.4);
+      padding: 1.1rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .cookie-consent.visible { transform: translateY(0); }
+    .cookie-consent-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cookie-consent-text {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #E8E4DB;
+      flex: 1 1 320px;
+    }
+    .cookie-consent-text a { color: #D4B97A; text-decoration: underline; }
+    .cookie-consent-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .cookie-btn {
+      font-family: inherit;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: all 0.25s;
+      border: 1px solid rgba(191,164,106,0.5);
+      white-space: nowrap;
+    }
+    .cookie-btn-decline {
+      background: transparent;
+      color: #D4B97A;
+    }
+    .cookie-btn-decline:hover { background: rgba(191,164,106,0.12); }
+    .cookie-btn-accept {
+      background: linear-gradient(135deg, #D4B97A, #BFA46A);
+      color: #1C1A17;
+      font-weight: 600;
+      border-color: transparent;
+    }
+    .cookie-btn-accept:hover { filter: brightness(1.08); }
+    @media (max-width: 640px) {
+      .cookie-consent-inner { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-consent-actions { justify-content: center; }
+    }
+  </style>
+  <div class="cookie-consent" id="cookie-consent-banner" role="dialog" aria-label="הסכמה לשימוש בעוגיות">
+    <div class="cookie-consent-inner">
+      <p class="cookie-consent-text">
+        אתר ZORA משתמש בעוגיות (Cookies) לצורך תפעול האתר, ניתוח שימוש והתאמת פרסום. עוגיות אנליטיקה ושיווק ייטענו רק לאחר אישורך. לפרטים ראו את <a href="cookies.html">מדיניות העוגיות</a> שלנו.
+      </p>
+      <div class="cookie-consent-actions">
+        <button type="button" class="cookie-btn cookie-btn-decline" onclick="window.zoraCookieDecline()">רק הכרחיים</button>
+        <button type="button" class="cookie-btn cookie-btn-accept" onclick="window.zoraCookieAccept()">מאשר/ת הכל</button>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -2,30 +2,68 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <!-- Meta Pixel Code -->
+  <!-- Cookie-gated tracking (Meta Pixel + Google tag) — loaded only after consent, see #cookie-consent-banner -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1998045067759495');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1998045067759495&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18068050623"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18068050623');
+  (function(){
+    var CONSENT_KEY = 'zora_cookie_consent';
+
+    function loadMetaPixel(){
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1680958122916088');
+      fbq('track', 'PageView');
+    }
+
+    function loadGoogleTag(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18068050623';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'AW-18068050623');
+    }
+
+    window.zoraLoadTrackers = function(){
+      loadMetaPixel();
+      loadGoogleTag();
+    };
+
+    window.zoraCookieAccept = function(){
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      window.zoraLoadTrackers();
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.remove('visible');
+    };
+
+    window.zoraCookieDecline = function(){
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.remove('visible');
+    };
+
+    window.zoraOpenCookiePrefs = function(){
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.add('visible');
+    };
+
+    var consent = localStorage.getItem(CONSENT_KEY);
+    if (consent === 'accepted') {
+      window.zoraLoadTrackers();
+    } else if (consent !== 'declined') {
+      document.addEventListener('DOMContentLoaded', function(){
+        var b = document.getElementById('cookie-consent-banner');
+        if (b) setTimeout(function(){ b.classList.add('visible'); }, 600);
+      });
+    }
+  })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="qhzVXKaREWH_h6KSxlgqoVQW37z9qXqDplXLkJBfNnE" />
@@ -2534,21 +2572,21 @@
 
         <!-- ערכה טיפולית -->
         <div class="treatment-card fade-up" data-cat="body" style="display:none"
-          data-name="ערכה טיפולית לכף הרגל"
-          data-price="250 ₪"
+          data-name="ערכת GO PURE"
+          data-price="249 ₪"
           data-icon="🎁"
           data-tag="ערכה"
           data-desc="ערכה לטיפול מקסימלי ואפקטיבי — שילוב של שלושת מוצרי Pure:&lt;br&gt;&lt;strong&gt;טיפות Pure + סבון מוס + קרם רגליים טיפולי&lt;/strong&gt;&lt;br&gt;&lt;br&gt;יחד הם פועלים לניקוי יסודי, מניעת ריחות וזיעה, טיפול ביובש וסדקים, ותמיכה במניעת וטיפול בפטרת ואקזמות.&lt;br&gt;&lt;br&gt;&lt;strong&gt;תוצאות מהשימוש הראשון.&lt;/strong&gt;"
           data-img="רכישה/ערכה טיפולית.png">
           <div class="card-image" onclick="openShopCardModal(this.closest('.treatment-card'))" style="cursor:pointer;">
-            <img src="רכישה/ערכה טיפולית.png" alt="ערכה טיפולית לכף הרגל" />
+            <img src="רכישה/ערכה טיפולית.png" alt="ערכת GO PURE" />
             <span class="card-tag">ערכה</span>
           </div>
           <div class="card-body">
-            <h3 class="card-title" onclick="openShopCardModal(this.closest('.treatment-card'))" style="cursor:pointer;">ערכה טיפולית<br/>לכף הרגל</h3>
+            <h3 class="card-title" onclick="openShopCardModal(this.closest('.treatment-card'))" style="cursor:pointer;">ערכת GO PURE</h3>
             <p class="card-desc">שילוב טיפות Pure + סבון מוס + קרם רגליים. תוצאות מהשימוש הראשון.</p>
             <div class="card-footer">
-              <span class="card-price gold-text">250 ₪ <del class="price-orig">309 ₪</del></span>
+              <span class="card-price gold-text">249 ₪</span>
               <button class="card-add-btn" onclick="addShopToCart(this)">הוסף +</button>
             </div>
           </div>
@@ -2577,21 +2615,21 @@
         </div>
 
         <div class="treatment-card fade-up" data-cat="shop"
-          data-name="ערכת טיפול ביתי ZORA"
-          data-price="1000 ₪"
+          data-name="ערכת ZORA BOOST"
+          data-price="999 ₪"
           data-icon="🎁"
           data-tag="ערכה"
           data-desc="ערכה לטיפול ביתי ממוקד בקרקפת הכוללת: אמפולות פעילות, פפטידים, שמפו ייעודי, מברשת עיסוי המסייעת החדרה עמוקה של החומרים ולעידוד צמיחה מהיר."
           data-img="רכישה/ערכה.png">
           <div class="card-image" onclick="openShopCardModal(this.closest('.treatment-card'))" style="cursor:pointer;">
-            <img src="רכישה/ערכה.png" alt="ערכת טיפול ביתי ZORA" />
+            <img src="רכישה/ערכה.png" alt="ערכת ZORA BOOST" />
             <span class="card-tag">ערכה</span>
           </div>
           <div class="card-body">
-            <h3 class="card-title" onclick="openShopCardModal(this.closest('.treatment-card'))" style="cursor:pointer;">ערכת טיפול ביתי ZORA</h3>
+            <h3 class="card-title" onclick="openShopCardModal(this.closest('.treatment-card'))" style="cursor:pointer;">ערכת ZORA BOOST</h3>
             <p class="card-desc">ערכה לטיפול ביתי ממוקד בקרקפת הכוללת: אמפולות פעילות, פפטידים, שמפו ייעודי ומברשת עיסוי.</p>
             <div class="card-footer">
-              <span class="card-price gold-text">1000 ₪ <del class="price-orig">1200 ₪</del></span>
+              <span class="card-price gold-text">999 ₪</span>
               <button class="card-add-btn" onclick="addShopToCart(this)">הוסף +</button>
             </div>
           </div>
@@ -2898,17 +2936,11 @@
           קבעו ייעוץ חינמי עם המומחיות שלנו ותגלו איזה טיפול ZORA מתאים בדיוק לצרכי השיער שלכם
         </p>
         <div class="cta-actions">
-          <button onclick="openConsultModal()" class="btn btn-gold">
+          <a href="https://page.dibs-app.com/p/6a71e58b68edafbd6aa438bd" target="_blank" rel="noopener" class="btn btn-gold">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.18 19.79 19.79 0 012 4.6 2 2 0 014 2.6h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
             </svg>
-            תיאום שיחת ייעוץ
-          </button>
-          <a href="tel:0528434322" class="btn btn-outline">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.18 19.79 19.79 0 012 4.6 2 2 0 014 2.6h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-            </svg>
-            052-843-4322
+            קביעת תור ייעוץ
           </a>
         </div>
       </div>
@@ -2961,7 +2993,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a></span>
+        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a> · <a href="cookies.html">מדיניות עוגיות</a></span>
         <div class="social-links">
           <a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
           <a href="#" aria-label="Facebook">FB</a>
@@ -3263,6 +3295,82 @@
     });
   </script>
 
+
+  <!-- ══════════════ COOKIE CONSENT BANNER ══════════════ -->
+  <style>
+    .cookie-consent {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 99999;
+      background: #1C1A17;
+      border-top: 1px solid rgba(191,164,106,0.4);
+      padding: 1.1rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .cookie-consent.visible { transform: translateY(0); }
+    .cookie-consent-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cookie-consent-text {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #E8E4DB;
+      flex: 1 1 320px;
+    }
+    .cookie-consent-text a { color: #D4B97A; text-decoration: underline; }
+    .cookie-consent-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .cookie-btn {
+      font-family: inherit;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: all 0.25s;
+      border: 1px solid rgba(191,164,106,0.5);
+      white-space: nowrap;
+    }
+    .cookie-btn-decline {
+      background: transparent;
+      color: #D4B97A;
+    }
+    .cookie-btn-decline:hover { background: rgba(191,164,106,0.12); }
+    .cookie-btn-accept {
+      background: linear-gradient(135deg, #D4B97A, #BFA46A);
+      color: #1C1A17;
+      font-weight: 600;
+      border-color: transparent;
+    }
+    .cookie-btn-accept:hover { filter: brightness(1.08); }
+    @media (max-width: 640px) {
+      .cookie-consent-inner { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-consent-actions { justify-content: center; }
+    }
+  </style>
+  <div class="cookie-consent" id="cookie-consent-banner" role="dialog" aria-label="הסכמה לשימוש בעוגיות">
+    <div class="cookie-consent-inner">
+      <p class="cookie-consent-text">
+        אתר ZORA משתמש בעוגיות (Cookies) לצורך תפעול האתר, ניתוח שימוש והתאמת פרסום. עוגיות אנליטיקה ושיווק ייטענו רק לאחר אישורך. לפרטים ראו את <a href="cookies.html">מדיניות העוגיות</a> שלנו.
+      </p>
+      <div class="cookie-consent-actions">
+        <button type="button" class="cookie-btn cookie-btn-decline" onclick="window.zoraCookieDecline()">רק הכרחיים</button>
+        <button type="button" class="cookie-btn cookie-btn-accept" onclick="window.zoraCookieAccept()">מאשר/ת הכל</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ══════════════ ACCESSIBILITY WIDGET ══════════════ -->
   <style>

@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, follow" />
-  <title>מדיניות פרטיות | ZORA by Zehavit Professional</title>
-  <meta name="description" content="מדיניות הפרטיות של אתר zora.clinic" />
+  <title>מדיניות עוגיות (Cookies) | ZORA by Zehavit Professional</title>
+  <meta name="description" content="מדיניות השימוש בעוגיות (Cookies) של אתר zora.clinic" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -140,11 +140,47 @@
     .terms-content strong { color: var(--dark); }
     .terms-content a.inline-link { color: var(--gold-1); }
 
+    .terms-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5rem 0 1.25rem;
+      font-size: 0.85rem;
+    }
+    .terms-content table th,
+    .terms-content table td {
+      text-align: right;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--mid);
+      vertical-align: top;
+    }
+    .terms-content table th {
+      background: var(--gold-pale);
+      color: var(--dark);
+      font-weight: 600;
+    }
+
     .terms-updated {
       font-size: 0.8rem;
       color: var(--light);
       margin-bottom: 2rem;
     }
+
+    /* ─── Cookie preferences button ─────────────────── */
+    .cookie-prefs-btn {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--gold-1);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.25rem;
+      border-radius: 2px;
+      cursor: pointer;
+      background: transparent;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+    .cookie-prefs-btn:hover { background: var(--gold-1); color: var(--white); }
 
     /* ─── Footer ─────────────────────────────────────── */
     footer {
@@ -200,6 +236,7 @@
       .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .terms-content .container { padding: 1.5rem; }
+      .terms-content table { font-size: 0.78rem; }
     }
   </style>
 </head>
@@ -216,72 +253,70 @@
 
   <section class="terms-hero">
     <div class="container">
-      <h1>מדיניות פרטיות</h1>
+      <h1>מדיניות עוגיות (Cookies)</h1>
       <span class="gold-line"></span>
     </div>
   </section>
 
   <section class="terms-content">
     <div class="container">
-      <p class="terms-updated">מדיניות פרטיות - Zora Clinic</p>
+      <p class="terms-updated">מדיניות עוגיות - Zora Clinic</p>
 
-      <p>חברת <strong>"זהבית פרופשיונל"</strong> (להלן: "<strong>החברה</strong>"), מכבדת את הפרטיות של המשתמשים באתר האינטרנט אותו היא מנהלת ומפעילה בכתובת: <a class="inline-link" href="https://zora.clinic" target="_blank" rel="noopener">zora.clinic</a> (להלן: "<strong>האתר</strong>"), וכן את פרטיות לקוחותיה, לרבות אלה הרוכשים את מוצרי החברה, משתמשים בשירותיה או יוצרים עמה קשר בכל דרך אחרת (להלן: "<strong>המשתמשים</strong>" ו/או "<strong>הלקוחות</strong>").</p>
-      <p>מדיניות פרטיות זו מפרטת את האופן בו החברה עושה שימוש במידע שנמסר לה על ידי הלקוחות או המשתמשים, בין היתר במסגרת השארת פרטים באתר, רכישת מוצרים, או כל אינטראקציה אחרת עם החברה (להלן: "<strong>השירותים</strong>").</p>
+      <p>חברת <strong>"זהבית פרופשיונל"</strong> (להלן: "<strong>החברה</strong>") עושה שימוש בעוגיות (Cookies) וטכנולוגיות דומות באתר האינטרנט אותו היא מנהלת ומפעילה בכתובת <a class="inline-link" href="https://zora.clinic" target="_blank" rel="noopener">zora.clinic</a> (להלן: "<strong>האתר</strong>"), על מנת להפעיל את האתר כראוי, לשפר את חוויית הגלישה ולהתאים תוכן ופרסום. מדיניות זו מסבירה מהן עוגיות, אילו עוגיות בשימוש באתר וכיצד ניתן לשלוט בהן.</p>
 
-      <h2>1. מהו מידע?</h2>
-      <p>במדיניות זו, המונח "מידע" כולל כל מידע הנאסף על ידי החברה או נמסר לה על ידי הלקוח, המאפשר לזהות את הלקוח ומידע המוגן על פי חוק הגנת הפרטיות, התשמ"א-1981.</p>
+      <h2>1. מהי עוגייה (Cookie)?</h2>
+      <p>עוגייה היא קובץ טקסט קטן הנשמר בדפדפן או במכשיר בעת הגלישה באתר. העוגייה מאפשרת לאתר לזהות את המכשיר בביקורים חוזרים, לזכור העדפות ולאסוף מידע סטטיסטי על אופן השימוש באתר.</p>
 
-      <h2>2. מקורות איסוף המידע</h2>
-      <p>החברה אוספת מידע אודות הלקוח ממספר מקורות:</p>
+      <h2>2. הסכמה לשימוש בעוגיות</h2>
+      <p>בכניסה לאתר מוצג למשתמש באנר המבקש את הסכמתו לשימוש בעוגיות שאינן הכרחיות לתפעול האתר (עוגיות אנליטיקה ושיווק). עוגיות אלה ייטענו רק לאחר קבלת אישור מפורש מהמשתמש. עוגיות הכרחיות לתפעול האתר פועלות ללא צורך בהסכמה, בהתאם לדין.</p>
+      <p>ניתן לשנות את ההסכמה בכל עת באמצעות הכפתור בהמשך עמוד זה.</p>
+      <button type="button" class="cookie-prefs-btn" onclick="window.zoraOpenCookiePrefs ? window.zoraOpenCookiePrefs() : window.location.assign('index.html')">נהל/י את העדפות העוגיות שלי</button>
+
+      <h2>3. סוגי העוגיות בשימוש באתר</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>סוג</th>
+            <th>מטרה</th>
+            <th>דוגמאות</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>הכרחיות</strong></td>
+            <td>נדרשות לתפקוד בסיסי של האתר, כגון ניהול עגלת קניות, שמירת העדפות נגישות וזכירת בחירת המשתמש בנוגע לעוגיות.</td>
+            <td>עגלת קניות, הגדרות נגישות, זיכרון הסכמת עוגיות</td>
+          </tr>
+          <tr>
+            <td><strong>אנליטיקה וביצועים</strong></td>
+            <td>מסייעות להבין כיצד משתמשים גולשים באתר, לצורך שיפור התוכן והשירות.</td>
+            <td>Google Analytics / Google Tag</td>
+          </tr>
+          <tr>
+            <td><strong>שיווק ופרסום</strong></td>
+            <td>משמשות למדידת יעילות קמפיינים ולהצגת פרסום מותאם ברשתות חברתיות ובמנועי חיפוש.</td>
+            <td>Meta Pixel (פייסבוק/אינסטגרם), Google Ads</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. עוגיות צד שלישי</h2>
+      <p>חלק מהעוגיות באתר מוצבות על ידי ספקי שירות חיצוניים (כגון Meta ו-Google), בהתאם למדיניות הפרטיות שלהם. לחברה אין שליטה מלאה על עוגיות אלה, והשימוש בהן כפוף לתנאי הצדדים השלישיים.</p>
+
+      <h2>5. כיצד ניתן לשלוט בעוגיות?</h2>
       <ul>
-        <li>מידע שהמשתמש מוסר בעת רכישה או הרשמה באתר ובחנויות.</li>
-        <li>מידע המתקבל בעת הרשמה לקבלת עדכונים או מילוי טופס "צור קשר".</li>
-        <li>מידע המתקבל באמצעות שימוש באתר (לרבות באמצעות טכנולוגיות כגון Cookies) — לפירוט מלא ראו <a class="inline-link" href="cookies.html">מדיניות העוגיות</a>.</li>
-        <li>מידע המתקבל מצדדים שלישיים המעניקים שירותים לחברה.</li>
+        <li>ניתן לקבל או לדחות עוגיות שאינן הכרחיות באמצעות באנר ההסכמה המוצג באתר.</li>
+        <li>ניתן לשנות את ההסכמה בכל עת דרך כפתור "נהל/י את העדפות העוגיות שלי" בעמוד זה.</li>
+        <li>ניתן לחסום או למחוק עוגיות באמצעות הגדרות הדפדפן, אך חסימה מלאה עלולה לפגוע בתפקוד חלק מהאתר.</li>
       </ul>
 
-      <h2>3. איזה מידע נאסף?</h2>
-      <p>החברה עשויה לאסוף את המידע הבא:</p>
-      <ul>
-        <li><strong>פרטי התקשרות:</strong> שם מלא, טלפון, דוא"ל וכתובת.</li>
-        <li><strong>מידע על שירותים ורכישות:</strong> היסטוריית רכישות, תשלומים שבוצעו ופרטי התעניינות במוצרים.</li>
-        <li><strong>נתונים סטטיסטיים:</strong> נתונים הנגזרים מהגלישה באתר וניתוח הרגלי רכישה, תחומי עניין והעדפות.</li>
-      </ul>
+      <h2>6. שינויים במדיניות</h2>
+      <p>החברה רשאית לעדכן מדיניות זו מעת לעת. הנוסח העדכני יפורסם באתר ויחייב את המשתמשים.</p>
 
-      <h2>4. המטרות לשמן נאסף המידע</h2>
-      <p>החברה משתמשת במידע למטרות הבאות:</p>
-      <ul>
-        <li>אספקת השירותים וניהול האתר.</li>
-        <li>שיפור איכות השירות וחוויית הלקוח.</li>
-        <li>יצירת קשר עם המשתמש/הלקוח.</li>
-        <li>דיוור ישיר, משלוח מבצעים, הטבות ומידע שיווקי (בכפוף להסכמת הלקוח כנדרש בחוק).</li>
-        <li>ניתוח, מחקר ועריכת סטטיסטיקות.</li>
-        <li>עמידה בהוראות הדין והתגוננות מפני תביעות.</li>
-      </ul>
+      <h2>7. יצירת קשר</h2>
+      <p>בכל שאלה בנוגע למדיניות העוגיות ניתן לפנות לחברה בדואר אלקטרוני: <a class="inline-link" href="mailto:zehavithaski@gmail.com">zehavithaski@gmail.com</a></p>
 
-      <h2>5. העברת מידע לצדדים שלישיים</h2>
-      <p>החברה לא תעביר מידע לצדדים שלישיים, למעט במקרים הבאים:</p>
-      <ul>
-        <li>ספקי שירותים המעניקים תמיכה תפעולית (כגון: מערכות IT, חברות שילוח, שירותי סליקה, שירותי שיווק ופרסום כמו אינסטגרם, פייסבוק, ווטסאפ).</li>
-        <li>על פי צו שיפוטי או הוראת כל דין.</li>
-        <li>במקרה של מחלוקת משפטית או הליך משפטי בין הלקוח לחברה.</li>
-        <li>במקרה של מכירת פעילות החברה או מיזוג.</li>
-      </ul>
-
-      <h2>6. אבטחת מידע</h2>
-      <p>החברה נוקטת באמצעים טכניים ופיזיים לאבטחת המידע בהתאם לסטנדרטים מקובלים. עם זאת, אין חסינות מוחלטת מפני פריצות, ולכן החברה אינה מתחייבת שהאתר יהיה חסין באופן מוחלט מגישה בלתי מורשית.</p>
-
-      <h2>7. תקופת החזקת המידע</h2>
-      <p>החברה תשמור את המידע אודות הלקוח לפרק הזמן הדרוש להשגת המטרות המפורטות במדיניות זו, אלא אם נדרש אחרת על פי דין.</p>
-
-      <h2>8. זכות עיון ותיקון מידע</h2>
-      <p>למשתמש/ללקוח נתונה הזכות לעיין במידע שנאסף אודותיו ולבקש את תיקונו, בהתאם להוראות חוק הגנת הפרטיות, על ידי פנייה לחברה.</p>
-
-      <h2>9. שינויים ועדכונים</h2>
-      <p>החברה רשאית לשנות את מדיניות הפרטיות מעת לעת. המדיניות העדכנית תפורסם באתר ותחייב את המשתמשים.</p>
-
-      <h2>10. יצירת קשר</h2>
-      <p>בכל שאלה או הערה בנוגע למדיניות פרטיות זו, ניתן לפנות לחברה בדואר אלקטרוני: <a class="inline-link" href="mailto:zehavithaski@gmail.com">zehavithaski@gmail.com</a></p>
+      <p style="margin-top:1.5rem;">מדיניות זו מהווה חלק בלתי נפרד מ<a class="inline-link" href="privacy.html">מדיניות הפרטיות</a> ומ<a class="inline-link" href="terms.html">תקנון האתר</a>.</p>
     </div>
   </section>
 
