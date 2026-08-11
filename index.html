@@ -3360,6 +3360,12 @@
     function goToCheckout() {
       const hasPureDrops = cart.some(item => item.name === 'פיור Pure — טיפות נוזל');
       const hasFoamSoap = cart.some(item => item.name === 'סבון מוס Pure');
+      const hasLegCream = cart.some(item => item.name === 'קרם רגליים טיפולי');
+      const hasKit = cart.some(item => item.name === 'ערכת GO PURE');
+      if (hasKit || (hasPureDrops && hasFoamSoap && hasLegCream)) {
+        window.location.href = 'https://pay.grow.link/MTA0Mzcz~7372162f344f16e6761c256d351ee070-MzgyNTc5OQ';
+        return;
+      }
       if (hasPureDrops && hasFoamSoap) {
         window.location.href = 'https://pay.grow.link/MTA0Mzcz~976d64fd282d61bc4371509f6e08a15d-MzgyNTcwMQ';
         return;
