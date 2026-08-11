@@ -358,8 +358,17 @@
       font-size: clamp(2.8rem, 6vw, 5.5rem);
       font-weight: 300;
       line-height: 1.1;
-      color: var(--dark);
+      color: var(--white);
       margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 2rem;
     }
 
     .hero-headline em {
@@ -589,6 +598,93 @@
     @keyframes scrollPulse {
       0%, 100% { opacity: 0.4; transform: scaleY(1); }
       50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ─── Pillars ──────────────────────────────────────── */
+    #pillars {
+      padding-block: var(--section-pad);
+      background: var(--white);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+      margin-top: 3rem;
+    }
+
+    .pillar-card {
+      position: relative;
+      display: block;
+      aspect-ratio: 3 / 4;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .pillar-card:hover {
+      box-shadow: 0 16px 45px rgba(191,164,106,0.25);
+      transform: translateY(-4px);
+    }
+    .pillar-img { position: absolute; inset: 0; }
+    .pillar-img img,
+    .pillar-img video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .pillar-card:hover .pillar-img img,
+    .pillar-card:hover .pillar-img video { transform: scale(1.06); }
+    .pillar-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(28,26,23,0) 35%, rgba(28,26,23,0.9) 100%);
+    }
+    .pillar-overlay {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 2rem 1.75rem;
+      color: var(--white);
+    }
+    .pillar-num {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-3);
+    }
+    .pillar-num-wide {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+    }
+    .pillar-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      line-height: 1.3;
+      margin: 0.6rem 0 0.6rem;
+    }
+    .pillar-desc {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.1rem;
+    }
+    .pillar-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-3);
+      transition: gap 0.3s;
+    }
+    .pillar-card:hover .pillar-link { gap: 0.6rem; }
+
+    @media (max-width: 900px) {
+      .pillars-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
     }
 
     /* ─── Stats Bar ────────────────────────────────────── */
@@ -2312,15 +2408,14 @@
       </div>
       <ul class="nav-links">
         <li><a href="#about">אודות</a></li>
-        <li><a href="#treatments">טיפולים</a></li>
+        <li><a href="hair-restoration.html">Zora Hair Restoration</a></li>
         <li><a href="pure.html">Zora Pure</a></li>
+        <li><a href="face-treatment.html">Zora Face Treatment</a></li>
         <li><a href="#process">תהליך</a></li>
-        <li><a href="#ingredients">מרכיבים</a></li>
         <li><a href="#testimonials">תוצאות</a></li>
-        <li class="nav-contact-mobile"><a href="#cta">צרו קשר</a></li>
       </ul>
       <div class="nav-end">
-        <a href="#cta" class="btn btn-gold nav-cta">צרו קשר</a>
+        <a href="#cta" class="btn btn-gold nav-cta">קביעת ייעוץ</a>
         <button class="hamburger" aria-label="תפריט" onclick="toggleMenu(this)">
           <span></span><span></span><span></span>
         </button>
@@ -2345,8 +2440,10 @@
 
     <div class="container hero-content">
       <div class="hero-text">
+        <span class="hero-tag">Zora Clinic</span>
+        <h1 class="hero-headline">המומחיות בפתרונות<br/><em class="gold-text">אסתטיים טבעיים</em></h1>
+        <p class="hero-sub">מטפלים בנגעי עור, משקמים את השיער ומחזירים את הביטחון העצמי.<br/>גישה הוליסטית, מדעית וטבעית, המותאמת בדיוק לצרכים שלך.</p>
         <div class="hero-actions">
-          <a href="#treatments" class="btn btn-gold">גלו את הטיפולים</a>
           <a href="#about" class="btn btn-gold">הסיפור שלנו</a>
         </div>
       </div>
@@ -2354,8 +2451,54 @@
       <!-- hero-image removed (logo + subtitle hidden) -->
     </div><!-- /hero-content -->
 
-    <div class="hero-scroll" onclick="document.getElementById('stats').scrollIntoView({behavior:'smooth'})">
+    <div class="hero-scroll" onclick="document.getElementById('pillars').scrollIntoView({behavior:'smooth'})">
       <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════ PILLARS ══════════════ -->
+  <section id="pillars">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">שלושת עמודי התווך שלנו</span>
+        <span class="gold-line"></span>
+        <h2 class="section-title">המסלול שלך אל <em class="gold-text">ZORA</em></h2>
+      </div>
+
+      <div class="pillars-grid">
+
+        <a href="hair-restoration.html" class="pillar-card fade-up">
+          <div class="pillar-img"><img src="brand_assets/hair-restoration-still.jpg" alt="Zora Hair Restoration - שיקום זקיק השיער" loading="lazy"></div>
+          <div class="pillar-overlay">
+            <span class="pillar-num pillar-num-wide">ZORA HAIR RESTORATION</span>
+            <h3 class="pillar-title">משיבים לשיער את החיוניות שאבדה</h3>
+            <p class="pillar-desc">פתרונות טבעיים למניעת נשירה וחיזוק השערה מהשורש. טיפול שמתחיל בהבנה עמוקה של צרכי השיער שלך.</p>
+            <span class="pillar-link">גלו את Zora Hair Restoration ‹</span>
+          </div>
+        </a>
+
+        <a href="pure.html" class="pillar-card fade-up">
+          <div class="pillar-img"><img src="brand_assets/pure-logo.png" alt="שיקום וטיפול בנגעי עור - Zora Pure" loading="lazy"></div>
+          <div class="pillar-overlay">
+            <span class="pillar-num">02</span>
+            <h3 class="pillar-title">שלמות ללא פשרות, בכל נקודה בגוף</h3>
+            <p class="pillar-desc">נוסחאות ה-Pure הייחודיות שלנו לטיפול ממוקד בנגעים, פטרת ופגעי עור, לתוצאות נראות לעין.</p>
+            <span class="pillar-link">גלו את Zora Pure ‹</span>
+          </div>
+        </a>
+
+        <a href="face-treatment.html" class="pillar-card fade-up">
+          <div class="pillar-img"><img src="brand_assets/WhatsApp Image 2026-03-08 at 20.30.05.jpeg" alt="טיפולי פנים - Zora Face Treatment" loading="lazy"></div>
+          <div class="pillar-overlay">
+            <span class="pillar-num">03</span>
+            <h3 class="pillar-title">ניקוי, מיצוק והזנה לעור פנים זוהר</h3>
+            <p class="pillar-desc">מסע טיפוח שלם לעור הפנים — ניקוי עמוק, מיצוק וחיטוב והזנה עשירה, לתוצאות שרואים ומרגישים.</p>
+            <span class="pillar-link">גלו את Zora Face Treatment ‹</span>
+          </div>
+        </a>
+
+      </div>
     </div>
   </section>
 
@@ -2808,15 +2951,6 @@
           <div class="result-name">סיגלית</div>
         </div>
 
-        <div class="testi-card result-card result-card-single fade-up">
-          <div class="result-images result-images-single">
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/natan.jpg" alt="נתן - לפני ואחרי" loading="lazy">
-            </div>
-          </div>
-          <div class="result-name">נתן</div>
-        </div>
-
         <div class="testi-card result-card fade-up">
           <div class="result-images">
             <div class="result-img-box">
@@ -2933,14 +3067,14 @@
           <em class="gold-text">לזהור מחדש</em>
         </h2>
         <p class="cta-sub">
-          קבעו ייעוץ חינמי עם המומחיות שלנו ותגלו איזה טיפול ZORA מתאים בדיוק לצרכי השיער שלכם
+          קבעו אבחון אישי חינם עם המומחית שלנו ותגלו איזה טיפול ZORA מתאים בדיוק לצרכי השיער שלכם
         </p>
         <div class="cta-actions">
           <a href="https://page.dibs-app.com/p/6a71e58b68edafbd6aa438bd" target="_blank" rel="noopener" class="btn btn-gold">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.18 19.79 19.79 0 012 4.6 2 2 0 014 2.6h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
             </svg>
-            קביעת תור ייעוץ
+            קביעת אבחון אישי
           </a>
         </div>
       </div>
@@ -2976,7 +3110,7 @@
             <li><a href="#treatments">ZORA Silk</a></li>
             <li><a href="#treatments">ZORA Hydra</a></li>
             <li><a href="#treatments">ZORA Repair</a></li>
-            <li><a href="#cta">ייעוץ חינמי</a></li>
+            <li><a href="#cta">אבחון אישי חינם</a></li>
           </ul>
         </div>
 
@@ -3497,6 +3631,7 @@
     }
 
     /* ניגודיות גבוהה – filter invert על כל מה שאינו וידאו */
+    body.a11y-high-contrast #pillars,
     body.a11y-high-contrast #stats,
     body.a11y-high-contrast #about,
     body.a11y-high-contrast #treatments,
@@ -4040,9 +4175,9 @@
 
       <div id="consult-form-wrap">
         <div class="consult-header">
-          <p class="consult-label-top">ייעוץ חינמי</p>
-          <h2 class="consult-title" id="consult-title">תיאום שיחת ייעוץ</h2>
-          <p class="consult-subtitle">מלאו את הפרטים ונחזור אליכם בהקדם לתיאום שיחה אישית עם המומחית שלנו, או התקשרו ישירות למספר <a href="tel:0528434322" style="color:var(--gold-1); font-weight:600;">052-843-4322</a></p>
+          <p class="consult-label-top">אבחון אישי חינם</p>
+          <h2 class="consult-title" id="consult-title">קביעת אבחון אישי</h2>
+          <p class="consult-subtitle">מלאו את הפרטים ונחזור אליכם בהקדם לתיאום האבחון האישי שלכם עם המומחית שלנו, או התקשרו ישירות למספר <a href="tel:0528434322" style="color:var(--gold-1); font-weight:600;">052-843-4322</a></p>
         </div>
 
         <form id="consult-form" onsubmit="submitConsultForm(event)" novalidate>
@@ -4082,7 +4217,7 @@
           </div>
 
           <button type="submit" class="consult-submit-btn" id="consult-submit-btn">
-            שלחו פרטים לתיאום שיחה
+            שלחו פרטים לתיאום האבחון
           </button>
         </form>
       </div>
@@ -4090,7 +4225,7 @@
       <div id="consult-success" class="consult-success" style="display:none">
         <div class="consult-success-icon">✨</div>
         <h3 class="consult-success-title">תודה! קיבלנו את פנייתך</h3>
-        <p class="consult-success-text">ניצור איתך קשר בהקדם לתיאום שיחת הייעוץ.<br>ZORA by Zehavit Professional</p>
+        <p class="consult-success-text">ניצור איתך קשר בהקדם לתיאום האבחון האישי.<br>ZORA by Zehavit Professional</p>
       </div>
     </div>
   </div>
@@ -4143,7 +4278,7 @@
         document.getElementById('consult-form-wrap').style.display = '';
         document.getElementById('consult-success').style.display = 'none';
         document.getElementById('consult-submit-btn').disabled = false;
-        document.getElementById('consult-submit-btn').textContent = 'שלחו פרטים לתיאום שיחה';
+        document.getElementById('consult-submit-btn').textContent = 'שלחו פרטים לתיאום האבחון';
       }, 300);
     }
 
@@ -4175,7 +4310,7 @@
 
       const diagnosis = window.chatDiagnosis || {};
       const parts = [
-        '📋 *ייעוץ חדש – ZORA*',
+        '📋 *אבחון אישי חדש – ZORA*',
         '',
         `👤 *שם:* ${name}`,
         `📞 *טלפון:* ${phone}`,
