@@ -3359,11 +3359,15 @@
 
     function goToCheckout() {
       const hasPureDrops = cart.some(item => item.name === 'פיור Pure — טיפות נוזל');
+      const hasFoamSoap = cart.some(item => item.name === 'סבון מוס Pure');
+      if (hasPureDrops && hasFoamSoap) {
+        window.location.href = 'https://pay.grow.link/MTA0Mzcz~976d64fd282d61bc4371509f6e08a15d-MzgyNTcwMQ';
+        return;
+      }
       if (hasPureDrops) {
         window.location.href = 'https://pay.grow.link/MTA0Mzcz~9ce213970e48336fe4613941e40d6527-MzgyNTQ0OA';
         return;
       }
-      const hasFoamSoap = cart.some(item => item.name === 'סבון מוס Pure');
       if (hasFoamSoap) {
         window.location.href = 'https://pay.grow.link/MTA0Mzcz~818c739521671df95edc753a39c5a652-MzgyNTQ5OQ';
         return;
