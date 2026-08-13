@@ -3302,6 +3302,17 @@
     // ── Cart State ──────────────────────────────────────
     const cart = [];
 
+    // Fires only if the visitor already accepted cookies (fbq/gtag loaded then)
+    function trackAddToCart(item) {
+      if (typeof fbq === 'function') fbq('track', 'AddToCart', { content_name: item.name, content_type: 'product' });
+      if (typeof gtag === 'function') gtag('event', 'add_to_cart', { items: [{ item_name: item.name }] });
+    }
+
+    function trackInitiateCheckout() {
+      if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+      if (typeof gtag === 'function') gtag('event', 'begin_checkout');
+    }
+
     function addToCartAndOpen(btn) {
       const card = btn.closest('.treatment-card');
       const item = {
@@ -3313,6 +3324,7 @@
         id: Date.now()
       };
       cart.push(item);
+      trackAddToCart(item);
       updateCartUI();
       openProductModal(item);
     }
@@ -3358,6 +3370,7 @@
     }
 
     function goToCheckout() {
+      trackInitiateCheckout();
       const hasPureDrops = cart.some(item => item.name === 'פיור Pure — טיפות נוזל');
       const hasFoamSoap = cart.some(item => item.name === 'סבון מוס Pure');
       const hasLegCream = cart.some(item => item.name === 'קרם רגליים טיפולי');
@@ -3443,6 +3456,7 @@
         id: Date.now()
       };
       cart.push(item);
+      trackAddToCart(item);
       updateCartUI();
       openProductModal(item);
     }
@@ -4395,5 +4409,9 @@
     })();
   </script>
 
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
