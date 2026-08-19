@@ -2574,7 +2574,7 @@
   <!-- ══════════════ HERO ══════════════ -->
   <section id="hero">
     <div class="hero-video-bg">
-      <video autoplay muted loop playsinline preload="auto">
+      <video muted loop playsinline preload="auto">
         <source src="vid/hero-intro.mp4" type="video/mp4">
       </video>
       <div class="hero-video-overlay"></div>
@@ -4566,16 +4566,17 @@
   </script>
 
   <script>
-    // Force hero video playback (handles browser autoplay restrictions)
+    // Start hero video 3s after load, then loop (handles browser autoplay restrictions)
     (function() {
       const v = document.querySelector('#hero video');
       if (!v) return;
       v.muted = true;
       const tryPlay = () => v.play().catch(() => {});
+      const startDelayed = () => setTimeout(tryPlay, 3000);
       if (document.readyState === 'complete') {
-        tryPlay();
+        startDelayed();
       } else {
-        window.addEventListener('load', tryPlay);
+        window.addEventListener('load', startDelayed);
       }
       // Also try on first user interaction as fallback
       document.addEventListener('click', tryPlay, { once: true });
