@@ -4566,21 +4566,40 @@
   </script>
 
   <script>
-    // Start hero video 3s after load, then loop (handles browser autoplay restrictions)
+    // Freeze hero video on its last frame for 3s, then start the loop from the beginning
     (function() {
       const v = document.querySelector('#hero video');
       if (!v) return;
       v.muted = true;
-      const tryPlay = () => v.play().catch(() => {});
-      const startDelayed = () => setTimeout(tryPlay, 3000);
+
+      const startFromBeginning = () => {
+        v.currentTime = 0;
+        v.play().catch(() => {});
+      };
+
+      const seekToLastFrame = () => {
+        if (v.duration && isFinite(v.duration)) {
+          v.currentTime = Math.max(0, v.duration - 0.05);
+        }
+      };
+
+      const init = () => {
+        if (v.readyState >= 1) {
+          seekToLastFrame();
+        } else {
+          v.addEventListener('loadedmetadata', seekToLastFrame, { once: true });
+        }
+        setTimeout(startFromBeginning, 3000);
+      };
+
       if (document.readyState === 'complete') {
-        startDelayed();
+        init();
       } else {
-        window.addEventListener('load', startDelayed);
+        window.addEventListener('load', init);
       }
-      // Also try on first user interaction as fallback
-      document.addEventListener('click', tryPlay, { once: true });
-      document.addEventListener('touchstart', tryPlay, { once: true });
+      // Also try on first user interaction as fallback (browser autoplay restrictions)
+      document.addEventListener('click', startFromBeginning, { once: true });
+      document.addEventListener('touchstart', startFromBeginning, { once: true });
     })();
   </script>
 
