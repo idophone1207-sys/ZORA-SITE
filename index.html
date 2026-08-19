@@ -2463,7 +2463,7 @@
       .footer-newsletter-form input[type="email"] { flex: 1; min-width: 0; }
     }
 
-    #zora-exit-popup {
+    #zora-exit-popup, #zora-cart-popup {
       display: none;
       position: fixed;
       inset: 0;
@@ -2472,7 +2472,7 @@
       justify-content: center;
       padding: 1.5rem;
     }
-    #zora-exit-popup.open { display: flex; }
+    #zora-exit-popup.open, #zora-cart-popup.open { display: flex; }
     .zora-exit-backdrop { position: fixed; inset: 0; background: rgba(28,26,23,0.55); }
     .zora-exit-box {
       position: relative;
@@ -3498,6 +3498,7 @@
       cart.push(item);
       trackAddToCart(item);
       updateCartUI();
+      if (cart.length === 1) setTimeout(maybeShowCartPopup, 2500);
       openProductModal(item);
     }
 
@@ -3630,6 +3631,7 @@
       cart.push(item);
       trackAddToCart(item);
       updateCartUI();
+      if (cart.length === 1) setTimeout(maybeShowCartPopup, 2500);
       openProductModal(item);
     }
 
@@ -4572,31 +4574,32 @@
       if (!v) return;
       v.muted = true;
 
+      let started = false;
       const startFromBeginning = () => {
+        if (started) return;
+        started = true;
         v.currentTime = 0;
         v.play().catch(() => {});
       };
+      const beginDelay = () => setTimeout(startFromBeginning, 3000);
 
       const seekToLastFrame = () => {
         if (v.duration && isFinite(v.duration)) {
+          v.addEventListener('seeked', beginDelay, { once: true });
           v.currentTime = Math.max(0, v.duration - 0.05);
-        }
-      };
-
-      const init = () => {
-        if (v.readyState >= 1) {
-          seekToLastFrame();
         } else {
-          v.addEventListener('loadedmetadata', seekToLastFrame, { once: true });
+          beginDelay();
         }
-        setTimeout(startFromBeginning, 3000);
       };
 
-      if (document.readyState === 'complete') {
-        init();
+      if (v.readyState >= 1) {
+        seekToLastFrame();
       } else {
-        window.addEventListener('load', init);
+        v.addEventListener('loadedmetadata', seekToLastFrame, { once: true });
       }
+      // Safety net in case metadata never loads (slow/broken network)
+      setTimeout(() => { if (!started) startFromBeginning(); }, 6000);
+
       // Also try on first user interaction as fallback (browser autoplay restrictions)
       document.addEventListener('click', startFromBeginning, { once: true });
       document.addEventListener('touchstart', startFromBeginning, { once: true });
@@ -4622,8 +4625,23 @@
     </div>
   </div>
 
+  <div id="zora-cart-popup" role="dialog" aria-modal="true" aria-labelledby="zora-cart-title">
+    <div class="zora-exit-backdrop" onclick="document.getElementById('zora-cart-popup').classList.remove('open')"></div>
+    <div class="zora-exit-box">
+      <button class="zora-exit-close" onclick="document.getElementById('zora-cart-popup').classList.remove('open')" aria-label="סגור">✕</button>
+      <p class="zora-exit-label">לפני שממשיכים</p>
+      <h2 class="zora-exit-title" id="zora-cart-title">נשמור לכם את העגלה</h2>
+      <p class="zora-exit-subtitle">השאירו אימייל ואם תצטרכו לרדת מהאתר – נזכיר לכם על המוצרים שחיכו לכם בעגלה, ונשלח קוד הנחה של 10%.</p>
+      <form data-ctx="cart" onsubmit="submitNewsletterForm(event, this)" novalidate>
+        <input type="email" placeholder="כתובת אימייל" required dir="ltr">
+        <button type="submit">שמרו לי את העגלה</button>
+      </form>
+      <p class="zora-exit-msg" style="display:none;"></p>
+    </div>
+  </div>
+
   <script>
-    // ── Newsletter signup (footer form + exit popup) ─────────
+    // ── Newsletter signup (footer form / exit popup / cart popup) ─────────
     async function submitNewsletterForm(e, form) {
       e.preventDefault();
       const emailInput = form.querySelector('input[type="email"]');
@@ -4636,23 +4654,28 @@
       const originalText = btn.textContent;
       btn.textContent = 'שולחת...';
 
+      const isCart = form.dataset.ctx === 'cart';
+      const payload = { email, type: isCart ? 'cart_capture' : 'newsletter', source: 'website' };
+      if (isCart && typeof cart !== 'undefined') payload.products = cart.map(i => i.name);
+
       try {
         await fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, type: 'newsletter', source: 'website' }),
+          body: JSON.stringify(payload),
           mode: 'no-cors'
         });
         if (msg) {
-          msg.textContent = 'תודה! נרשמתם בהצלחה לניוזלטר.';
+          msg.textContent = isCart ? 'מעולה! נשמור לכם את העגלה ונעדכן אתכם.' : 'תודה! נרשמתם בהצלחה לניוזלטר.';
           msg.className = msg.className.replace('error', '').trim() + ' success';
           msg.style.display = '';
         }
         form.reset();
         localStorage.setItem('zora_newsletter_subscribed', '1');
-        if (typeof clarity === 'function') clarity('event', 'newsletter_signup');
+        localStorage.setItem('zora_user_email', email);
+        if (typeof clarity === 'function') clarity('event', isCart ? 'cart_email_captured' : 'newsletter_signup');
         setTimeout(() => {
-          const popup = document.getElementById('zora-exit-popup');
+          const popup = form.closest('#zora-exit-popup, #zora-cart-popup');
           if (popup) popup.classList.remove('open');
         }, 1400);
       } catch (err) {
@@ -4667,12 +4690,46 @@
       }
     }
 
+    // ── Cart-abandonment email capture ────────────────────────
+    function maybeShowCartPopup() {
+      const knownEmail = localStorage.getItem('zora_user_email');
+      if (knownEmail) {
+        reportCartCapture(knownEmail);
+        return;
+      }
+      if (sessionStorage.getItem('zora_cart_popup_shown')) return;
+      if (document.getElementById('zora-exit-popup')?.classList.contains('open')) return;
+      sessionStorage.setItem('zora_cart_popup_shown', '1');
+      const popup = document.getElementById('zora-cart-popup');
+      if (popup) popup.classList.add('open');
+    }
+
+    function reportCartCapture(email) {
+      if (typeof cart === 'undefined') return;
+      fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'cart_capture', source: 'website', products: cart.map(i => i.name) }),
+        mode: 'no-cors'
+      }).catch(() => {});
+    }
+
+    // Send the final cart snapshot right as the visitor leaves, so the
+    // reminder email reflects everything they added, not just the first item.
+    window.addEventListener('pagehide', function() {
+      const knownEmail = localStorage.getItem('zora_user_email');
+      if (!knownEmail || typeof cart === 'undefined' || cart.length === 0) return;
+      const payload = JSON.stringify({ email: knownEmail, type: 'cart_capture', source: 'website', products: cart.map(i => i.name) });
+      navigator.sendBeacon('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', new Blob([payload], { type: 'text/plain' }));
+    });
+
     // ── Exit-intent popup trigger ─────────────────────────────
     (function() {
       var COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
       function shouldShow() {
         if (localStorage.getItem('zora_newsletter_subscribed')) return false;
         if (sessionStorage.getItem('zora_exit_popup_shown')) return false;
+        if (document.getElementById('zora-cart-popup')?.classList.contains('open')) return false;
         var last = localStorage.getItem('zora_exit_popup_last_shown');
         if (last && (Date.now() - Number(last)) < COOLDOWN_MS) return false;
         return true;
@@ -4701,8 +4758,10 @@
       }
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-          var popup = document.getElementById('zora-exit-popup');
-          if (popup) popup.classList.remove('open');
+          var exitPopup = document.getElementById('zora-exit-popup');
+          if (exitPopup) exitPopup.classList.remove('open');
+          var cartPopup = document.getElementById('zora-cart-popup');
+          if (cartPopup) cartPopup.classList.remove('open');
         }
       });
     })();
