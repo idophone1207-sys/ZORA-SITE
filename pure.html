@@ -31,9 +31,18 @@
       gtag('config', 'AW-18068050623');
     }
 
+    function loadClarity(){
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+    }
+
     window.zoraLoadTrackers = function(){
       loadMetaPixel();
       loadGoogleTag();
+      loadClarity();
     };
 
     window.zoraCookieAccept = function(){
@@ -863,6 +872,140 @@
       .modal-actions { flex-direction: column; gap: 0.6rem; }
       .modal-buy-btn, .modal-contact-btn { width: 100%; padding: 0.85rem; }
     }
+  
+    /* ─── Newsletter: footer form + exit-intent popup ──────── */
+    .footer-newsletter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-newsletter-text h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .footer-newsletter-text p { font-size: 0.8rem; color: var(--light); }
+    .footer-newsletter-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .footer-newsletter-form input[type="email"] {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--dark);
+      outline: none;
+      min-width: 240px;
+      text-align: right;
+      transition: border-color 0.2s;
+    }
+    .footer-newsletter-form input[type="email"]:focus { border-color: var(--gold-1); }
+    .footer-newsletter-form button {
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .footer-newsletter-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .footer-newsletter-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .footer-newsletter-msg { font-size: 0.78rem; margin-top: 0.6rem; }
+    .footer-newsletter-msg.success { color: #2f7a3d; }
+    .footer-newsletter-msg.error { color: #b3392c; }
+    @media (max-width: 720px) {
+      .footer-newsletter { flex-direction: column; align-items: flex-start; }
+      .footer-newsletter-form { width: 100%; }
+      .footer-newsletter-form input[type="email"] { flex: 1; min-width: 0; }
+    }
+
+    #zora-exit-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9600;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    #zora-exit-popup.open { display: flex; }
+    .zora-exit-backdrop { position: fixed; inset: 0; background: rgba(28,26,23,0.55); }
+    .zora-exit-box {
+      position: relative;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      max-width: 420px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      z-index: 1;
+      direction: rtl;
+      text-align: center;
+    }
+    .zora-exit-close {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      background: transparent;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--light);
+      transition: color 0.2s;
+    }
+    .zora-exit-close:hover { color: var(--dark); }
+    .zora-exit-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-1); margin-bottom: 0.5rem; }
+    .zora-exit-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--dark); margin-bottom: 0.6rem; line-height: 1.3; }
+    .zora-exit-subtitle { font-size: 0.85rem; color: var(--mid); margin-bottom: 1.5rem; line-height: 1.6; }
+    .zora-exit-box form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .zora-exit-box input[type="email"] {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--dark);
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: right;
+      transition: border-color 0.2s;
+    }
+    .zora-exit-box input[type="email"]:focus { border-color: var(--gold-1); }
+    .zora-exit-box button {
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .zora-exit-box button:hover { transform: translateY(-2px); }
+    .zora-exit-box button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .zora-exit-msg { font-size: 0.8rem; margin-top: 0.4rem; }
+    .zora-exit-msg.success { color: #2f7a3d; }
+    .zora-exit-msg.error { color: #b3392c; }
   </style>
 </head>
 <body>
@@ -1044,6 +1187,19 @@
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer>
     <div class="container">
+      <div class="footer-newsletter">
+        <div class="footer-newsletter-text">
+          <h4>הצטרפו לניוזלטר של ZORA</h4>
+          <p>טיפים לטיפוח שיער וקוד הנחה של 10% לרכישה הראשונה</p>
+        </div>
+        <div>
+          <form class="footer-newsletter-form" onsubmit="submitNewsletterForm(event, this)" novalidate>
+            <input type="email" placeholder="כתובת אימייל" required dir="ltr">
+            <button type="submit">הרשמה</button>
+          </form>
+          <p class="footer-newsletter-msg" style="display:none;"></p>
+        </div>
+      </div>
       <div class="footer-inner">
 
         <div class="footer-brand">
@@ -1406,5 +1562,104 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <div id="zora-exit-popup" role="dialog" aria-modal="true" aria-labelledby="zora-exit-title">
+    <div class="zora-exit-backdrop" onclick="document.getElementById('zora-exit-popup').classList.remove('open')"></div>
+    <div class="zora-exit-box">
+      <button class="zora-exit-close" onclick="document.getElementById('zora-exit-popup').classList.remove('open')" aria-label="סגור">✕</button>
+      <p class="zora-exit-label">רגע לפני שהולכים</p>
+      <h2 class="zora-exit-title" id="zora-exit-title">10% הנחה על הרכישה הראשונה</h2>
+      <p class="zora-exit-subtitle">הצטרפו לניוזלטר של ZORA וקבלו קוד הנחה, טיפים לטיפוח שיער ועדכונים על מוצרים חדשים.</p>
+      <form onsubmit="submitNewsletterForm(event, this)" novalidate>
+        <input type="email" placeholder="כתובת אימייל" required dir="ltr">
+        <button type="submit">קבלו את ההנחה</button>
+      </form>
+      <p class="zora-exit-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <script>
+    // ── Newsletter signup (footer form + exit popup) ─────────
+    async function submitNewsletterForm(e, form) {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      const email = emailInput.value.trim();
+      const msg = form.parentElement.querySelector('.footer-newsletter-msg, .zora-exit-msg');
+      const btn = form.querySelector('button');
+      if (!email) return;
+
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = 'שולחת...';
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, type: 'newsletter', source: 'website' }),
+          mode: 'no-cors'
+        });
+        if (msg) {
+          msg.textContent = 'תודה! נרשמתם בהצלחה לניוזלטר.';
+          msg.className = msg.className.replace('error', '').trim() + ' success';
+          msg.style.display = '';
+        }
+        form.reset();
+        localStorage.setItem('zora_newsletter_subscribed', '1');
+        setTimeout(() => {
+          const popup = document.getElementById('zora-exit-popup');
+          if (popup) popup.classList.remove('open');
+        }, 1400);
+      } catch (err) {
+        if (msg) {
+          msg.textContent = 'משהו השתבש, נסו שוב מאוחר יותר.';
+          msg.className = msg.className.replace('success', '').trim() + ' error';
+          msg.style.display = '';
+        }
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    }
+
+    // ── Exit-intent popup trigger ─────────────────────────────
+    (function() {
+      var COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+      function shouldShow() {
+        if (localStorage.getItem('zora_newsletter_subscribed')) return false;
+        if (sessionStorage.getItem('zora_exit_popup_shown')) return false;
+        var last = localStorage.getItem('zora_exit_popup_last_shown');
+        if (last && (Date.now() - Number(last)) < COOLDOWN_MS) return false;
+        return true;
+      }
+      function trigger() {
+        if (!shouldShow()) return;
+        sessionStorage.setItem('zora_exit_popup_shown', '1');
+        localStorage.setItem('zora_exit_popup_last_shown', String(Date.now()));
+        var popup = document.getElementById('zora-exit-popup');
+        if (popup) popup.classList.add('open');
+      }
+      document.addEventListener('mouseout', function(e) {
+        if (e.clientY <= 0 && !e.relatedTarget) trigger();
+      });
+      var isTouch = matchMedia('(pointer: coarse)').matches;
+      if (isTouch) {
+        var footerEl = document.querySelector('footer');
+        if (footerEl && 'IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) trigger();
+            });
+          }, { threshold: 0.2 });
+          io.observe(footerEl);
+        }
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          var popup = document.getElementById('zora-exit-popup');
+          if (popup) popup.classList.remove('open');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
