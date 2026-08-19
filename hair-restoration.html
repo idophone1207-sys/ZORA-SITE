@@ -36,7 +36,7 @@
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+      })(window, document, "clarity", "script", "y4s9u92yog");
     }
 
     window.zoraLoadTrackers = function(){
@@ -879,7 +879,7 @@
         <li><a href="index.html#testimonials">תוצאות</a></li>
       </ul>
       <div class="nav-end">
-        <a href="index.html#cta" class="btn btn-gold nav-cta">קביעת ייעוץ</a>
+        <a href="index.html#cta" class="btn btn-gold nav-cta" onclick="if(typeof clarity==='function')clarity('event','cta_click_consult')">קביעת ייעוץ</a>
         <button class="hamburger" aria-label="תפריט" onclick="toggleMenu(this)">
           <span></span><span></span><span></span>
         </button>
@@ -1198,7 +1198,7 @@
       <p class="cart-empty">העגלה שלך ריקה</p>
     </div>
     <div class="cart-footer">
-      <button class="cart-checkout-btn" onclick="window.location.href='index.html#cta'">לתיאום ורכישה</button>
+      <button class="cart-checkout-btn" onclick="if(typeof clarity==='function')clarity('event','cta_click_consult');window.location.href='index.html#cta'">לתיאום ורכישה</button>
     </div>
   </div>
 
@@ -1477,6 +1477,7 @@
         }
         form.reset();
         localStorage.setItem('zora_newsletter_subscribed', '1');
+        if (typeof clarity === 'function') clarity('event', 'newsletter_signup');
         setTimeout(() => {
           const popup = document.getElementById('zora-exit-popup');
           if (popup) popup.classList.remove('open');
