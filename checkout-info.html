@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>פרטי משלוח | ZORA</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold-1: #BFA46A;
+      --gold-2: #D4B97A;
+      --dark: #1C1A17;
+      --mid: #4A4540;
+      --light: #7A756E;
+      --white: #FFFFFF;
+      --cream: #FDFBF7;
+      --border: rgba(191,164,106,0.25);
+      --font-serif: 'Alef', sans-serif;
+      --font-sans: 'Noto Sans Hebrew', sans-serif;
+      --radius: 2px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    header img { height: 42px; }
+    header a { display: inline-block; font-family: var(--font-serif); font-size: 1.3rem; letter-spacing: 0.15em; color: var(--dark); }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem 3rem;
+    }
+
+    .checkout-box {
+      width: 100%;
+      max-width: 520px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.25rem 2rem;
+      box-shadow: 0 10px 40px rgba(28,26,23,0.08);
+    }
+
+    .checkout-label-top {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-1);
+      margin-bottom: 0.5rem;
+    }
+    .checkout-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+    .checkout-subtitle { font-size: 0.85rem; color: var(--mid); margin-bottom: 1.75rem; }
+
+    .checkout-row { display: flex; gap: 0.75rem; }
+    .checkout-row .checkout-field { flex: 1; min-width: 0; }
+
+    .checkout-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+    .checkout-field label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .checkout-field input {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--dark);
+      outline: none;
+      transition: border-color 0.2s;
+      direction: rtl;
+      width: 100%;
+    }
+    .checkout-field input[type="email"],
+    .checkout-field input[type="tel"] { direction: ltr; text-align: right; }
+    .checkout-field input:focus { border-color: var(--gold-1); }
+    .checkout-field input::placeholder { color: var(--light); }
+
+    .checkout-submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 20px rgba(191,164,106,0.4);
+      transition: all 0.3s;
+    }
+    .checkout-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(191,164,106,0.55); }
+    .checkout-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .checkout-consent {
+      font-size: 0.72rem;
+      color: var(--light);
+      text-align: center;
+      margin-top: 0.85rem;
+      line-height: 1.5;
+    }
+    .checkout-consent a { color: var(--gold-1); text-decoration: underline; }
+
+    .checkout-error {
+      font-size: 0.78rem;
+      color: #b3392c;
+      margin-top: -0.4rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .checkout-error.visible { display: block; }
+
+    .checkout-empty {
+      text-align: center;
+    }
+    .checkout-empty p { color: var(--mid); font-size: 0.9rem; margin: 1rem 0 1.5rem; }
+    .checkout-empty a {
+      display: inline-block;
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 480px) {
+      .checkout-box { padding: 1.75rem 1.25rem; }
+      .checkout-row { flex-direction: column; gap: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html">ZORA</a>
+  </header>
+
+  <main>
+    <div class="checkout-box" id="checkout-box">
+      <div id="checkout-form-view">
+        <p class="checkout-label-top">שלב אחרון לפני התשלום</p>
+        <h1 class="checkout-title">פרטי משלוח</h1>
+        <p class="checkout-subtitle">מלאו את הפרטים שלכם ונמשיך אתכם לתשלום מאובטח.</p>
+
+        <form id="checkout-info-form" novalidate>
+          <div class="checkout-row">
+            <div class="checkout-field">
+              <label for="ci-first">שם פרטי</label>
+              <input type="text" id="ci-first" name="firstName" required autocomplete="given-name" />
+            </div>
+            <div class="checkout-field">
+              <label for="ci-last">שם משפחה</label>
+              <input type="text" id="ci-last" name="lastName" required autocomplete="family-name" />
+            </div>
+          </div>
+
+          <div class="checkout-field">
+            <label for="ci-email">אימייל</label>
+            <input type="email" id="ci-email" name="email" required autocomplete="email" dir="ltr" />
+          </div>
+
+          <div class="checkout-field">
+            <label for="ci-phone">טלפון</label>
+            <input type="tel" id="ci-phone" name="phone" required autocomplete="tel" dir="ltr" />
+          </div>
+
+          <div class="checkout-field">
+            <label for="ci-address">כתובת</label>
+            <input type="text" id="ci-address" name="address" required autocomplete="street-address" />
+          </div>
+
+          <div class="checkout-row">
+            <div class="checkout-field">
+              <label for="ci-city">עיר</label>
+              <input type="text" id="ci-city" name="city" required autocomplete="address-level2" />
+            </div>
+            <div class="checkout-field">
+              <label for="ci-zip">מיקוד</label>
+              <input type="text" id="ci-zip" name="zip" required autocomplete="postal-code" inputmode="numeric" />
+            </div>
+          </div>
+
+          <p class="checkout-error" id="checkout-error">נא למלא את כל השדות בצורה תקינה.</p>
+
+          <button type="submit" class="checkout-submit-btn" id="checkout-submit-btn">המשך</button>
+          <p class="checkout-consent">לחיצה על "המשך" מהווה הסכמה ל<a href="terms.html" target="_blank" rel="noopener">תקנון האתר</a></p>
+        </form>
+      </div>
+
+      <div class="checkout-empty" id="checkout-empty-view" style="display:none;">
+        <h1 class="checkout-title">לא נמצאה עגלה פעילה</h1>
+        <p>נראה שהגעתם לכאן ישירות. חזרו לחנות כדי לבחור מוצרים ולהמשיך לתשלום.</p>
+        <a href="pure.html">חזרה לחנות</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      var nextUrl = sessionStorage.getItem('zora_checkout_next');
+      if (!nextUrl) {
+        document.getElementById('checkout-form-view').style.display = 'none';
+        document.getElementById('checkout-empty-view').style.display = 'block';
+        return;
+      }
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      document.getElementById('checkout-info-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var form = e.target;
+        var data = {
+          firstName: form.firstName.value.trim(),
+          lastName: form.lastName.value.trim(),
+          email: form.email.value.trim(),
+          phone: form.phone.value.trim(),
+          address: form.address.value.trim(),
+          city: form.city.value.trim(),
+          zip: form.zip.value.trim()
+        };
+
+        var errEl = document.getElementById('checkout-error');
+        var valid = Object.keys(data).every(function(k) { return data[k].length > 0; }) && EMAIL_RE.test(data.email);
+        if (!valid) {
+          errEl.classList.add('visible');
+          return;
+        }
+        errEl.classList.remove('visible');
+
+        var btn = document.getElementById('checkout-submit-btn');
+        btn.disabled = true;
+        btn.textContent = 'מעביר לתשלום...';
+
+        var itemsRaw = sessionStorage.getItem('zora_checkout_items');
+        var products = itemsRaw ? JSON.parse(itemsRaw) : [];
+
+        var payload = Object.assign({ type: 'checkout_info', source: 'website', products: products }, data);
+
+        try {
+          fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            mode: 'no-cors'
+          }).catch(function() {});
+        } catch (err) {}
+
+        try {
+          localStorage.setItem('zora_user_email', data.email);
+          if (typeof clarity === 'function') clarity('event', 'checkout_info_submitted');
+        } catch (err) {}
+
+        sessionStorage.removeItem('zora_checkout_next');
+        sessionStorage.removeItem('zora_checkout_items');
+
+        window.location.href = nextUrl;
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -941,7 +941,7 @@
       <div class="hr-step">
         <div class="hr-step-img">
           <div class="hr-product-img">
-            <img src="רכישה/שמפו.png" alt="שמפו ZORA" />
+            <img src="רכישה/שמפו.png" alt="שמפו ZORA" loading="lazy" />
           </div>
         </div>
         <div class="hr-step-card">
@@ -966,7 +966,7 @@
         </div>
         <div class="hr-step-img">
           <div class="hr-product-img">
-            <img src="רכישה/אמפולה.png" alt="אמפולה ZORA" />
+            <img src="רכישה/אמפולה.png" alt="אמפולה ZORA" loading="lazy" />
           </div>
         </div>
       </div>
@@ -975,7 +975,7 @@
       <div class="hr-step">
         <div class="hr-step-img">
           <div class="hr-product-img">
-            <img src="רכישה/בושם.png" alt="בושם לשיער ZORA" />
+            <img src="רכישה/בושם.png" alt="בושם לשיער ZORA" loading="lazy" />
           </div>
         </div>
         <div class="hr-step-card">
@@ -1415,6 +1415,8 @@
     .cookie-btn-accept:hover { filter: brightness(1.08); }
     @media (max-width: 640px) {
       .cookie-consent-inner { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-consent-text { flex: none; }
+      .cookie-consent-text { flex: 0 1 auto; }
       .cookie-consent-actions { justify-content: center; }
     }
   </style>
@@ -1477,6 +1479,7 @@
         }
         form.reset();
         localStorage.setItem('zora_newsletter_subscribed', '1');
+        localStorage.setItem('zora_user_email', email);
         if (typeof clarity === 'function') clarity('event', 'newsletter_signup');
         setTimeout(() => {
           const popup = document.getElementById('zora-exit-popup');
