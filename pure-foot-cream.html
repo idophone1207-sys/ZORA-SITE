@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Cookie-gated tracking (Meta Pixel + Google tag) — loaded only after consent, see #cookie-consent-banner -->
+  <script>
+  (function(){
+    var CONSENT_KEY = 'zora_cookie_consent';
+
+    function loadMetaPixel(){
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1680958122916088');
+      fbq('track', 'PageView');
+    }
+
+    function loadGoogleTag(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18068050623';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function(){ dataLayer.push(arguments); };
+      gtag('js', new Date());
+      gtag('config', 'AW-18068050623');
+    }
+
+    function loadClarity(){
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "y4s9u92yog");
+    }
+
+    window.zoraLoadTrackers = function(){
+      loadMetaPixel();
+      loadGoogleTag();
+      loadClarity();
+    };
+
+    window.zoraCookieAccept = function(){
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      window.zoraLoadTrackers();
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.remove('visible');
+    };
+
+    window.zoraCookieDecline = function(){
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.remove('visible');
+    };
+
+    window.zoraOpenCookiePrefs = function(){
+      var b = document.getElementById('cookie-consent-banner');
+      if (b) b.classList.add('visible');
+    };
+
+    var consent = localStorage.getItem(CONSENT_KEY);
+    if (consent === 'accepted') {
+      window.zoraLoadTrackers();
+    } else if (consent !== 'declined') {
+      document.addEventListener('DOMContentLoaded', function(){
+        var b = document.getElementById('cookie-consent-banner');
+        if (b) setTimeout(function(){ b.classList.add('visible'); }, 600);
+      });
+    }
+  })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>קרם רגליים טיפולי Pure — איטום והזנה | ZORA</title>
+  <meta name="description" content="קרם רגליים טיפולי Pure — תרכובת טבעית ועשירה ליובש וסדקים קשים, השלב המסכם בסדרת הטיפול של Pure." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://zora.clinic/pure-foot-cream.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Noto+Sans+Hebrew:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold-1: #BFA46A;
+      --gold-2: #D4B97A;
+      --gold-3: #E8D48A;
+      --gold-light: #F5EDD3;
+      --gold-pale: #FAF6EE;
+      --dark: #1C1A17;
+      --mid: #4A4540;
+      --light: #7A756E;
+      --white: #FFFFFF;
+      --cream: #FDFBF7;
+      --border: rgba(191,164,106,0.25);
+
+      --font-serif: 'Alef', sans-serif;
+      --font-sans: 'Noto Sans Hebrew', sans-serif;
+
+      --max-w: 1200px;
+      --radius: 2px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    .container {
+      width: min(var(--max-w), 100% - 2 * clamp(1.25rem, 5vw, 3rem));
+      margin-inline: auto;
+    }
+
+    /* ─── Navigation ──────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; inset-inline: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.4s ease;
+    }
+
+    #navbar.scrolled {
+      background: rgba(15,23,42,0.55);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.25);
+      padding: 0.6rem 0;
+    }
+
+    .nav-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+    }
+    .nav-start {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-self: start;
+    }
+    .nav-end { display: flex; align-items: center; gap: 1rem; justify-self: end; }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      filter: drop-shadow(0 2px 8px rgba(191,164,106,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--gold-1);
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      right: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold-1);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold-3); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta { margin-inline-start: 0; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1.05rem 2.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(191,164,106,0.35);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(191,164,106,0.5);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--dark);
+      transition: all 0.3s;
+    }
+
+    /* ─── Cart Button ──────────────────────────────────── */
+    .cart-btn {
+      position: relative;
+      background: transparent;
+      border: 1.5px solid var(--gold-1);
+      border-radius: 50%;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: var(--gold-1);
+      transition: all 0.3s;
+    }
+    .cart-btn:hover { background: var(--gold-1); color: var(--white); }
+    .cart-btn.cart-pulse { animation: cartPulse 0.5s ease; }
+    @keyframes cartPulse {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.25); background: var(--gold-1); color: var(--white); }
+      100% { transform: scale(1); }
+    }
+    .cart-badge {
+      position: absolute;
+      top: -5px; left: -5px;
+      background: #e53e3e;
+      color: #fff;
+      font-size: 0.6rem;
+      width: 17px; height: 17px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+
+    /* ─── Cart Panel ───────────────────────────────────── */
+    #cart-panel {
+      position: fixed;
+      top: 0; left: 0;
+      width: min(360px, 100vw);
+      height: 100dvh;
+      background: var(--cream);
+      border-right: 1px solid var(--border);
+      box-shadow: 4px 0 30px rgba(0,0,0,0.15);
+      z-index: 8000;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.35s ease;
+    }
+    #cart-panel.open { transform: translateX(0); }
+    .cart-panel-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(28,26,23,0.5);
+      z-index: 7999;
+    }
+    .cart-panel-backdrop.open { display: block; }
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+    .cart-close {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--light);
+      transition: color 0.2s;
+    }
+    .cart-close:hover { color: var(--dark); }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem 1.5rem;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 0.85rem; font-weight: 500; }
+    .cart-item-price { font-size: 0.78rem; color: var(--gold-1); margin-top: 0.2rem; }
+    .cart-item-remove {
+      background: transparent;
+      border: none;
+      color: var(--light);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.25rem;
+      transition: color 0.2s;
+    }
+    .cart-item-remove:hover { color: #e53e3e; }
+    .cart-empty {
+      text-align: center;
+      color: var(--light);
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+    .cart-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .cart-checkout-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(191,164,106,0.4);
+      transition: all 0.3s;
+    }
+    .cart-checkout-btn:hover { box-shadow: 0 8px 30px rgba(191,164,106,0.55); }
+
+    @media (max-width: 768px) {
+      .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+      .nav-start { gap: 0.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-cta {
+        display: inline-flex;
+        font-size: 0.7rem;
+        padding: 0.4rem 0.85rem;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    /* ─── Footer ────────────────────────────────────────── */
+    footer {
+      background: var(--cream);
+      color: var(--light);
+      padding-block: 3rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand img {
+      height: 40px;
+      width: auto;
+      mix-blend-mode: multiply;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      max-width: 28ch;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a {
+      font-size: 0.8rem;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--gold-1); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+    }
+
+    .social-links { display: flex; gap: 1rem; }
+    .social-links a {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      transition: all 0.3s;
+    }
+    .social-links a:hover {
+      border-color: var(--gold-1);
+      color: var(--gold-1);
+    }
+
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Pure Product Hero ───────────────────────────── */
+    .pure-hero {
+      position: relative;
+      min-height: 100svh;
+      background: linear-gradient(to bottom, #134e4a 0%, #115e59 45%, #0f172a 100%);
+      color: #fff;
+      overflow: hidden;
+      font-family: var(--font-sans);
+    }
+
+    .pure-bubbles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .pure-hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 64rem;
+      margin-inline: auto;
+      padding: 8rem 1.5rem 4rem;
+      text-align: center;
+    }
+    @media (min-width: 768px) {
+      .pure-hero-content { padding-block: 9rem 6rem; }
+    }
+
+    .pure-badge {
+      display: inline-block;
+      background: rgba(20,184,166,0.2);
+      color: #5eead4;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.375rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(45,212,191,0.3);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .pure-title {
+      font-family: var(--font-sans);
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      background: linear-gradient(to left, #ffffff, #ccfbf1, #5eead4);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      line-height: 1.15;
+    }
+
+    .pure-subtitle {
+      font-size: clamp(1.15rem, 2vw, 1.5rem);
+      font-weight: 300;
+      color: rgba(204,251,241,0.9);
+      margin-bottom: 2rem;
+      max-width: 48rem;
+      margin-inline: auto;
+      line-height: 1.6;
+    }
+
+    .pure-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-block: 3rem;
+      text-align: right;
+    }
+    @media (min-width: 768px) {
+      .pure-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .pure-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.25), 0 8px 10px -6px rgba(0,0,0,0.15);
+      transition: border-color 0.3s;
+    }
+    .pure-card:hover { border-color: rgba(45,212,191,0.4); }
+
+    .pure-card-usage {
+      background: linear-gradient(to bottom left, rgba(20,184,166,0.2), rgba(15,118,110,0.2));
+      border-color: rgba(45,212,191,0.3);
+    }
+
+    .pure-card-icon {
+      width: 3rem; height: 3rem;
+      border-radius: 0.75rem;
+      background: rgba(20,184,166,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #5eead4;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .pure-card-icon-alt { background: rgba(45,212,191,0.2); color: #99f6e4; }
+
+    .pure-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .pure-card p {
+      font-size: 0.875rem;
+      color: rgba(204,251,241,0.8);
+      line-height: 1.65;
+    }
+
+    .pure-card-usage p {
+      color: rgba(204,251,241,0.9);
+      font-weight: 500;
+    }
+    .pure-card-usage strong { color: #5eead4; }
+
+    .pure-card-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: rgba(153,246,228,0.7);
+    }
+
+    /* Bubble animation */
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      animation: floatUp linear infinite;
+      backdrop-filter: blur(2px);
+    }
+
+    .bubble-1 { width: 40px; height: 40px; left: 10%; animation-duration: 8s; animation-delay: 0s; }
+    .bubble-2 { width: 25px; height: 25px; left: 25%; animation-duration: 6s; animation-delay: 1s; }
+    .bubble-3 { width: 60px; height: 60px; left: 40%; animation-duration: 11s; animation-delay: 2s; }
+    .bubble-4 { width: 15px; height: 15px; left: 60%; animation-duration: 5s; animation-delay: 0.5s; }
+    .bubble-5 { width: 50px; height: 50px; left: 75%; animation-duration: 9s; animation-delay: 3s; }
+    .bubble-6 { width: 30px; height: 30px; left: 88%; animation-duration: 7s; animation-delay: 1.5s; }
+    .bubble-7 { width: 20px; height: 20px; left: 50%; animation-duration: 8.5s; animation-delay: 4s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+    }
+
+    /* ─── Journey section (continues hero's dark teal bg) ── */
+    #pure-journey {
+      background: #0f172a;
+      color: #fff;
+      padding-block: clamp(3rem, 6vw, 5rem);
+    }
+
+    .pure-journey-header { text-align: center; margin-bottom: 3.5rem; }
+    .pure-journey-header .pure-title { margin-bottom: 0.75rem; }
+
+    .pure-step {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .pure-step + .pure-step { margin-top: 4rem; }
+
+    .pure-shop-img {
+      position: relative;
+      max-width: 280px;
+      margin-inline: auto;
+      margin-bottom: 1.75rem;
+    }
+    .pure-shop-img img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+      display: block;
+    }
+    .pure-add-chip {
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pure-add-chip:hover {
+      transform: translateX(-50%) translateY(-2px);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+    }
+
+    .pure-step-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .pure-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: rgba(20,184,166,0.25);
+      color: #5eead4;
+      font-weight: 700;
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .pure-step-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .pure-step-product {
+      font-size: 0.85rem;
+      color: #5eead4;
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+    }
+
+    .pure-step-card p {
+      font-size: 0.92rem;
+      color: rgba(204,251,241,0.85);
+      line-height: 1.8;
+      margin-bottom: 0.85rem;
+    }
+    .pure-step-card p strong { color: #fff; }
+
+    .pure-step-usage {
+      font-size: 0.8rem;
+      color: rgba(153,246,228,0.75);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed rgba(255,255,255,0.15);
+    }
+
+    .pure-journey-outro {
+      text-align: center;
+      max-width: 620px;
+      margin: 5rem auto 0;
+    }
+    .pure-journey-outro .pure-shop-img {
+      max-width: 340px;
+      margin-bottom: 2.5rem;
+    }
+    .pure-journey-outro h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .pure-journey-outro p {
+      font-size: 0.95rem;
+      color: rgba(204,251,241,0.85);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .pure-step { grid-template-columns: 1fr; gap: 1.5rem; }
+      .pure-step-img { order: -1; }
+    }
+
+    /* ─── Product Detail Modal (matches main shop) ──────── */
+    .pure-shop-img img { cursor: pointer; }
+    .gold-text { color: var(--gold-1); }
+    #product-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    #product-modal.open { display: flex; }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(28,26,23,0.75);
+      backdrop-filter: blur(6px);
+    }
+    .modal-box {
+      position: relative;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      max-width: 480px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      z-index: 1;
+      text-align: center;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--light);
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--dark); }
+    #modal-img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 0 auto 1rem;
+      display: none;
+    }
+    .modal-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-1);
+      border: 1px solid var(--gold-1);
+      border-radius: 2px;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .modal-name {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+      color: var(--dark);
+    }
+    .modal-desc {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .modal-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.75rem;
+    }
+    .modal-actions { display: flex; gap: 0.75rem; justify-content: center; }
+    .modal-buy-btn {
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.9rem 2rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(191,164,106,0.4);
+      transition: all 0.3s;
+    }
+    .modal-buy-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(191,164,106,0.55); }
+    .modal-contact-btn {
+      background: transparent;
+      color: var(--gold-1);
+      border: 1.5px solid var(--gold-1);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .modal-contact-btn:hover { background: var(--gold-1); color: var(--white); }
+    @media (max-width: 768px) {
+      #product-modal { padding: 0; align-items: flex-end; }
+      .modal-box {
+        max-height: 92vh;
+        border-radius: 16px 16px 0 0;
+        padding: 1.5rem 1.25rem 2rem;
+        width: 100%;
+        max-width: 100%;
+      }
+      #modal-img { width: 100%; height: 220px; border-radius: 8px; }
+      .modal-name { font-size: 1.2rem; }
+      .modal-desc { font-size: 0.85rem; }
+      .modal-price { font-size: 1.2rem; margin-bottom: 1.25rem; }
+      .modal-actions { flex-direction: column; gap: 0.6rem; }
+      .modal-buy-btn, .modal-contact-btn { width: 100%; padding: 0.85rem; }
+    }
+  
+    /* ─── Newsletter: footer form + exit-intent popup ──────── */
+    .footer-newsletter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      padding-bottom: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer-newsletter-text h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.35rem;
+    }
+    .footer-newsletter-text p { font-size: 0.8rem; color: var(--light); }
+    .footer-newsletter-form { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .footer-newsletter-form input[type="email"] {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--dark);
+      outline: none;
+      min-width: 240px;
+      text-align: right;
+      transition: border-color 0.2s;
+    }
+    .footer-newsletter-form input[type="email"]:focus { border-color: var(--gold-1); }
+    .footer-newsletter-form button {
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.75rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .footer-newsletter-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .footer-newsletter-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .footer-newsletter-msg { font-size: 0.78rem; margin-top: 0.6rem; }
+    .footer-newsletter-msg.success { color: #2f7a3d; }
+    .footer-newsletter-msg.error { color: #b3392c; }
+    @media (max-width: 720px) {
+      .footer-newsletter { flex-direction: column; align-items: flex-start; }
+      .footer-newsletter-form { width: 100%; }
+      .footer-newsletter-form input[type="email"] { flex: 1; min-width: 0; }
+    }
+
+    #zora-exit-popup, #zora-cart-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9600;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    #zora-exit-popup.open, #zora-cart-popup.open { display: flex; }
+    .zora-exit-backdrop { position: fixed; inset: 0; background: rgba(28,26,23,0.55); }
+    .zora-exit-box {
+      position: relative;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      max-width: 420px;
+      width: 100%;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      z-index: 1;
+      direction: rtl;
+      text-align: center;
+    }
+    .zora-exit-close {
+      position: absolute;
+      top: 0.9rem;
+      left: 0.9rem;
+      background: transparent;
+      border: none;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: var(--light);
+      transition: color 0.2s;
+    }
+    .zora-exit-close:hover { color: var(--dark); }
+    .zora-exit-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-1); margin-bottom: 0.5rem; }
+    .zora-exit-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; color: var(--dark); margin-bottom: 0.6rem; line-height: 1.3; }
+    .zora-exit-subtitle { font-size: 0.85rem; color: var(--mid); margin-bottom: 1.5rem; line-height: 1.6; }
+    .zora-exit-box form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .zora-exit-box input[type="email"] {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.85rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--dark);
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: right;
+      transition: border-color 0.2s;
+    }
+    .zora-exit-box input[type="email"]:focus { border-color: var(--gold-1); }
+    .zora-exit-box button {
+      background: linear-gradient(135deg, #9A7A3A, #D4B97A, #BFA46A);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .zora-exit-box button:hover { transform: translateY(-2px); }
+    .zora-exit-box button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .zora-exit-msg { font-size: 0.8rem; margin-top: 0.4rem; }
+    .zora-exit-msg.success { color: #2f7a3d; }
+    .zora-exit-msg.error { color: #b3392c; }
+
+    /* ─── FAQ / Objections ──────────────────────────────── */
+    #pure-faq { padding-block: 6rem; }
+    .faq-list { max-width: 760px; margin-inline: auto; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.5rem 0.25rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: right;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      transition: color 0.25s;
+    }
+    .faq-q:hover { color: var(--gold-1); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--gold-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-1);
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    .faq-item.open .faq-q { color: var(--gold-1); }
+    .faq-item.open .faq-icon { background: var(--gold-1); color: var(--white); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
+    .faq-item.open .faq-a { opacity: 1; }
+    .faq-a p { padding: 0 0.25rem 1.5rem; color: var(--mid); font-size: 0.92rem; line-height: 1.8; max-width: 640px; }
+    .faq-header { text-align: center; margin-bottom: 3.5rem; }
+    .faq-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-1);
+      margin-bottom: 1.25rem;
+    }
+    .faq-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .faq-subtitle { font-size: 1rem; color: var(--mid); max-width: 40rem; margin-inline: auto; line-height: 1.7; }
+
+    /* ─── Product Spotlight (precision / trust) ──────────── */
+    #pure-spotlight { background: #0f172a; color: #fff; padding-block: clamp(4rem, 7vw, 6rem); }
+    .pure-spotlight-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3.5rem; align-items: center; }
+    @media (max-width: 768px) {
+      .pure-spotlight-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pure-spotlight-visual { order: -1; }
+    }
+    .pure-spotlight-title { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 400; line-height: 1.25; margin-bottom: 1rem; }
+    .pure-spotlight-lead { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2.25rem; max-width: 34rem; }
+    .pure-spotlight-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .pure-spotlight-tab {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.9rem 1rem;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+    .pure-spotlight-tab:hover { border-color: rgba(94,234,212,0.5); color: #fff; }
+    .pure-spotlight-tab.active { background: #fff; color: #0f172a; border-color: #fff; }
+    .pure-spotlight-panel { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1.5rem; min-height: 9.5rem; }
+    .pure-spotlight-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .pure-spotlight-list[hidden] { display: none; }
+    .pure-spotlight-list li { display: flex; align-items: baseline; gap: 1rem; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85); }
+    .pure-spotlight-num { flex-shrink: 0; font-family: var(--font-serif); font-size: 0.85rem; color: #5eead4; min-width: 1.75rem; }
+    .pure-spotlight-visual { position: relative; text-align: center; }
+    .pure-spotlight-frame {
+      position: relative;
+      max-width: 300px;
+      margin-inline: auto;
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      background: radial-gradient(circle at 50% 30%, rgba(45,212,191,0.18), transparent 70%);
+    }
+    .pure-spotlight-media { width: 100%; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); animation: pureFloat 5s ease-in-out infinite; }
+    @keyframes pureFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .pure-spotlight-badge {
+      position: absolute;
+      top: 0.75rem;
+      inset-inline-end: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: #5eead4;
+      border: 1px solid rgba(94,234,212,0.4);
+      border-radius: 9999px;
+      padding: 0.3rem 0.75rem;
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .pure-spotlight-define { margin-top: 2rem; font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.6); direction: ltr; text-align: center; }
+    .pure-spotlight-define b { color: #fff; font-weight: 400; font-size: 1.2rem; font-style: normal; }
+    .pure-spotlight-phon { color: #5eead4; font-size: 0.8rem; }
+
+    /* ─── Product Carousel (hero) ──────────────────────── */
+    .pure-carousel { position: relative; max-width: 420px; margin: 0 auto 1.75rem; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    .pure-carousel-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .pure-carousel-track::-webkit-scrollbar { display: none; }
+    .pure-carousel-slide { flex: 0 0 100%; scroll-snap-align: start; aspect-ratio: 1 / 1; background: #fff; }
+    .pure-carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .pure-carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(15,23,42,0.55);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+    .pure-carousel-arrow:hover { background: rgba(45,212,191,0.5); }
+    .pure-carousel-prev { inset-inline-start: 0.75rem; }
+    .pure-carousel-next { inset-inline-end: 0.75rem; }
+    .pure-carousel-dots { position: absolute; bottom: 0.85rem; inset-inline: 0; display: flex; justify-content: center; gap: 0.4rem; z-index: 2; }
+    .pure-carousel-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.45); border: none; padding: 0; cursor: pointer; transition: all 0.25s ease; }
+    .pure-carousel-dot.active { background: #fff; width: 20px; border-radius: 4px; }
+
+    /* ─── Shop block (name / desc / options / CTA) ──────── */
+    .pure-shop-block { max-width: 420px; margin: 0 auto 3rem; text-align: center; }
+    .pure-shop-block .pure-badge { margin-bottom: 1.1rem; }
+    .pure-shop-title { font-family: var(--font-sans); font-size: clamp(1.6rem, 3.5vw, 2.1rem); font-weight: 800; color: #fff; margin-bottom: 0.65rem; line-height: 1.25; }
+    .pure-shop-desc { font-size: 0.95rem; color: rgba(204,251,241,0.85); line-height: 1.7; margin-bottom: 1.5rem; }
+    .pure-shop-options { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .pure-shop-option {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding: 0.9rem 0.75rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.18);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--font-sans);
+    }
+    .pure-shop-option:hover { border-color: rgba(94,234,212,0.5); }
+    .pure-shop-option.active { background: rgba(45,212,191,0.15); border-color: #5eead4; }
+    .pure-shop-option-name { font-size: 0.82rem; font-weight: 500; }
+    .pure-shop-option-price { font-size: 1.05rem; font-weight: 700; color: #5eead4; }
+    .pure-shop-cta { width: 100%; justify-content: center; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ NAVBAR ══════════════ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <div class="nav-start">
+        <a href="index.html" class="nav-logo" aria-label="ZORA">
+          <img src="brand_assets/logo-gold.png" alt="ZORA by Zehavit Professional" />
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html#about">אודות</a></li>
+        <li><a href="hair-restoration.html">Zora Hair Restoration</a></li>
+        <li><a href="pure.html">Zora Pure</a></li>
+        <li><a href="face-treatment.html">Zora Face Treatment</a></li>
+        <li><a href="index.html#process">תהליך</a></li>
+        <li><a href="index.html#testimonials">תוצאות</a></li>
+      </ul>
+      <div class="nav-end">
+        <a href="index.html#cta" class="btn btn-gold nav-cta">קביעת ייעוץ</a>
+        <button class="hamburger" aria-label="תפריט" onclick="toggleMenu(this)">
+          <span></span><span></span><span></span>
+        </button>
+        <button class="cart-btn" aria-label="עגלת קניות" onclick="toggleCart()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-badge" id="cart-badge" style="display:none">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════ PURE PRODUCT HERO ══════════════ -->
+  <section class="pure-hero">
+    <div class="pure-bubbles" aria-hidden="true">
+      <div class="bubble bubble-1"></div>
+      <div class="bubble bubble-2"></div>
+      <div class="bubble bubble-3"></div>
+      <div class="bubble bubble-4"></div>
+      <div class="bubble bubble-5"></div>
+      <div class="bubble bubble-6"></div>
+      <div class="bubble bubble-7"></div>
+    </div>
+
+    <div class="pure-hero-content">
+
+      <div class="pure-carousel">
+        <div class="pure-carousel-track" id="pure-carousel-track">
+          <div class="pure-carousel-slide"><img src="רכישה/קרם רגליים.png" alt="קרם רגליים וידיים טיפולי Pure" loading="lazy" /></div>
+          <div class="pure-carousel-slide"><img src="רכישה/ערכה טיפולית.png" alt="קרם רגליים טיפולי כחלק מערכת GO PURE" loading="lazy" /></div>
+        </div>
+        <button type="button" class="pure-carousel-arrow pure-carousel-prev" onclick="pureCarouselNav(-1)" aria-label="התמונה הקודמת">‹</button>
+        <button type="button" class="pure-carousel-arrow pure-carousel-next" onclick="pureCarouselNav(1)" aria-label="התמונה הבאה">›</button>
+        <div class="pure-carousel-dots" id="pure-carousel-dots">
+          <button type="button" class="pure-carousel-dot active" onclick="pureCarouselGo(0)" aria-label="תמונה 1"></button>
+          <button type="button" class="pure-carousel-dot" onclick="pureCarouselGo(1)" aria-label="תמונה 2"></button>
+        </div>
+      </div>
+
+      <div class="pure-shop-block">
+        <div class="pure-badge">שלב 3 בסדרת Zora Pure • איטום והזנה</div>
+        <h1 class="pure-shop-title">קרם רגליים טיפולי</h1>
+        <p class="pure-shop-desc">תרכובת טבעית ועשירה שסוגרת את מסע הטיפול — הזנה עמוקה לעור יבש וסדוק, לרכות וגמישות שנשארות.</p>
+
+        <div class="pure-shop-options">
+          <button type="button" class="pure-shop-option active" data-name="קרם רגליים טיפולי" data-price="99 ₪" data-img="רכישה/קרם רגליים.png" onclick="selectPureOption(this)">
+            <span class="pure-shop-option-name">קרם רגליים בלבד</span>
+            <span class="pure-shop-option-price">99 ₪</span>
+          </button>
+          <button type="button" class="pure-shop-option" data-name="ערכת GO PURE" data-price="249 ₪" data-img="רכישה/ערכה טיפולית.png" onclick="selectPureOption(this)">
+            <span class="pure-shop-option-name">ערכת GO PURE המלאה</span>
+            <span class="pure-shop-option-price">249 ₪</span>
+          </button>
+        </div>
+
+        <button type="button" class="btn btn-gold pure-shop-cta" onclick="addPureShopSelection(this)">🛒 הוסף להזמנה</button>
+      </div>
+
+      <div class="pure-grid">
+
+        <div class="pure-card">
+          <div class="pure-card-icon">💦</div>
+          <h3>הזנה עמוקה</h3>
+          <p>משיב גמישות וחיוניות לעור יבש, ומחזיר מראה בריא ונקי כבר מהמריחות הראשונות.</p>
+        </div>
+
+        <div class="pure-card">
+          <div class="pure-card-icon">🛡️</div>
+          <h3>שיקום סדקים קשים</h3>
+          <p>מיועד גם למקרים מאתגרים בעקבים ובכפות הרגליים, ומעניק מעטפת הגנה היקפית.</p>
+        </div>
+
+        <div class="pure-card pure-card-usage">
+          <div class="pure-card-icon pure-card-icon-alt">🤲</div>
+          <h3>הוראות שימוש</h3>
+          <p>מריחה <strong>יומיומית</strong> עד לספיגה מלאה — כשלב מסכם לאחר טיפות הפיור.</p>
+          <div class="pure-card-note">השלב האחרון בסדרת הטיפול · תכשיר טבעי</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      var track = document.getElementById('pure-carousel-track');
+      if (!track) return;
+      var slides = Array.prototype.slice.call(track.children);
+      var dots = Array.prototype.slice.call(document.querySelectorAll('#pure-carousel-dots .pure-carousel-dot'));
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = slides.indexOf(entry.target);
+            dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+          }
+        });
+      }, { root: track, threshold: 0.6 });
+      slides.forEach(function (s) { observer.observe(s); });
+
+      window.pureCarouselGo = function (idx) {
+        if (slides[idx]) slides[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      };
+      window.pureCarouselNav = function (dir) {
+        var current = dots.findIndex(function (d) { return d.classList.contains('active'); });
+        if (current === -1) current = 0;
+        var next = Math.min(Math.max(current + dir, 0), slides.length - 1);
+        window.pureCarouselGo(next);
+      };
+    })();
+
+    function selectPureOption(btn) {
+      btn.parentElement.querySelectorAll('.pure-shop-option').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    }
+
+    function addPureShopSelection(triggerBtn) {
+      var active = document.querySelector('.pure-shop-option.active');
+      if (!active) return;
+      addPureToCart(active.dataset.name, active.dataset.price, active.dataset.img, triggerBtn);
+    }
+  </script>
+
+  <!-- ══════════════ FAQ / OBJECTIONS ══════════════ -->
+  <section id="pure-faq">
+    <div class="container">
+      <div class="faq-header">
+        <span class="faq-label">שאלות נפוצות</span>
+        <h2 class="faq-title">כל מה שרציתם לדעת לפני שמתחילים</h2>
+        <p class="faq-subtitle">התשובות לשאלות שהכי חשוב לענות עליהן — כדי שתתחילו את מסע הטיפול בראש שקט.</p>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>מתי במסע הטיפול כדאי להשתמש בקרם?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>הקרם הוא השלב המסכם — לאחר ניקוי עם הסבון וטיפול עם טיפות הפיור. הוא סוגר את התהליך ומעניק לעור הזנה ואיטום, לשמירה על התוצאה לאורך זמן.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>הקרם מתאים גם למקרים של סדקים עמוקים בעקבים?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כן, הנוסחה מיועדת במיוחד ליובש וסדקים קשים, כולל באזור העקב. לתוצאה הטובה ביותר מומלץ שימוש עקבי יומיומי.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>צריך להשתמש בו כל יום, או רק כשהעור יבש?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>לתוצאות מיטביות מומלץ שימוש יומיומי קבוע, גם כשהעור לא נראה יבש — זה שומר על גמישות ומונע היווצרות סדקים חדשים.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>הקרם משאיר תחושת שומן על העור?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>לא. המרקם נספג בהדרגה ומשאיר תחושת רכות, ללא שכבה דביקה או שומנית.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>אפשר להשתמש בו גם על ידיים, ולא רק על רגליים?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כן, הקרם מתאים גם לידיים עם יובש וסדקים ולא רק לרגליים.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>קניתי ולא מרוצה מהתוצאה — מה עושים?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>ניתן לבטל את העסקה בהתאם לתקנון האתר ולחוק הגנת הצרכן, עד 14 יום מקבלת המוצר. לכל שאלה או עזרה בבחירת המוצר הנכון עבורך, צוות Zora Clinic זמין ליצירת קשר ונשמח לסייע.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PRODUCT SPOTLIGHT (precision / trust) ══════════════ -->
+  <section id="pure-spotlight">
+    <div class="container pure-spotlight-inner">
+
+      <div class="pure-spotlight-text">
+        <h2 class="pure-spotlight-title">לא עוד קרם סתמי מהמדף</h2>
+        <p class="pure-spotlight-lead">קרם רגליים טיפולי Pure זה לא עוד לחות. זה השלב שסוגר את הטיפול ושומר על התוצאה — תרכובת עשירה, רכיבים ברורים, ותוצאה שאפשר לסמוך עליה.</p>
+
+        <div class="pure-spotlight-tabs">
+          <button type="button" class="pure-spotlight-tab active" data-tab="precision" onclick="setPureTab(this)">דיוק ושקיפות</button>
+          <button type="button" class="pure-spotlight-tab" data-tab="access" onclick="setPureTab(this)">נגישות</button>
+          <button type="button" class="pure-spotlight-tab" data-tab="experience" onclick="setPureTab(this)">חוויית שימוש</button>
+          <button type="button" class="pure-spotlight-tab" data-tab="control" onclick="setPureTab(this)">בקרה ופיקוח</button>
+        </div>
+
+        <div class="pure-spotlight-panel">
+          <ol class="pure-spotlight-list" data-panel="precision">
+            <li><span class="pure-spotlight-num">01</span><span>תרכובת עשירה מבוססת רכיבים טבעיים מוקפדים</span></li>
+            <li><span class="pure-spotlight-num">02</span><span>ריכוז גבוה המיועד ספציפית ליובש וסדקים קשים</span></li>
+            <li><span class="pure-spotlight-num">03</span><span>כל אצווה עוברת בדיקת מרקם וריכוז לפני האריזה</span></li>
+            <li><span class="pure-spotlight-num">04</span><span>הרכיבים מפורטים במלואם על גבי כל אריזה</span></li>
+          </ol>
+          <ol class="pure-spotlight-list" data-panel="access" hidden>
+            <li><span class="pure-spotlight-num">01</span><span>שפופרת נוחה לשימוש ולנשיאה בתיק או במזוודה</span></li>
+            <li><span class="pure-spotlight-num">02</span><span>מתאים לשימוש גם על ידיים וגם על רגליים</span></li>
+            <li><span class="pure-spotlight-num">03</span><span>הוראות שימוש פשוטות וברורות בעברית</span></li>
+            <li><span class="pure-spotlight-num">04</span><span>זמין לרכישה בנפרד או כחלק מערכת GO PURE</span></li>
+          </ol>
+          <ol class="pure-spotlight-list" data-panel="experience" hidden>
+            <li><span class="pure-spotlight-num">01</span><span>מרקם עשיר שנספג בהדרגה ומשאיר עור רך למגע</span></li>
+            <li><span class="pure-spotlight-num">02</span><span>לא משמין ולא משאיר סרט דביק על העור</span></li>
+            <li><span class="pure-spotlight-num">03</span><span>ריח נעים ועדין, מתאים לשימוש בכל שעה ביום</span></li>
+            <li><span class="pure-spotlight-num">04</span><span>תחושת רכות מורגשת כבר מהמריחות הראשונות</span></li>
+          </ol>
+          <ol class="pure-spotlight-list" data-panel="control" hidden>
+            <li><span class="pure-spotlight-num">01</span><span>כל אצווה מיוצרת ונבדקת בבקרת איכות קפדנית לפני האריזה</span></li>
+            <li><span class="pure-spotlight-num">02</span><span>הרכיבים נבחרים בקפידה ונרכשים מספקים מהימנים בלבד</span></li>
+            <li><span class="pure-spotlight-num">03</span><span>תהליך ייצור עקבי לשמירה על אותה איכות בכל שפופרת</span></li>
+            <li><span class="pure-spotlight-num">04</span><span>חלק מסדרת Pure של Zora Clinic — למעלה מ-30 שנות ניסיון</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="pure-spotlight-visual">
+        <div class="pure-spotlight-frame">
+          <img class="pure-spotlight-media" src="רכישה/קרם רגליים.png" alt="קרם רגליים טיפולי Pure ליובש וסדקים קשים" loading="lazy" />
+        </div>
+        <p class="pure-spotlight-define"><b>Seal</b> <span class="pure-spotlight-phon">[siːl]</span>, verb.<br>To close securely, to protect what's inside — the final step that locks results in place.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function setPureTab(btn) {
+      var tabs = btn.parentElement;
+      tabs.querySelectorAll('.pure-spotlight-tab').forEach(function (t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      var panel = btn.closest('.pure-spotlight-text').querySelector('.pure-spotlight-panel');
+      var target = btn.dataset.tab;
+      panel.querySelectorAll('.pure-spotlight-list').forEach(function (l) {
+        l.hidden = l.dataset.panel !== target;
+      });
+    }
+  </script>
+
+  <!-- ══════════════ JOURNEY ══════════════ -->
+  <section id="pure-journey">
+    <div class="container">
+      <div class="pure-journey-header">
+        <div class="pure-badge">שלב 3 בסדרת הטיפול</div>
+        <h2 class="pure-title" style="font-size: clamp(1.9rem, 3.5vw, 2.75rem);">קרם רגליים טיפולי</h2>
+        <p class="pure-subtitle">השלב המסכם — איטום, הזנה ושיקום סדקים קשים, לאחר הניקוי והטיפול.</p>
+      </div>
+
+      <div class="pure-step">
+        <div class="pure-step-img">
+          <div class="pure-shop-img"
+            data-name="קרם רגליים טיפולי"
+            data-price="99 ₪"
+            data-tag="Pure"
+            data-img="רכישה/קרם רגליים.png"
+            data-desc="קרם רגליים טיפולי ליובש וסדקים קשים.&lt;br&gt;&lt;br&gt;מבוסס על תרכובת טבעית ואיכותית המחזיר לעור גמישות, חיוניות ומראה בריא. מתאים לידיים ורגליים עם יובש וסדקים קשים. לשימוש יומיומי.">
+            <img src="רכישה/קרם רגליים.png" alt="קרם רגליים וידיים טיפולי" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
+            <button class="pure-add-chip" onclick="addPureToCart('קרם רגליים טיפולי', '99 ₪', 'רכישה/קרם רגליים.png', this)">🛒 הוסף לסל · 99 ₪</button>
+          </div>
+        </div>
+        <div class="pure-step-card">
+          <div class="pure-step-badge">3</div>
+          <h3 class="pure-step-title">איטום, הזנה ושיקום סדקים קשים</h3>
+          <p><strong>איך זה עובד:</strong> תרכובת טבעית ואיכותית המיועדת להזנה עמוקה של עור יבש וסדוק, המחזירה לעור את הגמישות, החיוניות ומראה בריא ונקי.</p>
+          <p><strong>התוצאה:</strong> מעטפת הגנה היקפית, עור רך וגמיש ושמירה על תוצאות הטיפול לאורך זמן.</p>
+          <div class="pure-step-usage"><strong>הנחיית שימוש:</strong> מריחה יומיומית עד לספיגה מלאה, כשלב אחרון בסדרת הטיפול.</div>
+        </div>
+      </div>
+
+      <div class="pure-journey-header" style="margin-top: 4rem;">
+        <div class="pure-badge">להשלים את המסע</div>
+        <h2 class="pure-title" style="font-size: clamp(1.6rem, 3vw, 2.1rem);">שני המוצרים שמובילים לשלב הזה</h2>
+      </div>
+
+      <div class="pure-step">
+        <div class="pure-step-card">
+          <div class="pure-step-badge">1</div>
+          <h3 class="pure-step-title">סבון מוס Pure</h3>
+          <p>ניקוי יסודי והכנת העור — הצעד הראשון במסע, לפני הטיפות.</p>
+          <a href="pure-soap.html" style="display:inline-block;margin-top:0.5rem;color:#5eead4;font-size:0.85rem;font-weight:500;">לדף המוצר ←</a>
+        </div>
+        <div class="pure-step-img">
+          <div class="pure-shop-img"
+            data-name="סבון מוס Pure"
+            data-price="89 ₪"
+            data-tag="Pure"
+            data-img="רכישה/סרום.png"
+            data-desc="סבון מוס להיגיינה של כף הרגל — נותן ניקוי יסודי ומסייע במניעת ריחות, זיעה ונגעים בעור. מתאים לשימוש יומיומי.">
+            <img src="רכישה/סרום.png" alt="סבון מוס Pure להיגיינה של כף הרגל" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
+            <button class="pure-add-chip" onclick="addPureToCart('סבון מוס Pure', '89 ₪', 'רכישה/סרום.png', this)">🛒 הוסף לסל · 89 ₪</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="pure-step">
+        <div class="pure-step-img">
+          <div class="pure-shop-img"
+            data-name="פיור Pure — טיפות נוזל"
+            data-price="120 ₪"
+            data-tag="Pure"
+            data-img="רכישה/פיור 2.png"
+            data-desc="טיפול בפטרת ציפורניים ואקזמות.&lt;br&gt;&lt;br&gt;תכשיר טבעי המורכב מתמציות טבעיות ומכיל 10 מ&quot;ל. לתכשיר יכולת חדירה עמוקה לתוך שורש ועומק הציפורן.">
+            <img src="רכישה/פיור 2.png" alt="פיור Pure — טיפות נוזל" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
+            <button class="pure-add-chip" onclick="addPureToCart('פיור Pure — טיפות נוזל', '120 ₪', 'רכישה/פיור 2.png', this)">🛒 הוסף לסל · 120 ₪</button>
+          </div>
+        </div>
+        <div class="pure-step-card">
+          <div class="pure-step-badge">2</div>
+          <h3 class="pure-step-title">פיור Pure — טיפות נוזל</h3>
+          <p>מוצר הדגל של Zora Clinic — הטיפול הפעיל בפטרת ציפורניים ואגזמות, לפני הקרם.</p>
+          <a href="pure-drops.html" style="display:inline-block;margin-top:0.5rem;color:#5eead4;font-size:0.85rem;font-weight:500;">לדף המוצר ←</a>
+        </div>
+      </div>
+
+      <!-- Outro / Kit CTA -->
+      <div class="pure-journey-outro">
+        <div class="pure-shop-img"
+          data-name="ערכת GO PURE"
+          data-price="249 ₪"
+          data-tag="ערכה"
+          data-img="רכישה/ערכה טיפולית.png"
+          data-desc="ערכה לטיפול מקסימלי ואפקטיבי — שילוב של שלושת מוצרי Pure:&lt;br&gt;&lt;strong&gt;טיפות Pure + סבון מוס + קרם רגליים טיפולי&lt;/strong&gt;&lt;br&gt;&lt;br&gt;יחד הם פועלים לניקוי יסודי, מניעת ריחות וזיעה, טיפול ביובש וסדקים, ותמיכה במניעת וטיפול בפטרת ואקזמות.&lt;br&gt;&lt;br&gt;&lt;strong&gt;תוצאות מהשימוש הראשון.&lt;/strong&gt;">
+          <img src="רכישה/ערכה טיפולית.png" alt="ערכת GO PURE — טיפות, סבון מוס וקרם רגליים" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
+          <button class="pure-add-chip" onclick="addPureToCart('ערכת GO PURE', '249 ₪', 'רכישה/ערכה טיפולית.png', this)">🛒 הוסף לסל · 249 ₪</button>
+        </div>
+        <h3>סיימתם את המסע — קבלו את שלושת המוצרים ביחד</h3>
+        <p>
+          השילוב של שלושת המוצרים יוצר פרוטוקול טיפול שלם: ניקוי, טיפול ממוקד ושיקום —
+          לטיפוח אינטנסיבי ותוצאות מקסימליות כבר מהשימוש הראשון.
+        </p>
+        <a href="index.html#treatments" class="btn btn-gold">לרכישת ערכת הטיפול המלאה</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var list = item.closest('.faq-list');
+      var answer = item.querySelector('.faq-a');
+      var wasOpen = item.classList.contains('open');
+      list.querySelectorAll('.faq-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-newsletter">
+        <div class="footer-newsletter-text">
+          <h4>הצטרפו לניוזלטר של ZORA</h4>
+          <p>טיפים לטיפוח שיער וקוד הנחה של 10% לרכישה הראשונה</p>
+        </div>
+        <div>
+          <form class="footer-newsletter-form" onsubmit="submitNewsletterForm(event, this)" novalidate>
+            <input type="email" placeholder="כתובת אימייל" required dir="ltr">
+            <button type="submit">הרשמה</button>
+          </form>
+          <p class="footer-newsletter-msg" style="display:none;"></p>
+        </div>
+      </div>
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <img src="brand_assets/logo.jpg" alt="ZORA" />
+          <p>ZORA by Zehavit Professional – מותג טיפוח שיער ייחודי המאמין ביופי אמיתי, בריאות ומקצוענות ללא פשרות.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>ניווט</h4>
+          <ul>
+            <li><a href="index.html#about">אודות</a></li>
+            <li><a href="index.html#treatments">טיפולים</a></li>
+            <li><a href="index.html#process">תהליך</a></li>
+            <li><a href="index.html#ingredients">מרכיבים</a></li>
+            <li><a href="index.html#testimonials">תוצאות</a></li>
+            <li><a href="index.html#shop">חנות</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>טיפולים</h4>
+          <ul>
+            <li><a href="index.html#treatments">ZORA Silk</a></li>
+            <li><a href="index.html#treatments">ZORA Hydra</a></li>
+            <li><a href="index.html#treatments">ZORA Repair</a></li>
+            <li><a href="index.html#cta">אבחון אישי חינם</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>צרו קשר</h4>
+          <ul>
+            <li><a href="tel:+972528434322">052-843-4322</a></li>
+            <li><a href="mailto:info@zora.co.il">info@zora.co.il</a></li>
+            <li><a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#">Facebook</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 ZORA by Zehavit Professional. כל הזכויות שמורות. · <a href="terms.html">תקנון האתר</a> · <a href="privacy.html">מדיניות פרטיות</a> · <a href="cookies.html">מדיניות עוגיות</a></span>
+        <div class="social-links">
+          <a href="https://www.instagram.com/zora__clinic/reel/DaAyFJYtpUD/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+          <a href="https://www.tiktok.com/@zora__clinic" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════ PRODUCT DETAIL MODAL ══════════════ -->
+  <div id="product-modal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" onclick="closeProductModal()"></div>
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeProductModal()" aria-label="סגור">✕</button>
+      <img id="modal-img" src="" alt="" />
+      <span class="modal-tag" id="modal-tag">Pure</span>
+      <h2 class="modal-name" id="modal-name">שם המוצר</h2>
+      <p class="modal-desc" id="modal-desc">תיאור המוצר</p>
+      <p class="modal-price gold-text" id="modal-price">מ-000 ₪</p>
+      <div class="modal-actions">
+        <button class="modal-buy-btn" onclick="addCurrentModalItemToCart()">לרכישה</button>
+        <button class="modal-contact-btn" onclick="closeProductModal()">חזרה</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CART PANEL ══════════════ -->
+  <div class="cart-panel-backdrop" id="cart-backdrop" onclick="toggleCart()"></div>
+  <div id="cart-panel" role="dialog" aria-label="עגלת קניות">
+    <div class="cart-header">
+      <h3>עגלת קניות</h3>
+      <button class="cart-close" onclick="toggleCart()" aria-label="סגור">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items-list">
+      <p class="cart-empty">העגלה שלך ריקה</p>
+    </div>
+    <div class="cart-footer">
+      <button class="cart-checkout-btn" onclick="goToCheckout()">לתשלום</button>
+    </div>
+  </div>
+
+  <!-- ══════════════ SCRIPTS ══════════════ -->
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Hamburger menu – top dropdown bar
+    let menuOpen = false;
+    function toggleMenu(btn) {
+      menuOpen = !menuOpen;
+      const links = document.querySelector('.nav-links');
+      const navbarEl = document.getElementById('navbar');
+      if (menuOpen) {
+        const navH = navbarEl.getBoundingClientRect().height;
+        links.style.cssText = `
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          position: fixed;
+          top: ${navH}px; left: 0; right: 0;
+          background: rgba(253,251,247,0.98);
+          backdrop-filter: blur(20px);
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem 1.5rem;
+          z-index: 998;
+          padding: 1.2rem 1.5rem 1.4rem;
+          box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+          border-top: 1px solid rgba(191,164,106,0.15);
+        `;
+        btn.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        btn.children[1].style.opacity = '0';
+        btn.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      } else {
+        links.style.cssText = '';
+        links.style.display = '';
+        btn.children[0].style.transform = '';
+        btn.children[1].style.opacity = '';
+        btn.children[2].style.transform = '';
+      }
+    }
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (menuOpen) {
+          const btn = document.querySelector('.hamburger');
+          toggleMenu(btn);
+        }
+      });
+    });
+
+    // ── Cart ─────────────────────────────────────────────
+    const cart = [];
+
+    // Fires only if the visitor already accepted cookies (fbq/gtag loaded then)
+    function trackAddToCart(item) {
+      if (typeof fbq === 'function') fbq('track', 'AddToCart', { content_name: item.name, content_type: 'product' });
+      if (typeof gtag === 'function') gtag('event', 'add_to_cart', { items: [{ item_name: item.name }] });
+      if (typeof clarity === 'function') clarity('event', 'add_to_cart');
+    }
+
+    function trackInitiateCheckout() {
+      if (typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+      if (typeof gtag === 'function') gtag('event', 'begin_checkout');
+      if (typeof clarity === 'function') clarity('event', 'begin_checkout');
+    }
+
+    function addPureToCart(name, price, img, chipBtn) {
+      const item = { name, price, img, id: Date.now() };
+      cart.push(item);
+      trackAddToCart(item);
+      updateCartUI();
+      if (cart.length === 1) setTimeout(maybeShowCartPopup, 2500);
+
+      const cartBtn = document.querySelector('.cart-btn');
+      cartBtn.classList.remove('cart-pulse');
+      void cartBtn.offsetWidth; // restart animation
+      cartBtn.classList.add('cart-pulse');
+
+      if (chipBtn) {
+        const original = chipBtn.textContent;
+        chipBtn.textContent = '✓ נוסף לסל';
+        chipBtn.disabled = true;
+        setTimeout(() => {
+          chipBtn.textContent = original;
+          chipBtn.disabled = false;
+        }, 1200);
+      }
+    }
+
+    function updateCartUI() {
+      const badge = document.getElementById('cart-badge');
+      badge.textContent = cart.length;
+      badge.style.display = cart.length > 0 ? 'flex' : 'none';
+      renderCartItems();
+    }
+
+    function renderCartItems() {
+      const list = document.getElementById('cart-items-list');
+      if (cart.length === 0) {
+        list.innerHTML = '<p class="cart-empty">העגלה שלך ריקה</p>';
+        return;
+      }
+      list.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${item.price}</div>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${item.id})" aria-label="הסר">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function removeFromCart(id) {
+      const idx = cart.findIndex(i => i.id === id);
+      if (idx > -1) cart.splice(idx, 1);
+      updateCartUI();
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('open');
+      document.getElementById('cart-backdrop').classList.toggle('open');
+    }
+
+    function startCheckout(payUrl) {
+      try {
+        sessionStorage.setItem('zora_checkout_next', payUrl);
+        sessionStorage.setItem('zora_checkout_items', JSON.stringify(cart.map(i => i.name)));
+      } catch (e) {}
+      window.location.href = 'checkout-info.html';
+    }
+
+    function goToCheckout() {
+      trackInitiateCheckout();
+      const hasPureDrops = cart.some(item => item.name === 'פיור Pure — טיפות נוזל');
+      const hasFoamSoap = cart.some(item => item.name === 'סבון מוס Pure');
+      const hasLegCream = cart.some(item => item.name === 'קרם רגליים טיפולי');
+      const hasKit = cart.some(item => item.name === 'ערכת GO PURE');
+      if (hasKit || (hasPureDrops && hasFoamSoap && hasLegCream)) {
+        startCheckout('https://pay.grow.link/MTA0Mzcz~7372162f344f16e6761c256d351ee070-MzgyNTc5OQ');
+        return;
+      }
+      if (hasPureDrops && hasFoamSoap) {
+        startCheckout('https://pay.grow.link/MTA0Mzcz~976d64fd282d61bc4371509f6e08a15d-MzgyNTcwMQ');
+        return;
+      }
+      if (hasPureDrops) {
+        startCheckout('https://pay.grow.link/MTA0Mzcz~9ce213970e48336fe4613941e40d6527-MzgyNTQ0OA');
+        return;
+      }
+      if (hasFoamSoap) {
+        startCheckout('https://pay.grow.link/MTA0Mzcz~818c739521671df95edc753a39c5a652-MzgyNTQ5OQ');
+        return;
+      }
+      if (hasLegCream) {
+        startCheckout('https://pay.grow.link/MTA0Mzcz~ff314569284af537c727d1b6d093a2a8-MzgyNTgyNA');
+        return;
+      }
+      window.location.href = 'index.html#cta';
+    }
+
+    // ── Product Detail Modal ────────────────────────────
+    let currentModalItem = null;
+
+    function openPureProductModal(el) {
+      const item = {
+        name: el.dataset.name,
+        price: el.dataset.price,
+        tag: el.dataset.tag,
+        desc: el.dataset.desc,
+        img: el.dataset.img
+      };
+      openProductModal(item);
+    }
+
+    function openProductModal(item) {
+      currentModalItem = item;
+      document.getElementById('modal-img').src = item.img;
+      document.getElementById('modal-img').alt = item.name;
+      document.getElementById('modal-img').style.display = 'block';
+      document.getElementById('modal-tag').textContent = item.tag;
+      document.getElementById('modal-name').textContent = item.name;
+      document.getElementById('modal-desc').innerHTML = item.desc;
+      document.getElementById('modal-price').textContent = item.price;
+      document.getElementById('product-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function addCurrentModalItemToCart() {
+      if (!currentModalItem) return;
+      addPureToCart(currentModalItem.name, currentModalItem.price, currentModalItem.img);
+      closeProductModal();
+      goToCheckout();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeProductModal();
+    });
+  </script>
+
+  <!-- ══════════════ COOKIE CONSENT BANNER ══════════════ -->
+  <style>
+    .cookie-consent {
+      position: fixed;
+      inset-inline: 0;
+      bottom: 0;
+      z-index: 99999;
+      background: #1C1A17;
+      border-top: 1px solid rgba(191,164,106,0.4);
+      padding: 1.1rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .cookie-consent.visible { transform: translateY(0); }
+    .cookie-consent-inner {
+      max-width: 1200px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .cookie-consent-text {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: #E8E4DB;
+      flex: 1 1 320px;
+    }
+    .cookie-consent-text a { color: #D4B97A; text-decoration: underline; }
+    .cookie-consent-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .cookie-btn {
+      font-family: inherit;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: all 0.25s;
+      border: 1px solid rgba(191,164,106,0.5);
+      white-space: nowrap;
+    }
+    .cookie-btn-decline {
+      background: transparent;
+      color: #D4B97A;
+    }
+    .cookie-btn-decline:hover { background: rgba(191,164,106,0.12); }
+    .cookie-btn-accept {
+      background: linear-gradient(135deg, #D4B97A, #BFA46A);
+      color: #1C1A17;
+      font-weight: 600;
+      border-color: transparent;
+    }
+    .cookie-btn-accept:hover { filter: brightness(1.08); }
+    @media (max-width: 640px) {
+      .cookie-consent-inner { flex-direction: column; align-items: stretch; text-align: center; }
+      .cookie-consent-text { flex: none; }
+      .cookie-consent-text { flex: 0 1 auto; }
+      .cookie-consent-actions { justify-content: center; }
+    }
+  </style>
+  <div class="cookie-consent" id="cookie-consent-banner" role="dialog" aria-label="הסכמה לשימוש בעוגיות">
+    <div class="cookie-consent-inner">
+      <p class="cookie-consent-text">
+        אתר ZORA משתמש בעוגיות (Cookies) לצורך תפעול האתר, ניתוח שימוש והתאמת פרסום. עוגיות אנליטיקה ושיווק ייטענו רק לאחר אישורך. לפרטים ראו את <a href="cookies.html">מדיניות העוגיות</a> שלנו.
+      </p>
+      <div class="cookie-consent-actions">
+        <button type="button" class="cookie-btn cookie-btn-decline" onclick="window.zoraCookieDecline()">רק הכרחיים</button>
+        <button type="button" class="cookie-btn cookie-btn-accept" onclick="window.zoraCookieAccept()">מאשר/ת הכל</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <div id="zora-exit-popup" role="dialog" aria-modal="true" aria-labelledby="zora-exit-title">
+    <div class="zora-exit-backdrop" onclick="document.getElementById('zora-exit-popup').classList.remove('open')"></div>
+    <div class="zora-exit-box">
+      <button class="zora-exit-close" onclick="document.getElementById('zora-exit-popup').classList.remove('open')" aria-label="סגור">✕</button>
+      <p class="zora-exit-label">רגע לפני שהולכים</p>
+      <h2 class="zora-exit-title" id="zora-exit-title">10% הנחה על הרכישה הראשונה</h2>
+      <p class="zora-exit-subtitle">הצטרפו לניוזלטר של ZORA וקבלו קוד הנחה, טיפים לטיפוח שיער ועדכונים על מוצרים חדשים.</p>
+      <form onsubmit="submitNewsletterForm(event, this)" novalidate>
+        <input type="email" placeholder="כתובת אימייל" required dir="ltr">
+        <button type="submit">קבלו את ההנחה</button>
+      </form>
+      <p class="zora-exit-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <div id="zora-cart-popup" role="dialog" aria-modal="true" aria-labelledby="zora-cart-title">
+    <div class="zora-exit-backdrop" onclick="document.getElementById('zora-cart-popup').classList.remove('open')"></div>
+    <div class="zora-exit-box">
+      <button class="zora-exit-close" onclick="document.getElementById('zora-cart-popup').classList.remove('open')" aria-label="סגור">✕</button>
+      <p class="zora-exit-label">לפני שממשיכים</p>
+      <h2 class="zora-exit-title" id="zora-cart-title">נשמור לכם את העגלה</h2>
+      <p class="zora-exit-subtitle">השאירו אימייל ואם תצטרכו לרדת מהאתר – נזכיר לכם על המוצרים שחיכו לכם בעגלה, ונשלח קוד הנחה של 10%.</p>
+      <form data-ctx="cart" onsubmit="submitNewsletterForm(event, this)" novalidate>
+        <input type="email" placeholder="כתובת אימייל" required dir="ltr">
+        <button type="submit">שמרו לי את העגלה</button>
+      </form>
+      <p class="zora-exit-msg" style="display:none;"></p>
+    </div>
+  </div>
+
+  <script>
+    // ── Newsletter signup (footer form / exit popup / cart popup) ─────────
+    async function submitNewsletterForm(e, form) {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      const email = emailInput.value.trim();
+      const msg = form.parentElement.querySelector('.footer-newsletter-msg, .zora-exit-msg');
+      const btn = form.querySelector('button');
+      if (!email) return;
+
+      btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = 'שולחת...';
+
+      const isCart = form.dataset.ctx === 'cart';
+      const payload = { email, type: isCart ? 'cart_capture' : 'newsletter', source: 'website' };
+      if (isCart && typeof cart !== 'undefined') payload.products = cart.map(i => i.name);
+
+      try {
+        await fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          mode: 'no-cors'
+        });
+        if (msg) {
+          msg.textContent = isCart ? 'מעולה! נשמור לכם את העגלה ונעדכן אתכם.' : 'תודה! נרשמתם בהצלחה לניוזלטר.';
+          msg.className = msg.className.replace('error', '').trim() + ' success';
+          msg.style.display = '';
+        }
+        form.reset();
+        localStorage.setItem('zora_newsletter_subscribed', '1');
+        localStorage.setItem('zora_user_email', email);
+        if (typeof clarity === 'function') clarity('event', isCart ? 'cart_email_captured' : 'newsletter_signup');
+        setTimeout(() => {
+          const popup = form.closest('#zora-exit-popup, #zora-cart-popup');
+          if (popup) popup.classList.remove('open');
+        }, 1400);
+      } catch (err) {
+        if (msg) {
+          msg.textContent = 'משהו השתבש, נסו שוב מאוחר יותר.';
+          msg.className = msg.className.replace('success', '').trim() + ' error';
+          msg.style.display = '';
+        }
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    }
+
+    // ── Cart-abandonment email capture ────────────────────────
+    function maybeShowCartPopup() {
+      const knownEmail = localStorage.getItem('zora_user_email');
+      if (knownEmail) {
+        reportCartCapture(knownEmail);
+        return;
+      }
+      if (sessionStorage.getItem('zora_cart_popup_shown')) return;
+      if (document.getElementById('zora-exit-popup')?.classList.contains('open')) return;
+      sessionStorage.setItem('zora_cart_popup_shown', '1');
+      const popup = document.getElementById('zora-cart-popup');
+      if (popup) popup.classList.add('open');
+    }
+
+    function reportCartCapture(email) {
+      if (typeof cart === 'undefined') return;
+      fetch('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, type: 'cart_capture', source: 'website', products: cart.map(i => i.name) }),
+        mode: 'no-cors'
+      }).catch(() => {});
+    }
+
+    // Send the final cart snapshot right as the visitor leaves, so the
+    // reminder email reflects everything they added, not just the first item.
+    window.addEventListener('pagehide', function() {
+      const knownEmail = localStorage.getItem('zora_user_email');
+      if (!knownEmail || typeof cart === 'undefined' || cart.length === 0) return;
+      const payload = JSON.stringify({ email: knownEmail, type: 'cart_capture', source: 'website', products: cart.map(i => i.name) });
+      navigator.sendBeacon('https://script.google.com/macros/s/AKfycbyMJoHYsF0V3TrcIrSzN2h76e1EveTEtZhSsE3Vpliyn5vlWF93yBZwIuEqaCXm3og6Cw/exec', new Blob([payload], { type: 'text/plain' }));
+    });
+
+    // ── Exit-intent popup trigger ─────────────────────────────
+    (function() {
+      var COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
+      function shouldShow() {
+        if (localStorage.getItem('zora_newsletter_subscribed')) return false;
+        if (sessionStorage.getItem('zora_exit_popup_shown')) return false;
+        if (document.getElementById('zora-cart-popup')?.classList.contains('open')) return false;
+        var last = localStorage.getItem('zora_exit_popup_last_shown');
+        if (last && (Date.now() - Number(last)) < COOLDOWN_MS) return false;
+        return true;
+      }
+      function trigger() {
+        if (!shouldShow()) return;
+        sessionStorage.setItem('zora_exit_popup_shown', '1');
+        localStorage.setItem('zora_exit_popup_last_shown', String(Date.now()));
+        var popup = document.getElementById('zora-exit-popup');
+        if (popup) popup.classList.add('open');
+      }
+      document.addEventListener('mouseout', function(e) {
+        if (e.clientY <= 0 && !e.relatedTarget) trigger();
+      });
+      var isTouch = matchMedia('(pointer: coarse)').matches;
+      if (isTouch) {
+        var footerEl = document.querySelector('footer');
+        if (footerEl && 'IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) trigger();
+            });
+          }, { threshold: 0.2 });
+          io.observe(footerEl);
+        }
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          var exitPopup = document.getElementById('zora-exit-popup');
+          if (exitPopup) exitPopup.classList.remove('open');
+          var cartPopup = document.getElementById('zora-cart-popup');
+          if (cartPopup) cartPopup.classList.remove('open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

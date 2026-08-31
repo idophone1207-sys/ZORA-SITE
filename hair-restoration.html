@@ -859,6 +859,48 @@
     .zora-exit-msg { font-size: 0.8rem; margin-top: 0.4rem; }
     .zora-exit-msg.success { color: #2f7a3d; }
     .zora-exit-msg.error { color: #b3392c; }
+
+    /* ─── FAQ / Objections ──────────────────────────────── */
+    #hr-faq { padding-block: 6rem; }
+    .faq-list { max-width: 760px; margin-inline: auto; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.5rem 0.25rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: right;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      transition: color 0.25s;
+    }
+    .faq-q:hover { color: var(--gold-1); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--gold-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-1);
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    .faq-item.open .faq-q { color: var(--gold-1); }
+    .faq-item.open .faq-icon { background: var(--gold-1); color: var(--white); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
+    .faq-item.open .faq-a { opacity: 1; }
+    .faq-a p { padding: 0 0.25rem 1.5rem; color: var(--mid); font-size: 0.92rem; line-height: 1.8; max-width: 640px; }
   </style>
 </head>
 <body>
@@ -1119,6 +1161,120 @@
       </div>
     </div>
   </section>
+
+  <!-- ══════════════ FAQ / OBJECTIONS ══════════════ -->
+  <section id="hr-faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">שאלות נפוצות</span>
+        <span class="gold-line"></span>
+        <h2 class="section-title" style="font-size: clamp(1.9rem, 3.5vw, 2.75rem);">כל מה שרציתם לדעת לפני שקובעים תור</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>מתי רואים תוצאות בצמיחת שיער?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>שיער צומח בהדרגה, ולכן גם התהליך טבעי ומצטבר. שיפור ראשוני בחוזק ובאיכות השיער ניתן להבחין כבר בשבועות הראשונים, וצפיפות נראית לעין מתפתחת בדרך כלל תוך כמה חודשים של טיפול עקבי, בהתאם למצב האישי שנקבע באבחון.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>האם הטיפול מתאים לנשירה גנטית או הורמונלית, ולא רק לנשירה זמנית?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כן. שיטת ZORA מטפלת במגוון רחב של סוגי נשירה, כולל נשירה גנטית, הורמונלית ונשירה לאחר לידה. באבחון המקצועי עם צילום זקיקים נבין את הגורם הספציפי אצלך ונבנה תוכנית טיפול מותאמת.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>האם הטיפול כואב או פולשני?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>לא. הטיפול מבוצע באמצעות טכנולוגיה עדינה לפתיחת הקרקפת והחדרת הפורמולה הפעילה, ללא זריקות וללא ניתוח. לקוחות רבים מתארים אותו כחוויה נעימה ומרגיעה.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>כמה טיפולים צריך, ובאיזו תדירות?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>מספר הטיפולים והתדירות נקבעים אישית לפי מצב הקרקפת והזקיקים שיאובחן בפגישה הראשונה. בדרך כלל מדובר בסדרת טיפולים תקופתית, לצד שגרת טיפוח יומיומית בבית עם מוצרי ZORA — שמפו, אמפולות ובושם.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>הטיפול מתאים גם לגברים וגם לנשים?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כן, שיטת ZORA מתאימה לגברים ולנשים כאחד, ולכל שלב בחיים — כולל נשירה לאחר לידה, נשירה הורמונלית ונשירה הקשורה לגיל.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>יש תופעות לוואי לטיפול?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>הטיפול מבוסס על גישה טבעית והוליסטית עם רכיבים מזינים, ולכן תופעות לוואי נדירות. בפגישת האבחון נבדוק את הרקע האישי שלך ונעדכן אם יש נקודות תשומת לב ספציפיות.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>התוצאות נשארות לתמיד, או שצריך טיפולי תחזוקה?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כדי לשמור על צפיפות ובריאות השיער לאורך זמן מומלץ לשלב טיפולי תחזוקה תקופתיים יחד עם שגרת טיפוח יומיומית בבית. נבנה יחד תוכנית שמתאימה לקצב ולתקציב שלך.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>כמה עולה תהליך הטיפול המלא?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>העלות משתנה בהתאם להיקף הנשירה ולתוכנית הטיפול שתיבנה עבורך. פגישת האבחון הראשונה כוללת הערכה מדויקת ותמחור שקוף לפני שמתחילים.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var list = item.closest('.faq-list');
+      var answer = item.querySelector('.faq-a');
+      var wasOpen = item.classList.contains('open');
+      list.querySelectorAll('.faq-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer>

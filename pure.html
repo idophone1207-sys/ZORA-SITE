@@ -75,8 +75,8 @@
   })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>פיור Pure — טיפות פלא לציפורניים | ZORA</title>
-  <meta name="description" content="פיור Pure — נוסחה טבעית ועוצמתית לטיפול בפטרת, אקזמות וציפורן חודרנית, עם חדירה עמוקה לשורש הציפורן." />
+  <title>סדרת Zora Pure — טיפול בפטרת, אגזמות וציפורן חודרנית | ZORA</title>
+  <meta name="description" content="סדרת Zora Pure — שלושה מוצרים טבעיים משלימים לטיפול בפטרת, אגזמות וציפורן חודרנית: סבון מוס, טיפות ריכוז וקרם רגליים טיפולי." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://zora.clinic/pure.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1006,6 +1006,156 @@
     .zora-exit-msg { font-size: 0.8rem; margin-top: 0.4rem; }
     .zora-exit-msg.success { color: #2f7a3d; }
     .zora-exit-msg.error { color: #b3392c; }
+
+    /* ─── FAQ / Objections ──────────────────────────────── */
+    #pure-faq { padding-block: 6rem; }
+    .faq-list { max-width: 760px; margin-inline: auto; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.5rem 0.25rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: right;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      transition: color 0.25s;
+    }
+    .faq-q:hover { color: var(--gold-1); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--gold-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-1);
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    .faq-item.open .faq-q { color: var(--gold-1); }
+    .faq-item.open .faq-icon { background: var(--gold-1); color: var(--white); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
+    .faq-item.open .faq-a { opacity: 1; }
+    .faq-a p { padding: 0 0.25rem 1.5rem; color: var(--mid); font-size: 0.92rem; line-height: 1.8; max-width: 640px; }
+    .faq-header { text-align: center; margin-bottom: 3.5rem; }
+    .faq-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-1);
+      margin-bottom: 1.25rem;
+    }
+    .faq-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .faq-subtitle { font-size: 1rem; color: var(--mid); max-width: 40rem; margin-inline: auto; line-height: 1.7; }
+
+    /* ─── Product Spotlight (precision / trust) ──────────── */
+    #pure-spotlight { background: #0f172a; color: #fff; padding-block: clamp(4rem, 7vw, 6rem); }
+    .pure-spotlight-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3.5rem; align-items: center; }
+    @media (max-width: 768px) {
+      .pure-spotlight-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pure-spotlight-visual { order: -1; }
+    }
+    .pure-spotlight-title { font-family: var(--font-serif); font-size: clamp(1.9rem, 3.5vw, 2.75rem); font-weight: 400; line-height: 1.25; margin-bottom: 1rem; }
+    .pure-spotlight-lead { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2.25rem; max-width: 34rem; }
+    .pure-spotlight-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .pure-spotlight-tab {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.9rem 1rem;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+    .pure-spotlight-tab:hover { border-color: rgba(94,234,212,0.5); color: #fff; }
+    .pure-spotlight-tab.active { background: #fff; color: #0f172a; border-color: #fff; }
+    .pure-spotlight-panel { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 1.5rem; min-height: 9.5rem; }
+    .pure-spotlight-list { display: flex; flex-direction: column; gap: 1.1rem; }
+    .pure-spotlight-list[hidden] { display: none; }
+    .pure-spotlight-list li { display: flex; align-items: baseline; gap: 1rem; font-size: 0.95rem; line-height: 1.6; color: rgba(255,255,255,0.85); }
+    .pure-spotlight-num { flex-shrink: 0; font-family: var(--font-serif); font-size: 0.85rem; color: #5eead4; min-width: 1.75rem; }
+    .pure-spotlight-visual { position: relative; text-align: center; }
+    .pure-spotlight-frame {
+      position: relative;
+      max-width: 300px;
+      margin-inline: auto;
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      background: radial-gradient(circle at 50% 30%, rgba(45,212,191,0.18), transparent 70%);
+    }
+    .pure-spotlight-media { width: 100%; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); animation: pureFloat 5s ease-in-out infinite; }
+    @keyframes pureFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .pure-spotlight-badge {
+      position: absolute;
+      top: 0.75rem;
+      inset-inline-end: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: #5eead4;
+      border: 1px solid rgba(94,234,212,0.4);
+      border-radius: 9999px;
+      padding: 0.3rem 0.75rem;
+      background: rgba(15,23,42,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .pure-spotlight-define { margin-top: 2rem; font-family: var(--font-serif); font-style: italic; font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.6); direction: ltr; text-align: center; }
+    .pure-spotlight-define b { color: #fff; font-weight: 400; font-size: 1.2rem; font-style: normal; }
+    .pure-spotlight-phon { color: #5eead4; font-size: 0.8rem; }
+
+    /* ─── Product Picker (shop the collection) ──────────── */
+    #pure-picker { background: #0f172a; padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid rgba(255,255,255,0.08); }
+    .pure-picker-header { text-align: center; margin-bottom: 3rem; }
+    .pure-picker-label { display: inline-block; font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: #5eead4; margin-bottom: 1rem; }
+    .pure-picker-title { font-family: var(--font-serif); font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 400; color: #fff; margin-bottom: 0.75rem; }
+    .pure-picker-subtitle { color: rgba(255,255,255,0.65); max-width: 34rem; margin-inline: auto; line-height: 1.7; font-size: 0.95rem; }
+    .pure-picker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 900px) { .pure-picker-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; } }
+    .pure-picker-card {
+      display: block;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .pure-picker-card:hover { border-color: rgba(94,234,212,0.5); transform: translateY(-4px); }
+    .pure-picker-card-flagship { border-color: rgba(94,234,212,0.4); background: rgba(45,212,191,0.06); }
+    .pure-picker-img { background: #fff; padding: 1.5rem; }
+    .pure-picker-img img { max-height: 160px; margin-inline: auto; }
+    .pure-picker-body { padding: 1.5rem 1.25rem 1.75rem; }
+    .pure-picker-step { display: block; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: #5eead4; margin-bottom: 0.6rem; }
+    .pure-picker-body h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.5rem; }
+    .pure-picker-body p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1rem; min-height: 2.6em; }
+    .pure-picker-cta { font-family: var(--font-sans); font-size: 0.8rem; color: #5eead4; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -1052,34 +1202,78 @@
     </div>
 
     <div class="pure-hero-content">
-      <div class="pure-badge">מוצר הדגל המוביל של Zora Clinic • כבר למעלה מ-30 שנה</div>
+      <div class="pure-badge">סדרת הטיפול של Zora Clinic • כבר למעלה מ-30 שנה</div>
 
       <h1 class="pure-title">סדרת Zora Pure</h1>
 
       <p class="pure-subtitle">
-        שיטת טיפול בפטרת, אגזמות, ציפורן חודרנית וכל נגע בגוף בנוסחה 100% מהטבע.
+        שיטת טיפול בפטרת, אגזמות, ציפורן חודרנית וכל נגע בגוף — בשלושה מוצרים משלימים, בנוסחה 100% מהטבע.
       </p>
 
       <div class="pure-grid">
 
         <div class="pure-card">
-          <div class="pure-card-icon">🧪</div>
-          <h3>חדירה עמוקה ושיקום</h3>
-          <p>מגיע לעומק שורש הציפורן, משקם תאים ורקמות פגועות, קוטל נגיפים ומאיץ צמיחת ציפורן חדשה ובריאה.</p>
+          <div class="pure-card-icon">🌿</div>
+          <h3>100% מהטבע</h3>
+          <p>כל מוצר בסדרה מבוסס תמציות ורכיבים טבעיים, ללא פשרות על האיכות או השקיפות.</p>
         </div>
 
         <div class="pure-card">
-          <div class="pure-card-icon">🛡️</div>
-          <h3>טיפול ומניעה רחבה</h3>
-          <p>מתאים לכל סוגי הפטרת ופטרת כף הרגל. משמש הגנה מונעת במניקור/בנייה ולשימוש אחרי בריכה ומקלחות ציבוריות.</p>
+          <div class="pure-card-icon">🔄</div>
+          <h3>שלושה שלבים משלימים</h3>
+          <p>ניקוי, טיפול ושיקום — כל מוצר בסדרה ממלא תפקיד מדויק במסע טיפול אחד שלם.</p>
         </div>
 
         <div class="pure-card pure-card-usage">
-          <div class="pure-card-icon pure-card-icon-alt">💧</div>
-          <h3>הוראות שימוש</h3>
-          <p>פעמיים ביום על ציפורן נקייה ויבשה: לטפטף <strong>2 טיפות</strong> ישירות על המקום הנגוע.</p>
-          <div class="pure-card-note">תכולה: 10 מ"ל • תכשיר טבעי מרוכז</div>
+          <div class="pure-card-icon pure-card-icon-alt">🏅</div>
+          <h3>למעלה מ-30 שנות ניסיון</h3>
+          <p>מוצר הדגל של Zora Clinic, מפותח ומשופר לאורך שנים של ניסיון קליני.</p>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ PRODUCT PICKER (shop the collection) ══════════════ -->
+  <section id="pure-picker">
+    <div class="container">
+      <div class="pure-picker-header">
+        <span class="pure-picker-label">סדרת הטיפול</span>
+        <h2 class="pure-picker-title">שלושה מוצרים, כל אחד בדף משלו</h2>
+        <p class="pure-picker-subtitle">לחצו על כל מוצר כדי להכיר אותו לעומק — הרכיבים, ההוראות, והשאלות שהכי חשוב לענות עליהן לפני שמתחילים.</p>
+      </div>
+
+      <div class="pure-picker-grid">
+
+        <a class="pure-picker-card" href="pure-soap.html">
+          <div class="pure-picker-img"><img src="רכישה/סרום.png" alt="סבון מוס Pure" loading="lazy" /></div>
+          <div class="pure-picker-body">
+            <span class="pure-picker-step">שלב 1</span>
+            <h3>סבון מוס Pure</h3>
+            <p>ניקוי יסודי והכנת העור לפני הטיפול</p>
+            <span class="pure-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
+
+        <a class="pure-picker-card pure-picker-card-flagship" href="pure-drops.html">
+          <div class="pure-picker-img"><img src="רכישה/פיור 2.png" alt="פיור Pure — טיפות נוזל" loading="lazy" /></div>
+          <div class="pure-picker-body">
+            <span class="pure-picker-step">שלב 2 · מוצר הדגל</span>
+            <h3>פיור Pure — טיפות נוזל</h3>
+            <p>הטיפול הפעיל בפטרת ציפורניים ואגזמות</p>
+            <span class="pure-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
+
+        <a class="pure-picker-card" href="pure-foot-cream.html">
+          <div class="pure-picker-img"><img src="רכישה/קרם רגליים.png" alt="קרם רגליים טיפולי" loading="lazy" /></div>
+          <div class="pure-picker-body">
+            <span class="pure-picker-step">שלב 3</span>
+            <h3>קרם רגליים טיפולי</h3>
+            <p>איטום, הזנה ושיקום סדקים קשים</p>
+            <span class="pure-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -1089,78 +1283,9 @@
   <section id="pure-journey">
     <div class="container">
       <div class="pure-journey-header">
-        <div class="pure-badge">מסע הטיפול</div>
-        <h2 class="pure-title" style="font-size: clamp(1.9rem, 3.5vw, 2.75rem);">שלושה שלבים, מסע טיפול אחד</h2>
-        <p class="pure-subtitle">כל מוצר בסדרת Pure ממלא תפקיד מדויק במסע — מהניקוי ועד השיקום.</p>
-      </div>
-
-      <!-- שלב 1 -->
-      <div class="pure-step">
-        <div class="pure-step-img">
-          <div class="pure-shop-img"
-            data-name="סבון מוס Pure"
-            data-price="89 ₪"
-            data-tag="Pure"
-            data-img="רכישה/סרום.png"
-            data-desc="סבון מוס להיגיינה של כף הרגל — נותן ניקוי יסודי ומסייע במניעת ריחות, זיעה ונגעים בעור. מתאים לשימוש יומיומי.&lt;br&gt;&lt;br&gt;&lt;strong&gt;לתוצאות מרביות:&lt;/strong&gt; ניתן להשתמש לפני טיפות הפיור.">
-            <img src="רכישה/סרום.png" alt="סבון מוס Pure להיגיינה של כף הרגל" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
-            <button class="pure-add-chip" onclick="addPureToCart('סבון מוס Pure', '89 ₪', 'רכישה/סרום.png', this)">🛒 הוסף לסל · 89 ₪</button>
-          </div>
-        </div>
-        <div class="pure-step-card">
-          <div class="pure-step-badge">1</div>
-          <h3 class="pure-step-title">ניקוי יסודי והכנת העור</h3>
-          <div class="pure-step-product">המוצר במסע: סבון מוס Pure להיגיינה של כף הרגל</div>
-          <p><strong>איך זה עובד במסע:</strong> הצעד הראשון מתחיל בהכנת השטח. הסבון מעניק ניקוי יסודי של העור, מנקה משקעים ומסייע באופן פעיל במניעת ריחות לא נעימים, זיעה ונגעים בעור.</p>
-          <p><strong>התוצאה:</strong> עור נקי, רענן ומוכן לקליטה מרבית של חומרי הטיפול הפעילים.</p>
-          <div class="pure-step-usage"><strong>הנחיית שימוש:</strong> לשימוש יומיומי. מומלץ לשימוש כשלב ראשון לפני טיפטוף טיפות הפיור לתוצאות מרביות.</div>
-        </div>
-      </div>
-
-      <!-- שלב 2 -->
-      <div class="pure-step">
-        <div class="pure-step-card">
-          <div class="pure-step-badge">2</div>
-          <h3 class="pure-step-title">חדירה עמוקה וטיהור היסודות</h3>
-          <div class="pure-step-product">המוצר במסע: פיור Pure — טיפות נוזל (10 מ"ל) • מוצר הדגל של Zora Clinic למעלה מ-30 שנה</div>
-          <p><strong>איך זה עובד במסע:</strong> לאחר שהעור נקי, הטיפות בעלות כושר החדירה העמוק מגיעות היישר לשורש הציפורן והרקמות. הנוסחה קוטלת נגיפים ופטריות, פולטת רעלים, מטפלת בציפורן חודרנית ומאיצה צמיחה של ציפורן חדשה.</p>
-          <p><strong>התוצאה:</strong> חיטוי עוצמתי, שיקום תאים ורקמות פגועות ועידוד התחדשות הציפורן.</p>
-          <div class="pure-step-usage"><strong>הנחיית שימוש:</strong> 2 טיפות פעמיים ביום על ציפורן נקייה ויבשה ישירות על המקום הנגוע.</div>
-        </div>
-        <div class="pure-step-img">
-          <div class="pure-shop-img"
-            data-name="פיור Pure — טיפות נוזל"
-            data-price="120 ₪"
-            data-tag="Pure"
-            data-img="רכישה/פיור 2.png"
-            data-desc="טיפול בפטרת ציפורניים ואקזמות.&lt;br&gt;&lt;br&gt;תכשיר טבעי המורכב מתמציות טבעיות ומכיל 10 מ&quot;ל. לתכשיר יכולת חדירה עמוקה לתוך שורש ועומק הציפורן. מצוין בטיפול ציפורן חודרנית. משקם תאים ורקמות. פולט רעלים, קוטל נגיפים, אנטי פטריות, מאיץ חידוש ומעודד צמיחה של ציפורן חדשה. בעל כושר חיטוי חזק.&lt;br&gt;&lt;br&gt;הטיפול מתאים לכל סוגי הפטרת וגם לפטרת כף הרגל. משמש טיפול מונע למניקור ובניית ציפורניים.&lt;br&gt;&lt;br&gt;&lt;strong&gt;מומלץ לשימוש לכל אחד:&lt;/strong&gt; לחיטוי והברקת ציפורניים בידיים וברגליים, לאחר רחצה בבריכה ומקלחות ציבוריות, למניעת פטרת עתידית.&lt;br&gt;&lt;br&gt;&lt;strong&gt;הוראות שימוש:&lt;/strong&gt; פעמיים ביום על ציפורן נקייה ויבשה, לטפטף 2 טיפות על המקום הנגוע.">
-            <img src="רכישה/פיור 2.png" alt="פיור Pure — טיפות נוזל" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
-            <button class="pure-add-chip" onclick="addPureToCart('פיור Pure — טיפות נוזל', '120 ₪', 'רכישה/פיור 2.png', this)">🛒 הוסף לסל · 120 ₪</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- שלב 3 -->
-      <div class="pure-step">
-        <div class="pure-step-img">
-          <div class="pure-shop-img"
-            data-name="קרם רגליים טיפולי"
-            data-price="99 ₪"
-            data-tag="Pure"
-            data-img="רכישה/קרם רגליים.png"
-            data-desc="קרם רגליים טיפולי ליובש וסדקים קשים.&lt;br&gt;&lt;br&gt;מבוסס על תרכובת טבעית ואיכותית המחזיר לעור גמישות, חיוניות ומראה בריא. מתאים לידיים ורגליים עם יובש וסדקים קשים. לשימוש יומיומי.">
-            <img src="רכישה/קרם רגליים.png" alt="קרם רגליים וידיים טיפולי" onclick="openPureProductModal(this.closest('.pure-shop-img'))" loading="lazy" />
-            <button class="pure-add-chip" onclick="addPureToCart('קרם רגליים טיפולי', '99 ₪', 'רכישה/קרם רגליים.png', this)">🛒 הוסף לסל · 99 ₪</button>
-          </div>
-        </div>
-        <div class="pure-step-card">
-          <div class="pure-step-badge">3</div>
-          <h3 class="pure-step-title">איטום, הזנה ושיקום סדקים קשים</h3>
-          <div class="pure-step-product">המוצר במסע: קרם רגליים (וידיים) טיפולי ליובש וסדקים קשים</div>
-          <p><strong>איך זה עובד במסע:</strong> השלב המסכם החותם את המסע. תרכובת טבעית ואיכותית המיועדת להזנה עמוקה של עור יבש וסדוק, המחזירה לעור את הגמישות, החיוניות ומראה בריא ונקי.</p>
-          <p><strong>התוצאה:</strong> מעטפת הגנה היקפית, עור רך וגמיש ושמירה על תוצאות הטיפול לאורך זמן.</p>
-          <div class="pure-step-usage"><strong>הנחיית שימוש:</strong> מריחה יומיומית עד לספיגה מלאה.</div>
-        </div>
+        <div class="pure-badge">ערכת הטיפול</div>
+        <h2 class="pure-title" style="font-size: clamp(1.9rem, 3.5vw, 2.75rem);">שלושה מוצרים, פרוטוקול טיפול אחד</h2>
+        <p class="pure-subtitle">ניקוי, טיפול ושיקום — כשמשתמשים בשלושת מוצרי הסדרה יחד, מקבלים תוצאה מקסימלית.</p>
       </div>
 
       <!-- Outro / Kit CTA -->
@@ -1183,6 +1308,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer>

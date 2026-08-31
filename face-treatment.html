@@ -777,6 +777,48 @@
     .zora-exit-msg { font-size: 0.8rem; margin-top: 0.4rem; }
     .zora-exit-msg.success { color: #2f7a3d; }
     .zora-exit-msg.error { color: #b3392c; }
+
+    /* ─── FAQ / Objections ──────────────────────────────── */
+    #ft-faq { padding-block: 6rem; }
+    .faq-list { max-width: 760px; margin-inline: auto; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.5rem 0.25rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: right;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark);
+      transition: color 0.25s;
+    }
+    .faq-q:hover { color: var(--rose-1); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--rose-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--rose-1);
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: all 0.3s ease;
+    }
+    .faq-item.open .faq-q { color: var(--rose-1); }
+    .faq-item.open .faq-icon { background: var(--rose-1); color: var(--white); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
+    .faq-item.open .faq-a { opacity: 1; }
+    .faq-a p { padding: 0 0.25rem 1.5rem; color: var(--mid); font-size: 0.92rem; line-height: 1.8; max-width: 640px; }
   </style>
 </head>
 <body>
@@ -936,6 +978,120 @@
       </div>
     </div>
   </section>
+
+  <!-- ══════════════ FAQ / OBJECTIONS ══════════════ -->
+  <section id="ft-faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">שאלות נפוצות</span>
+        <span class="rose-line"></span>
+        <h2 class="section-title" style="font-size: clamp(1.9rem, 3.5vw, 2.75rem);">כל מה שרציתן לדעת לפני שקובעות תור</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>האם הטיפול כואב?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>לא. טיפולי הפנים של Zora הם טיפולים לא פולשניים ונעימים. חלק מהלקוחות מתארות תחושת חום קל או עיסוי מרגיע במהלך הטיפול, אך ללא כאב.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>כמה זמן נמשך טיפול אחד, וכמה טיפולים אני צריכה?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>טיפול בודד נמשך כשעה עד שעה וחצי. מספר הטיפולים המומלץ משתנה לפי מצב העור והמטרה שלך — נקבע יחד תוכנית מדויקת כבר בפגישת האבחון הראשונה, ובדרך כלל מדובר בסדרה תקופתית לתוצאה מיטבית וממושכת.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>מתי רואים תוצאות?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>זוהר ורכות בעור מורגשים כבר מהטיפול הראשון. תוצאות של מיצוק וחיטוב, כמו החלקת קמטים וקווי הבעה, מצטברות בהדרגה עם סדרת הטיפולים ונשמרות זמן רב יותר ככל שממשיכות לפי התוכנית שנקבעה.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>הטיפול מתאים לכל סוגי העור, כולל עור רגיש?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כן. כל טיפול מותאם אישית לסוג ולמצב העור שלך, כולל עור רגיש או נוטה לאדמומיות. באבחון הראשוני נבדוק את העור ונתאים את הפרוטוקול המדויק שמתאים לך.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>יש זמן החלמה? אפשר לחזור לשגרה מיד אחרי הטיפול?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>כן, אפשר לחזור לשגרה מיד. ייתכן אדמומיות קלה וזמנית עם סיום הטיפול, שחולפת בדרך כלל תוך זמן קצר. לא נדרש זמן החלמה מיוחד.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>יש תופעות לוואי?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>טיפולי Zora Face משתמשים בטכניקות עדינות וברכיבים טבעיים, ולכן תופעות לוואי נדירות ומוגבלות בדרך כלל לאדמומיות זמנית קלה. נעדכן אותך מראש בפגישת האבחון על כל דבר רלוונטי למצב העור הספציפי שלך.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>כמה עולה טיפול, ויש חבילות או מנוי?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>העלות משתנה בהתאם לתוכנית הטיפול שנבנה עבורך. בפגישת הייעוץ נציג בפנייך את המחיר המדויק ואת האפשרויות לרכישת סדרת טיפולים במחיר משתלם יותר מטיפול בודד.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            <span>אני חייבת להתחייב מראש למספר טיפולים?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>לא. אפשר להתחיל בטיפול בודד ולהתרשם, ורק לאחר מכן להחליט אם להמשיך לסדרה. תמיד נמליץ על התוכנית שנראית לנו הכי נכונה עבורך, אבל ההחלטה איתך.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var list = item.closest('.faq-list');
+      var answer = item.querySelector('.faq-a');
+      var wasOpen = item.classList.contains('open');
+      list.querySelectorAll('.faq-item.open').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = null;
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+  </script>
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer>
