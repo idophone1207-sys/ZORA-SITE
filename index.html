@@ -1286,6 +1286,59 @@
       margin-top: 0.85rem;
     }
 
+    .result-img-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── Testimonials video carousel (all widths, separate cubes) ─── */
+    #testimonials .mobile-slider-wrap { position: relative; padding: 0; }
+    #testimonials .mobile-slider-wrap .testimonials-grid {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      max-width: 480px;
+      margin-inline: auto;
+      margin-top: 1rem;
+      padding: 0 2.8rem;
+    }
+    #testimonials .mobile-slider-wrap .testimonials-grid::-webkit-scrollbar { display: none; }
+    #testimonials .mobile-slider-wrap .testi-card {
+      display: block;
+      flex: 0 0 88%;
+      scroll-snap-align: center;
+      padding: 1.25rem;
+    }
+    @media (min-width: 769px) {
+      #testimonials .mobile-slider-wrap .testimonials-grid { max-width: 1100px; padding: 0 3.5rem; }
+      #testimonials .mobile-slider-wrap .testi-card { flex: 0 0 31%; }
+    }
+    #testimonials .slider-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-1);
+      background: rgba(253,251,247,0.95);
+      color: var(--gold-1);
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+    #testimonials .slider-prev { right: 0; }
+    #testimonials .slider-next { left: 0; }
+
     /* ─── Videos ──────────────────────────────────────── */
     #videos {
       padding-block: var(--section-pad);
@@ -3067,101 +3120,35 @@
       <div class="testimonials-grid" id="testimonials-grid">
 
         <div class="testi-card result-card fade-up">
-          <div class="result-images">
+          <div class="result-images result-images-single">
             <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/lior-before.jpg" alt="ליאור - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/lior-after.jpg" alt="ליאור - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
+              <video src="brand_assets/Seamless-before-and-after-tran-6a9562f9f80b0f261229ba03-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
             </div>
           </div>
-          <div class="result-name">ליאור</div>
         </div>
 
         <div class="testi-card result-card fade-up">
-          <div class="result-images">
+          <div class="result-images result-images-single">
             <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/shir-before.jpg" alt="שיר - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/shir-after.jpg" alt="שיר - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
+              <video src="brand_assets/Seamless-before-and-after-tran-6a956488968cb4218f67332a-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
             </div>
           </div>
-          <div class="result-name">שיר</div>
         </div>
 
         <div class="testi-card result-card fade-up">
-          <div class="result-images">
+          <div class="result-images result-images-single">
             <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/sigalit-before.jpg" alt="סיגלית - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/sigalit-after.jpg" alt="סיגלית - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
+              <video src="brand_assets/First-frame-This-close-up-top--6a9588ebdea9114d567fbc42-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
             </div>
           </div>
-          <div class="result-name">סיגלית</div>
         </div>
 
         <div class="testi-card result-card fade-up">
-          <div class="result-images">
+          <div class="result-images result-images-single">
             <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/roi-before.jpg" alt="רועי - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/roi-after.jpg" alt="רועי - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
+              <video src="brand_assets/First-frame-This-is-a-high-ang-6a9587a8a1aae684382c1755-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
             </div>
           </div>
-          <div class="result-name">רועי</div>
-        </div>
-
-        <div class="testi-card result-card fade-up">
-          <div class="result-images">
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/neta-before.jpg" alt="נטע - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/neta-after.jpg" alt="נטע - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
-            </div>
-          </div>
-          <div class="result-name">נטע</div>
-        </div>
-
-        <div class="testi-card result-card fade-up">
-          <div class="result-images">
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/gili-before.jpg" alt="גילי - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/gili-after.jpg" alt="גילי - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
-            </div>
-          </div>
-          <div class="result-name">גילי</div>
-        </div>
-
-        <div class="testi-card result-card fade-up">
-          <div class="result-images">
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/merav-before.jpg" alt="מירב - לפני" loading="lazy">
-              <span class="result-tag">לפני</span>
-            </div>
-            <div class="result-img-box">
-              <img src="תןצאות לקוחות/web/merav-after.jpg" alt="מירב - אחרי" loading="lazy">
-              <span class="result-tag result-tag-after">אחרי</span>
-            </div>
-          </div>
-          <div class="result-name">מירב</div>
         </div>
 
       </div><!-- /testimonials-grid -->
@@ -3402,6 +3389,14 @@
     }
 
     function sliderGoTo(gridId, idx) {
+      if (gridId === 'testimonials-grid') {
+        const cards = getSliderCards(gridId);
+        if (!cards.length) return;
+        idx = ((idx % cards.length) + cards.length) % cards.length;
+        sliderIdx[gridId] = idx;
+        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        return;
+      }
       if (window.innerWidth > 768) return;
       const cards = getSliderCards(gridId);
       if (!cards.length) return;
@@ -3419,15 +3414,28 @@
     function initSliders() {
       if (window.innerWidth > 768) return;
       sliderGoTo('treatments-grid', 0);
-      sliderGoTo('testimonials-grid', 0);
     }
     initSliders();
     window.addEventListener('resize', initSliders);
 
+    sliderIdx['testimonials-grid'] = 0;
+    (function setupTestimonialsSlider() {
+      const grid = document.getElementById('testimonials-grid');
+      if (!grid) return;
+      const cards = [...grid.querySelectorAll('.testi-card')];
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+            sliderIdx['testimonials-grid'] = cards.indexOf(entry.target);
+          }
+        });
+      }, { root: grid, threshold: [0.6] });
+      cards.forEach(c => io.observe(c));
+    })();
+
     // Auto-rotate every 2s on mobile
     setInterval(() => {
-      if (window.innerWidth > 768) return;
-      sliderNext('treatments-grid');
+      if (window.innerWidth <= 768) sliderNext('treatments-grid');
       sliderNext('testimonials-grid');
     }, 4500);
 
