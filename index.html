@@ -3394,7 +3394,14 @@
         if (!cards.length) return;
         idx = ((idx % cards.length) + cards.length) % cards.length;
         sliderIdx[gridId] = idx;
-        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        const grid = document.getElementById(gridId);
+        const card = cards[idx];
+        // Scroll only within the carousel's own container — never scrollIntoView,
+        // which also drags the whole page down to the section when it's off-screen.
+        const gridRect = grid.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
+        const delta = (cardRect.left + cardRect.width / 2) - (gridRect.left + gridRect.width / 2);
+        grid.scrollBy({ left: delta, behavior: 'smooth' });
         return;
       }
       if (window.innerWidth > 768) return;
@@ -3419,6 +3426,7 @@
     window.addEventListener('resize', initSliders);
 
     sliderIdx['testimonials-grid'] = 0;
+    let testimonialsInView = false;
     (function setupTestimonialsSlider() {
       const grid = document.getElementById('testimonials-grid');
       if (!grid) return;
@@ -3431,12 +3439,18 @@
         });
       }, { root: grid, threshold: [0.6] });
       cards.forEach(c => io.observe(c));
+
+      // Only auto-rotate while the results section is actually visible on screen.
+      const pageIo = new IntersectionObserver((entries) => {
+        testimonialsInView = entries[0].isIntersecting;
+      }, { threshold: 0 });
+      pageIo.observe(grid);
     })();
 
     // Auto-rotate every 2s on mobile
     setInterval(() => {
       if (window.innerWidth <= 768) sliderNext('treatments-grid');
-      sliderNext('testimonials-grid');
+      if (testimonialsInView) sliderNext('testimonials-grid');
     }, 4500);
 
     // ── Category filter ──
@@ -3901,216 +3915,6 @@
       border-radius: 2px;
     }
 
-    /* ─── Chatbot ─── */
-    #chat-fab {
-      position: fixed;
-      bottom: 1.25rem;
-      right: 1.25rem;
-      z-index: 9998;
-      width: 62px; height: 62px;
-      border-radius: 50%;
-      background: transparent;
-      border: 2.5px solid #D4B97A;
-      color: #fff;
-      font-size: 1.6rem;
-      cursor: pointer;
-      padding: 0;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(191,164,106,0.5);
-      transition: transform 0.2s;
-    }
-    #chat-fab:hover { transform: scale(1.08); }
-    #chat-fab .chat-badge {
-      position: absolute;
-      top: -4px; right: -4px;
-      background: #e53e3e;
-      color: #fff;
-      font-size: 0.6rem;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-sans);
-      animation: badgePulse 2s ease-in-out infinite;
-    }
-    @keyframes badgePulse {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-    }
-
-    #chat-window {
-      position: fixed;
-      bottom: 5.5rem;
-      right: 1.25rem;
-      z-index: 9997;
-      width: min(360px, calc(100vw - 2.5rem));
-      height: 500px;
-      background: #1C1A17;
-      border: 1px solid rgba(191,164,106,0.3);
-      border-radius: 16px;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-    }
-    #chat-window.open { display: flex; }
-    @media (max-width: 480px) {
-      #chat-window {
-        right: 0; left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 92dvh;
-        border-radius: 20px 20px 0 0;
-        border-bottom: none;
-      }
-      #chat-fab { bottom: 1rem; right: 1rem; }
-    }
-
-    .chat-header {
-      background: linear-gradient(135deg, #2a2520, #1C1A17);
-      border-bottom: 1px solid rgba(191,164,106,0.2);
-      padding: 0.9rem 1rem;
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .chat-header-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1.5px solid rgba(212,185,122,0.5);
-      flex-shrink: 0;
-    }
-    .chat-header-avatar img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
-    .chat-header-info { flex: 1; }
-    .chat-header-name {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #D4B97A;
-      font-family: var(--font-sans);
-    }
-    .chat-header-status {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.5);
-      font-family: var(--font-sans);
-    }
-    .chat-close {
-      background: none; border: none;
-      color: rgba(255,255,255,0.4);
-      font-size: 1.2rem; cursor: pointer;
-      line-height: 1;
-    }
-    .chat-close:hover { color: #fff; }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      scroll-behavior: smooth;
-    }
-    .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-track { background: transparent; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(191,164,106,0.3); border-radius: 4px; }
-
-    .chat-bubble {
-      max-width: 85%;
-      padding: 0.65rem 0.9rem;
-      border-radius: 12px;
-      font-size: 0.84rem;
-      line-height: 1.6;
-      font-family: var(--font-sans);
-      white-space: pre-line;
-    }
-    .chat-bubble.bot {
-      background: rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.9);
-      border-radius: 12px 12px 12px 2px;
-      align-self: flex-start;
-    }
-    .chat-bubble.user {
-      background: linear-gradient(135deg, rgba(154,122,58,0.4), rgba(212,185,122,0.3));
-      color: #F5EDD3;
-      border-radius: 12px 12px 2px 12px;
-      align-self: flex-end;
-      text-align: right;
-    }
-    .chat-typing {
-      display: flex; gap: 4px; align-items: center;
-      padding: 0.6rem 0.9rem;
-      background: rgba(255,255,255,0.07);
-      border-radius: 12px 12px 12px 2px;
-      align-self: flex-start;
-      width: 60px;
-    }
-    .chat-typing span {
-      width: 6px; height: 6px;
-      background: rgba(212,185,122,0.6);
-      border-radius: 50%;
-      animation: typingDot 1.2s ease-in-out infinite;
-    }
-    .chat-typing span:nth-child(2) { animation-delay: 0.2s; }
-    .chat-typing span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typingDot {
-      0%,80%,100% { transform: scale(1); opacity: 0.4; }
-      40% { transform: scale(1.3); opacity: 1; }
-    }
-
-    .chat-options {
-      padding: 0.75rem 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      border-top: 1px solid rgba(191,164,106,0.1);
-    }
-    .chat-opt-btn {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(191,164,106,0.25);
-      color: rgba(255,255,255,0.85);
-      border-radius: 8px;
-      padding: 0.5rem 0.85rem;
-      font-size: 0.82rem;
-      cursor: pointer;
-      text-align: right;
-      font-family: var(--font-sans);
-      transition: all 0.2s;
-    }
-    .chat-opt-btn:hover {
-      background: rgba(191,164,106,0.15);
-      border-color: rgba(191,164,106,0.5);
-      color: #F5EDD3;
-    }
-    .chat-wa-btn {
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-      background: #25D366;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      padding: 0.65rem 1rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      text-decoration: none;
-      margin-top: 0.25rem;
-      transition: background 0.2s;
-    }
-    .chat-wa-btn:hover { background: #1fba57; }
-    .chat-restart {
-      background: transparent;
-      border: 1px solid rgba(191,164,106,0.2);
-      color: rgba(191,164,106,0.7);
-      border-radius: 8px;
-      padding: 0.4rem;
-      font-size: 0.75rem;
-      cursor: pointer;
-      font-family: var(--font-sans);
-      margin-top: 0.25rem;
-    }
   </style>
 
   <!-- Social FABs -->
@@ -4132,25 +3936,6 @@
     <button class="a11y-btn" id="btn-reduce-motion" onclick="a11yToggle('reduce-motion')">⏸ הפחת אנימציות</button>
     <button class="a11y-btn" id="btn-focus-visible" onclick="a11yToggle('focus-visible')">🔲 הדגש פוקוס</button>
     <button class="a11y-reset" onclick="a11yReset()">איפוס הגדרות</button>
-  </div>
-
-  <!-- Chatbot HTML -->
-  <button id="chat-fab" aria-label="מאבחן בציק – אבחון נשירה" onclick="toggleChat()">
-    <img src="brand_assets/face.jpeg" alt="מאבחן בציק" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;">
-    <div class="chat-badge">1</div>
-  </button>
-
-  <div id="chat-window" role="dialog" aria-label="מאבחן בציק">
-    <div class="chat-header">
-      <div class="chat-header-avatar"><img src="brand_assets/face.jpeg" alt="מאבחן בציק"></div>
-      <div class="chat-header-info">
-        <div class="chat-header-name">מאבחן בציק</div>
-        <div class="chat-header-status">אבחון נשירה חינמי • ZORA</div>
-      </div>
-      <button class="chat-close" onclick="toggleChat()" aria-label="סגור">✕</button>
-    </div>
-    <div class="chat-messages" id="chat-messages"></div>
-    <div class="chat-options" id="chat-options"></div>
   </div>
 
   <script>
@@ -4188,202 +3973,6 @@
         panel.classList.remove('open');
       }
     });
-
-    /* ── Chatbot ─────────────────────────────────────── */
-    // ⬇️ עדכן את מספר הטלפון כאן
-    const WA_PHONE = '972528434322';
-
-    const FLOW = [
-      {
-        id: 'welcome',
-        bot: 'היי,\nאני מאבחן בציק של ZORA.\nבעזרת כמה שאלות קצרות אוכל לסייע להבין מה קורה לשיער ולהמליץ על הטיפול המתאים.\n\nמוכן/ה להתחיל?',
-        options: ['כן, נתחיל', 'אולי בפעם אחרת']
-      },
-      {
-        id: 'duration',
-        bot: 'כמה זמן קיימת הנשירה?',
-        options: ['פחות מחודש', 'חודש עד חצי שנה', 'מעל חצי שנה', 'קשה לי להגיד']
-      },
-      {
-        id: 'type',
-        bot: 'איך מתבטאת הנשירה שלך?',
-        options: ['נשירה כללית מרובה', 'קרחות ממוקדות', 'דלילות בפסיקה', 'שיבוש בנפח כללי']
-      },
-      {
-        id: 'cause',
-        bot: 'האם חל שינוי אחד מהבאים לאחרונה?',
-        options: ['לחץ נפשי / סטרס', 'לידה / הנקה', 'שינוי תזונתי / דיאטה', 'לא חל שינוי מיוחד']
-      },
-      {
-        id: 'condition',
-        bot: 'מה מצב השיער שלך כרגע?',
-        options: ['שביר ויבש', 'שמן בשורשים', 'חסר נפח ודק', 'מתנשר במקלחת / על הכרית']
-      }
-    ];
-
-    // טיפולים לפי סיבה (מוצג במקביל לטיפול הממוקד)
-    const CAUSE_TREATMENTS = {
-      stress:    'טיפול שיקום לחץ וסטרס – עיסוי קרקפת מעמיק + סרום ZORA להפחתת נשירה הנובעת מלחץ נפשי',
-      postpartum:'טיפול ייעודי לנשירה לאחר לידה/הנקה – פרוטוקול מזין עמוק להחזרת צפיפות ועוצמה לשיער',
-      diffuse:   'טיפול ZORA לנשירה מפושטת – חיזוק זקיקים מהשורש לקצה בשיטת השכבות',
-      alopecia:  'טיפול ממוקד לאלופציה – טכנולוגיה מתקדמת לגירוי זקיקים ואזורים מקומיים',
-      thin:      'טיפול עיבוי ונפח – הזנת קרקפת ומילוי שיער מבפנים',
-      general:   'טיפול שיקום שיער כללי – הפרוטוקול המקצועי של ZORA להתחדשות מלאה'
-    };
-
-    let chatOpen = false;
-    let step = 0;
-    let answers = {};
-    let chatStarted = false;
-
-
-    function toggleChat() {
-      chatOpen = !chatOpen;
-      document.getElementById('chat-window').classList.toggle('open', chatOpen);
-      const badge = document.querySelector('#chat-fab .chat-badge');
-      if (chatOpen) {
-        if (badge) badge.style.display = 'none';
-        if (!chatStarted) { chatStarted = true; setTimeout(() => startChat(), 400); }
-      }
-    }
-
-    function startChat() {
-      step = 0; answers = {};
-      document.getElementById('chat-messages').innerHTML = '';
-      document.getElementById('chat-options').innerHTML = '';
-      showStep(0);
-    }
-
-    function showStep(i) {
-      if (i >= FLOW.length) { showResult(); return; }
-      const q = FLOW[i];
-      showTyping().then(() => {
-        addBubble(q.bot, 'bot');
-        showOptions(q.options, choice => {
-          if (i === 0 && choice.includes('אחרת')) { toggleChat(); return; }
-          answers[q.id] = choice;
-          addBubble(choice, 'user');
-          clearOptions();
-          step = i + 1;
-          setTimeout(() => showStep(step), 600);
-        });
-      });
-    }
-
-    function showResult() {
-      const rec = getRecommendation();
-      showTyping().then(() => {
-        let msg = `תודה על המידע.\n\nעל סמך האבחון שלך, ההמלצה שלי:\n\nטיפול ממוקד ואינטנסיבי בשיטת ZORA`;
-        if (rec.causeTreatment) {
-          msg += `\n${rec.causeTreatment}`;
-        }
-        msg += `\n\nהטיפולים האלו מותאמים במיוחד למצב השיער ויחזירו לו את הבריאות, הנפח והחוזק.\n\nרוצה לדבר איתי ישירות? לחצו על הכפתור 👇`;
-        addBubble(msg, 'bot');
-
-        const opts = document.getElementById('chat-options');
-        opts.innerHTML = '';
-        const bookBtn = document.createElement('button');
-        bookBtn.className = 'chat-opt-btn';
-        bookBtn.innerHTML = '💬 שלחו לי הודעה בוואטסאפ';
-        bookBtn.onclick = function() {
-          const waParts = [
-            '👋 היי זהבית!',
-            'עברתי על האבחון בצ\'אט של ZORA וקיבלתי המלצה:',
-            '',
-            `🔍 *תוצאות האבחון:*`,
-          ];
-          if (answers.duration)  waParts.push(`• משך הנשירה: ${answers.duration}`);
-          if (answers.type)      waParts.push(`• ביטוי הנשירה: ${answers.type}`);
-          if (answers.cause)     waParts.push(`• גורם אפשרי: ${answers.cause}`);
-          if (answers.condition) waParts.push(`• מצב השיער: ${answers.condition}`);
-          if (rec.causeTreatment) {
-            waParts.push('', `💆 *ההמלצה שקיבלתי:*`, rec.causeTreatment);
-          }
-          waParts.push('', 'אשמח לשמוע פרטים נוספים ולתאם טיפול 🙏');
-          window.open(`https://wa.me/972528434322?text=${encodeURIComponent(waParts.join('\n'))}`, '_blank');
-        };
-        opts.appendChild(bookBtn);
-        const restart = document.createElement('button');
-        restart.className = 'chat-restart';
-        restart.textContent = 'התחל אבחון מחדש';
-        restart.onclick = startChat;
-        opts.appendChild(restart);
-        scrollToBottom();
-      });
-    }
-
-    function getRecommendation() {
-      const cause     = answers.cause     || '';
-      const type      = answers.type      || '';
-      const duration  = answers.duration  || '';
-      const condition = answers.condition || '';
-
-      let causeKey = null;
-      if (cause.includes('לחץ') || cause.includes('סטרס'))       causeKey = 'stress';
-      else if (cause.includes('לידה') || cause.includes('הנקה')) causeKey = 'postpartum';
-      else if (type.includes('ממוקד') || type.includes('קרחות')) causeKey = 'alopecia';
-      else if (type.includes('כללית') || condition.includes('מתנשר')) causeKey = 'diffuse';
-      else if (condition.includes('נפח') || condition.includes('דק')) causeKey = 'thin';
-
-      const causeTreatment = causeKey ? CAUSE_TREATMENTS[causeKey] : null;
-
-      const waMsg = [
-        'שלום! הגעתי מהאתר של ZORA ועשיתי אבחון מהיר.',
-        `סוג הנשירה: ${type}`,
-        `סיבה אפשרית: ${cause}`,
-        `משך הנשירה: ${duration}`,
-        `מצב השיער: ${condition}`,
-        '',
-        'ההמלצה שקיבלתי: טיפול ממוקד ואינטנסיבי בשיטת ZORA',
-        causeTreatment ? causeTreatment : '',
-        '',
-        'הייתי רוצה לקבוע תור לטיפול'
-      ].filter(Boolean).join('\n');
-
-      return { causeTreatment, waMsg };
-    }
-
-    function scrollToBottom() {
-      const msgs = document.getElementById('chat-messages');
-      requestAnimationFrame(() => { msgs.scrollTop = msgs.scrollHeight; });
-    }
-
-    function addBubble(text, who) {
-      const msgs = document.getElementById('chat-messages');
-      const b = document.createElement('div');
-      b.className = 'chat-bubble ' + who;
-      b.textContent = text;
-      msgs.appendChild(b);
-      scrollToBottom();
-    }
-
-    function showOptions(opts, cb) {
-      const container = document.getElementById('chat-options');
-      container.innerHTML = '';
-      opts.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'chat-opt-btn';
-        btn.textContent = opt;
-        btn.onclick = () => cb(opt);
-        container.appendChild(btn);
-      });
-    }
-
-    function clearOptions() {
-      document.getElementById('chat-options').innerHTML = '';
-    }
-
-    function showTyping() {
-      return new Promise(resolve => {
-        const msgs = document.getElementById('chat-messages');
-        const t = document.createElement('div');
-        t.className = 'chat-typing';
-        t.innerHTML = '<span></span><span></span><span></span>';
-        msgs.appendChild(t);
-        scrollToBottom();
-        setTimeout(() => { t.remove(); resolve(); }, 900);
-      });
-    }
   </script>
 
   <!-- ══════════════ CART PANEL ══════════════ -->
@@ -4783,6 +4372,45 @@
         }
       });
     })();
+  </script>
+
+  <!-- WATI WhatsApp Chat Widget -->
+  <script>
+    var url = 'https://wati-integration-prod-service.clare.ai/v2/watiWidget.js?48176';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+    "enabled":true,
+    "chatButtonSetting":{
+        "backgroundColor":"#00e785",
+        "ctaText":"Chat with us",
+        "borderRadius":"25",
+        "marginLeft": "0",
+        "marginRight": "20",
+        "marginBottom": "20",
+        "ctaIconWATI":false,
+        "position":"right"
+    },
+    "brandSetting":{
+        "brandName":"zora",
+        "brandSubTitle":"undefined",
+        "brandImg":"https://zora.clinic/brand_assets/logo-gold.png",
+        "welcomeText":"היי איך אוכל לעזור לך היום",
+        "messageText":"מה הולך אשמח לקבל פרטים",
+        "backgroundColor":"#00e785",
+        "ctaText":"Chat with us",
+        "borderRadius":"25",
+        "autoShow":false,
+        "phoneNumber":"972543322649"
+    }
+    };
+    s.onload = function() {
+        CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
   </script>
 </body>
 </html>
