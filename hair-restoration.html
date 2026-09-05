@@ -638,6 +638,22 @@
       overflow: hidden;
     }
     .result-img-box img, .result-img-box video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .result-img-box { cursor: pointer; }
+    .result-play-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(20,20,20,0.55);
+      border: 1.5px solid rgba(255,255,255,0.85);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+    }
+    .result-play-icon svg { margin-right: -2px; }
+    .result-img-box.playing .result-play-icon { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    .result-img-box:hover .result-play-icon { transform: translate(-50%, -50%) scale(1.08); }
     .result-tag {
       position: absolute;
       bottom: 0.5rem;
@@ -1054,32 +1070,36 @@
 
         <div class="testi-card result-card fade-up">
           <div class="result-images result-images-single">
-            <div class="result-img-box">
-              <video src="brand_assets/Seamless-before-and-after-tran-6a9562f9f80b0f261229ba03-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="result-img-box" onclick="toggleResultVideo(this)" role="button" tabindex="0" aria-label="הפעל סרטון תוצאה" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleResultVideo(this);}">
+              <video src="brand_assets/Seamless-before-and-after-tran-6a9562f9f80b0f261229ba03-seedance-2-5.mp4" muted loop playsinline preload="metadata"></video>
+              <div class="result-play-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div>
             </div>
           </div>
         </div>
 
         <div class="testi-card result-card fade-up">
           <div class="result-images result-images-single">
-            <div class="result-img-box">
-              <video src="brand_assets/Seamless-before-and-after-tran-6a956488968cb4218f67332a-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="result-img-box" onclick="toggleResultVideo(this)" role="button" tabindex="0" aria-label="הפעל סרטון תוצאה" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleResultVideo(this);}">
+              <video src="brand_assets/Seamless-before-and-after-tran-6a956488968cb4218f67332a-seedance-2-5.mp4" muted loop playsinline preload="metadata"></video>
+              <div class="result-play-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div>
             </div>
           </div>
         </div>
 
         <div class="testi-card result-card fade-up">
           <div class="result-images result-images-single">
-            <div class="result-img-box">
-              <video src="brand_assets/First-frame-This-close-up-top--6a9588ebdea9114d567fbc42-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="result-img-box" onclick="toggleResultVideo(this)" role="button" tabindex="0" aria-label="הפעל סרטון תוצאה" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleResultVideo(this);}">
+              <video src="brand_assets/First-frame-This-close-up-top--6a9588ebdea9114d567fbc42-seedance-2-5.mp4" muted loop playsinline preload="metadata"></video>
+              <div class="result-play-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div>
             </div>
           </div>
         </div>
 
         <div class="testi-card result-card fade-up">
           <div class="result-images result-images-single">
-            <div class="result-img-box">
-              <video src="brand_assets/First-frame-This-is-a-high-ang-6a9587a8a1aae684382c1755-seedance-2-5.mp4" autoplay muted loop playsinline preload="metadata"></video>
+            <div class="result-img-box" onclick="toggleResultVideo(this)" role="button" tabindex="0" aria-label="הפעל סרטון תוצאה" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleResultVideo(this);}">
+              <video src="brand_assets/First-frame-This-is-a-high-ang-6a9587a8a1aae684382c1755-seedance-2-5.mp4" muted loop playsinline preload="metadata"></video>
+              <div class="result-play-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div>
             </div>
           </div>
         </div>
@@ -1398,6 +1418,23 @@
     setInterval(() => {
       if (testimonialsInView) sliderNext('testimonials-grid');
     }, 4500);
+
+    // ── Results video toggle ──
+    function toggleResultVideo(box) {
+      const video = box.querySelector('video');
+      if (!video) return;
+      if (video.paused) {
+        document.querySelectorAll('.result-img-box.playing video').forEach(v => {
+          v.pause();
+          v.closest('.result-img-box').classList.remove('playing');
+        });
+        video.play();
+        box.classList.add('playing');
+      } else {
+        video.pause();
+        box.classList.remove('playing');
+      }
+    }
 
     // ── Cart (shared UI, empty on this page) ──────────────
     const cart = [];
