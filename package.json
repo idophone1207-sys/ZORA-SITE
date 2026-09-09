@@ -4,9 +4,12 @@
   "description": "WAT framework tooling for zora site",
   "private": true,
   "scripts": {
-    "crm": "node tools/crm_server.js"
+    "crm": "node tools/crm_server.js",
+    "leads:fb": "node tools/facebook_leads_whatsapp.js"
   },
   "dependencies": {
+    "google-auth-library": "^9.15.0",
+    "google-spreadsheet": "^4.1.4",
     "puppeteer": "^22.0.0",
     "xlsx": "^0.18.5"
   }
