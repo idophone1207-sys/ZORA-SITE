@@ -63,7 +63,7 @@ Simulate a lead event (use a real `leadgen_id` once you have test access, or che
 1. [render.com](https://render.com) → **New → Web Service** → connect the `ZORA-SITE` GitHub repo.
 2. Build command: `npm install`. Start command: `node tools/facebook_leads_whatsapp.js`.
 3. Add all the env vars from the table above in Render's **Environment** tab (Render doesn't read local `.env` files).
-4. For `credentials.json`, use Render's **Secret Files** feature (mount it at `/opt/render/project/src/credentials.json`) rather than an env var, since it's a JSON file.
+4. For the Google service account, add one more env var: `GOOGLE_SERVICE_ACCOUNT_JSON`, pasting the *entire contents* of `credentials.json` as a single-line value (the tool falls back to reading the local `credentials.json` file when this env var isn't set, which is what happens in local dev). This avoids relying on exactly where Render mounts secret files.
 5. Once deployed, note the public URL, e.g. `https://zora-leads.onrender.com`.
 6. **Keep-warm ping:** Render's free tier sleeps after ~15 min idle, which would delay a real lead's message on cold start. Set up a free monitor at [cron-job.org](https://cron-job.org) to `GET https://zora-leads.onrender.com/health` every 10 minutes.
 

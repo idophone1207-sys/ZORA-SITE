@@ -42,7 +42,9 @@ let sheetPromise = null;
 function getSheet() {
   if (sheetPromise) return sheetPromise;
   sheetPromise = (async () => {
-    const serviceAccount = require(SERVICE_ACCOUNT_PATH);
+    const serviceAccount = process.env.GOOGLE_SERVICE_ACCOUNT_JSON
+      ? JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
+      : require(SERVICE_ACCOUNT_PATH);
     const auth = new JWT({
       email: serviceAccount.client_email,
       key: serviceAccount.private_key,
