@@ -922,6 +922,33 @@
     .faq-a { max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.35s ease, opacity 0.3s ease; }
     .faq-item.open .faq-a { opacity: 1; }
     .faq-a p { padding: 0 0.25rem 1.5rem; color: var(--mid); font-size: 0.92rem; line-height: 1.8; max-width: 640px; }
+    /* ─── Product Picker (shop the collection) ──────────── */
+    #hr-picker { background: var(--gold-pale); padding-block: clamp(3rem, 6vw, 5rem); border-top: 1px solid var(--border); }
+    .hr-picker-header { text-align: center; margin-bottom: 3rem; }
+    .hr-picker-label { display: inline-block; font-size: 0.75rem; letter-spacing: 0.25em; color: #9A7A3A; margin-bottom: 1rem; }
+    .hr-picker-subtitle { color: var(--mid); max-width: 34rem; margin-inline: auto; line-height: 1.7; font-size: 0.95rem; }
+    .hr-picker-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    @media (max-width: 1000px) { .hr-picker-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .hr-picker-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; } }
+    .hr-picker-card {
+      display: block;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .hr-picker-card:hover { border-color: rgba(191,164,106,0.6); transform: translateY(-4px); }
+    .hr-picker-card-flagship { border-color: rgba(191,164,106,0.6); background: rgba(191,164,106,0.1); }
+    .hr-picker-img { background: #fff; padding: 1.25rem; }
+    .hr-picker-img img { height: 160px; width: auto; max-width: 100%; object-fit: contain; margin-inline: auto; }
+    .hr-picker-body { padding: 1.4rem 1.1rem 1.6rem; }
+    .hr-picker-step { display: block; font-size: 0.68rem; letter-spacing: 0.15em; color: #9A7A3A; margin-bottom: 0.6rem; }
+    .hr-picker-body h3 { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; color: var(--dark); margin-bottom: 0.5rem; }
+    .hr-picker-body p { font-size: 0.85rem; color: var(--light); line-height: 1.6; margin-bottom: 1rem; min-height: 2.6em; }
+    .hr-picker-cta { font-size: 0.8rem; color: #9A7A3A; font-weight: 500; }
+    .hr-step-link { display: inline-block; margin-top: 0.75rem; color: var(--gold-3); font-size: 0.85rem; font-weight: 500; }
   </style>
 </head>
 <body>
@@ -991,6 +1018,60 @@
     </div>
   </section>
 
+  <!-- ══════════════ PRODUCT PICKER (shop the collection) ══════════════ -->
+  <section id="hr-picker">
+    <div class="container">
+      <div class="hr-picker-header">
+        <span class="hr-picker-label">מוצרי הטיפוח הביתי</span>
+        <p class="hr-picker-subtitle">לחצו על כל מוצר כדי להכיר אותו לעומק — מה הוא עושה, איך משתמשים בו, והשאלות שהכי חשוב לענות עליהן לפני שמתחילים.</p>
+      </div>
+
+      <div class="hr-picker-grid">
+
+        <a class="hr-picker-card" href="hair-shampoo.html">
+          <div class="hr-picker-img"><img src="רכישה/שמפו.png" alt="שמפו ZORA" loading="lazy" /></div>
+          <div class="hr-picker-body">
+            <span class="hr-picker-step">שלב 1</span>
+            <h3>שמפו ZORA</h3>
+            <p>שמפו טיפולי לניקוי ואיזון הקרקפת</p>
+            <span class="hr-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
+
+        <a class="hr-picker-card" href="hair-peptides.html">
+          <div class="hr-picker-img"><img src="רכישה/פפפטידים.png" alt="סרום פפטידים ZORA" loading="lazy" /></div>
+          <div class="hr-picker-body">
+            <span class="hr-picker-step">שלב 2</span>
+            <h3>סרום פפטידים ZORA</h3>
+            <p>הזנה וחיזוק שורשי השיער, עם מברשת</p>
+            <span class="hr-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
+
+        <a class="hr-picker-card" href="hair-perfume.html">
+          <div class="hr-picker-img"><img src="רכישה/בושם.png" alt="בושם לשיער ZORA" loading="lazy" /></div>
+          <div class="hr-picker-body">
+            <span class="hr-picker-step">שלב 3</span>
+            <h3>בושם לשיער ZORA</h3>
+            <p>רכות, ברק והגנה מפני השמש</p>
+            <span class="hr-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
+
+        <a class="hr-picker-card hr-picker-card-flagship" href="zora-boost.html">
+          <div class="hr-picker-img"><img src="רכישה/ערכת זורה בוסט.jpg" alt="ערכת ZORA BOOST" loading="lazy" /></div>
+          <div class="hr-picker-body">
+            <span class="hr-picker-step">הערכה המלאה</span>
+            <h3>ערכת ZORA BOOST</h3>
+            <p>שמפו, סרום פפטידים ומברשת אור אדום</p>
+            <span class="hr-picker-cta">לדף המוצר ←</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════ JOURNEY ══════════════ -->
   <section id="hr-journey">
     <div class="container">
@@ -1014,6 +1095,7 @@
           <p><strong>איך זה עובד במסע:</strong> הצעד הראשון מתחיל בהכנת הקרקפת. שמפו ZORA מבוסס רכיבים טבעיים המחזקים את שורשי השיער, מעודדים זרימה לקרקפת ותומכים בצמיחה בריאה וחזקה.</p>
           <p><strong>התוצאה:</strong> קרקפת נקייה ומאווררת, מוכנה לקליטה מרבית של שלבי הטיפול הבאים.</p>
           <div class="hr-step-usage"><strong>הנחיית שימוש:</strong> לשימוש יומיומי, כשלב ראשון בשגרת הטיפוח.</div>
+          <a href="hair-shampoo.html" class="hr-step-link">לדף המוצר ←</a>
         </div>
       </div>
 
@@ -1022,14 +1104,15 @@
         <div class="hr-step-card">
           <div class="hr-step-badge">2</div>
           <h3 class="hr-step-title">החדרה עמוקה והחייאת השורש</h3>
-          <div class="hr-step-product">המוצר במסע: אמפולה ZORA — ערכה של 12 אמפולות</div>
-          <p><strong>איך זה עובד במסע:</strong> לאחר שהקרקפת נקייה, האמפולה חודרת ישירות לשורש. פורמולה על בסיס חלבונים וחומרים טבעיים פעילים להחייאה ולחיזוק שורשי השיער וזקיקים רדומים.</p>
+          <div class="hr-step-product">המוצר במסע: סרום פפטידים ZORA — מגיע עם מברשת עיסוי</div>
+          <p><strong>איך זה עובד במסע:</strong> לאחר שהקרקפת נקייה, מורחים את סרום הפפטידים ומעסים עם המברשת — פורמולה ייעודית לטיפוח הקרקפת, לעידוד מראה שיער בריא ולחיזוק שורשי השיער.</p>
           <p><strong>התוצאה:</strong> עידוד זרימת דם לקרקפת, חיזוק השורש והתעוררות מחודשת של זקיקי השיער.</p>
-          <div class="hr-step-usage"><strong>הנחיית שימוש:</strong> אמפולה אחת לפי ההנחיה האישית שתקבלי באבחון.</div>
+          <div class="hr-step-usage"><strong>הנחיית שימוש:</strong> על קרקפת נקייה, לפי ההנחיה האישית שתקבלי באבחון.</div>
+          <a href="hair-peptides.html" class="hr-step-link">לדף המוצר ←</a>
         </div>
         <div class="hr-step-img">
           <div class="hr-product-img">
-            <img src="רכישה/אמפולה.png" alt="אמפולה ZORA" loading="lazy" />
+            <img src="רכישה/פפפטידים.png" alt="סרום פפטידים ZORA" loading="lazy" />
           </div>
         </div>
       </div>
@@ -1048,6 +1131,7 @@
           <p><strong>איך זה עובד במסע:</strong> השלב המסכם החותם את המסע. פורמולה משמנים מזינים וקרטין, המשמשת גם כספריי הגנה מפני השמש, שומרת על התוצאה לאורך זמן.</p>
           <p><strong>התוצאה:</strong> רכות, ברק ורעננות לאורך היום — לצד הגנה מתמשכת על השיער המתחדש.</p>
           <div class="hr-step-usage"><strong>הנחיית שימוש:</strong> לשימוש יומיומי, אינו מכיל אלכוהול ואינו גורם לשמנוניות.</div>
+          <a href="hair-perfume.html" class="hr-step-link">לדף המוצר ←</a>
         </div>
       </div>
 
@@ -1168,7 +1252,7 @@
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-a">
-            <p>מספר הטיפולים והתדירות נקבעים אישית לפי מצב הקרקפת והזקיקים שיאובחן בפגישה הראשונה. בדרך כלל מדובר בסדרת טיפולים תקופתית, לצד שגרת טיפוח יומיומית בבית עם מוצרי ZORA — שמפו, אמפולות ובושם.</p>
+            <p>מספר הטיפולים והתדירות נקבעים אישית לפי מצב הקרקפת והזקיקים שיאובחן בפגישה הראשונה. בדרך כלל מדובר בסדרת טיפולים תקופתית, לצד שגרת טיפוח יומיומית בבית עם מוצרי ZORA — שמפו, סרום פפטידים ובושם.</p>
           </div>
         </div>
 
